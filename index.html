@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#f7eee9">
+<meta name="description" content="She Tiny Spark Jewelry">
+<title>She Tiny Spark Jewelry</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:Arial,sans-serif;
+background:#f8f1ed;
+color:#302728;
+max-width:480px;
+margin:auto;
+min-height:100vh
+}
+button{font:inherit;border:0;cursor:pointer}
+.screen{display:none;min-height:100vh;padding-bottom:85px}
+.screen.active{display:block}
+
+.welcome{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px
+}
+.logo{
+font-family:Georgia,serif;
+font-size:36px;
+letter-spacing:1px;
+color:#4a3035
+}
+.spark{color:#b58a6b}
+.tagline{
+margin:12px 0 35px;
+font-size:13px;
+letter-spacing:2px;
+color:#806d6b
+}
+.btn{
+background:#4a3035;
+color:white;
+padding:15px 30px;
+border-radius:30px;
+width:100%;
+font-weight:bold
+}
+
+header{
+padding:25px 20px 15px;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+.header-logo{
+font-family:Georgia,serif;
+font-size:23px
+}
+.icon-btn{
+background:#fff;
+width:42px;height:42px;
+border-radius:50%;
+box-shadow:0 3px 12px #00000010
+}
+
+.hero{
+margin:5px 18px 25px;
+padding:28px 22px;
+border-radius:25px;
+background:linear-gradient(135deg,#ead8d0,#f6e9e2);
+}
+.hero h1{
+font-family:Georgia,serif;
+font-size:31px;
+line-height:1.1;
+margin-bottom:10px
+}
+.hero p{font-size:13px;color:#6e5c5c;margin-bottom:18px}
+.small-btn{
+background:#4a3035;
+color:#fff;
+padding:11px 18px;
+border-radius:22px;
+font-size:12px
+}
+
+.section{padding:0 18px;margin-bottom:25px}
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px
+}
+.section-title h2{
+font-family:Georgia,serif;
+font-size:22px
+}
+.section-title span{font-size:12px;color:#9a7466}
+
+.categories{
+display:flex;
+gap:10px;
+overflow:auto;
+padding-bottom:5px
+}
+.cat{
+min-width:90px;
+height:82px;
+background:#fff;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+box-shadow:0 3px 12px #00000008
+}
+.cat .emoji{font-size:27px;margin-bottom:6px}
+.cat small{font-size:11px}
+
+.products{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px
+}
+.product{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+position:relative;
+box-shadow:0 3px 14px #00000009
+}
+.product-img{
+height:150px;
+background:linear-gradient(145deg,#eadbd5,#f8eeea);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:58px
+}
+.product-info{padding:12px}
+.product-name{
+font-family:Georgia,serif;
+font-size:15px;
+margin-bottom:6px
+}
+.price{font-size:13px;font-weight:bold}
+.heart{
+position:absolute;
+right:9px;top:9px;
+width:34px;height:34px;
+border-radius:50%;
+background:#fff;
+font-size:18px
+}
+
+.page-title{
+padding:22px 20px;
+font-family:Georgia,serif;
+font-size:29px
+}
+.search{
+margin:0 18px 20px;
+background:#fff;
+padding:13px 17px;
+border-radius:25px;
+display:flex;
+gap:10px
+}
+.search input{
+border:0;outline:0;width:100%;
+background:transparent
+}
+
+.detail{
+padding:18px
+}
+.detail-img{
+height:300px;
+border-radius:25px;
+background:linear-gradient(145deg,#eadbd5,#f8eeea);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:110px
+}
+.detail h1{
+font-family:Georgia,serif;
+font-size:27px;
+margin:20px 0 8px
+}
+.detail .big-price{
+font-size:20px;font-weight:bold;margin-bottom:18px
+}
+.detail p{
+font-size:14px;
+line-height:1.7;
+color:#705f5e;
+margin-bottom:22px
+}
+
+.cart-item{
+background:#fff;
+margin:0 18px 12px;
+padding:15px;
+border-radius:18px;
+display:flex;
+align-items:center;
+gap:13px
+}
+.cart-emoji{
+width:60px;height:60px;
+border-radius:14px;
+background:#f2e5df;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px
+}
+.cart-info{flex:1}
+.cart-info h3{font-family:Georgia,serif;font-size:15px}
+.cart-info p{font-size:12px;margin-top:5px}
+.remove{color:#a35d5d;font-size:12px}
+
+.checkout{
+margin:20px 18px;
+background:#fff;
+padding:20px;
+border-radius:22px
+}
+.checkout input,.checkout textarea{
+width:100%;
+padding:13px;
+margin-bottom:10px;
+border:1px solid #eadbd5;
+border-radius:12px;
+outline:0
+}
+
+.empty{
+text-align:center;
+padding:70px 25px;
+color:#806f6d
+}
+.empty div{font-size:45px;margin-bottom:15px}
+
+.nav{
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:100%;
+max-width:480px;
+height:70px;
+background:#fff;
+display:flex;
+justify-content:space-around;
+align-items:center;
+box-shadow:0 -5px 20px #00000012;
+z-index:20
+}
+.nav button{
+background:none;
+font-size:11px;
+color:#806f6d;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:4px
+}
+.nav button b{font-size:21px}
+.nav button.active{color:#4a3035}
+
+.back{
+background:none;
+font-size:24px;
+margin:5px 18px
+}
+
+.toast{
+position:fixed;
+bottom:85px;
+left:50%;
+transform:translateX(-50%);
+background:#4a3035;
+color:white;
+padding:12px 20px;
+border-radius:25px;
+font-size:12px;
+display:none;
+z-index:50
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME -->
+<section id="welcome" class="screen active">
+<div class="welcome">
+<div>
+<div class="logo">She Tiny <span class="spark">✦</span> Spark</div>
+<div class="tagline">JEWELRY • MADE WITH LOVE</div>
+<button class="btn" onclick="show('home')">EXPLORE COLLECTION</button>
+</div>
+</div>
+</section>
+
+<!-- HOME -->
+<section id="home" class="screen">
+<header>
+<div class="header-logo">She Tiny ✦ Spark</div>
+<button class="icon-btn" onclick="show('cart')">🛍️</button>
+</header>
+
+<div class="hero">
+<h1>Little sparks,<br>big feelings.</h1>
+<p>Discover tiny pieces made to add a little sparkle to your everyday.</p>
+<button class="small-btn" onclick="show('shop')">Shop Collection</button>
+</div>
+
+<div class="section">
+<div class="section-title">
+<h2>Categories</h2>
+<span onclick="show('shop')">View all</span>
+</div>
+<div class="categories">
+<div class="cat" onclick="filter('Earrings')"><div class="emoji">💎</div><small>Earrings</small></div>
+<div class="cat" onclick="filter('Necklaces')"><div class="emoji">📿</div><small>Necklaces</small></div>
+<div class="cat" onclick="filter('Bracelets')"><div class="emoji">✨</div><small>Bracelets</small></div>
+<div class="cat" onclick="filter('Rings')"><div class="emoji">💍</div><small>Rings</small></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">
+<h2>New Sparks</h2>
+<span onclick="show('shop')">See all</span>
+</div>
+<div class="products" id="homeProducts"></div>
+</div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="screen">
+<header>
+<div class="header-logo">She Tiny ✦ Spark</div>
+<button class="icon-btn" onclick="show('cart')">🛍️</button>
+</header>
+
+<div class="page-title">Our Collection</div>
+
+<div class="search">
+<span>🔍</span>
+<input id="searchInput" placeholder="Search jewelry..." oninput="renderShop()">
+</div>
+
+<div class="section">
+<div class="categories">
+<div class="cat" onclick="filter('All')">✨<small>All</small></div>
+<div class="cat" onclick="filter('Earrings')">💎<small>Earrings</small></div>
+<div class="cat" onclick="filter('Necklaces')">📿<small>Necklaces</small></div>
+<div class="cat" onclick="filter('Bracelets')">✨<small>Bracelets</small></div>
+</div>
+</div>
+
+<div class="section">
+<div class="products" id="shopProducts"></div>
+</div>
+</section>
+
+<!-- PRODUCT -->
+<section id="product" class="screen">
+<button class="back" onclick="show('shop')">‹</button>
+<div class="detail">
+<div class="detail-img" id="detailImg">💎</div>
+<h1 id="detailName">Sparkle Studs</h1>
+<div class="big-price" id="detailPrice">Rs. 799</div>
+<p id="detailDesc">A delicate little piece designed to bring effortless sparkle to your everyday look.</p>
+<button class="btn" onclick="addCurrent()">ADD TO CART</button>
+</div>
+</section>
+
+<!-- CART -->
+<section id="cart" class="screen">
+<div class="page-title">Your Bag 🛍️</div>
+<div id="cartList"></div>
+
+<div class="checkout" id="checkoutBox">
+<h2 style="font-family:Georgia,serif;margin-bottom:15px">Checkout</h2>
+<input id="customerName" placeholder="Your name">
+<input id="customerPhone" placeholder="Phone number">
+<textarea id="customerAddress" rows="3" placeholder="Delivery address"></textarea>
+<button class="btn" onclick="placeOrder()">PLACE ORDER</button>
+</div>
+</section>
+
+<!-- WISHLIST -->
+<section id="wishlist" class="screen">
+<div class="page-title">Wishlist ♡</div>
+<div class="section">
+<div class="products" id="wishProducts"></div>
+</div>
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="screen">
+<div class="page-title">My Profile</div>
+<div class="empty">
+<div>♡</div>
+<h2 style="font-family:Georgia,serif;margin-bottom:10px">She Tiny Spark</h2>
+<p>Jewelry made for your tiny moments and big memories.</p>
+</div>
+</section>
+
+<nav class="nav">
+<button onclick="show('home')" id="nav-home"><b>⌂</b>Home</button>
+<button onclick="show('shop')" id="nav-shop"><b>♡</b>Shop</button>
+<button onclick="show('wishlist')" id="nav-wishlist"><b>♡</b>Wishlist</button>
+<button onclick="show('cart')" id="nav-cart"><b>🛍</b>Bag</button>
+<button onclick="show('profile')" id="nav-profile"><b>☻</b>Profile</button>
+</nav>
+
+<div class="toast" id="toast">Added to cart ✦</div>
+
+<script>
+const products=[
+{id:1,name:"Tiny Spark Studs",price:799,cat:"Earrings",emoji:"💎",desc:"A delicate pair of tiny sparkle studs made for everyday elegance."},
+{id:2,name:"Pearl Drop Earrings",price:899,cat:"Earrings",emoji:"🤍",desc:"Soft pearl-inspired drops for a graceful feminine look."},
+{id:3,name:"Golden Tiny Necklace",price:1199,cat:"Necklaces",emoji:"📿",desc:"A minimal necklace that looks beautiful on its own or layered."},
+{id:4,name:"Sweet Heart Bracelet",price:999,cat:"Bracelets",emoji:"✨",desc:"A cute bracelet designed for your everyday little moments."},
+{id:5,name:"Mini Love Ring",price:699,cat:"Rings",emoji:"💍",desc:"A simple little ring with a romantic touch."},
+{id:6,name:"Blush Flower Studs",price:849,cat:"Earrings",emoji:"🌸",desc:"Cute floral-inspired studs for a soft playful look."}
+];
+
+let cart=JSON.parse(localStorage.getItem("sts_cart")||"[]");
+let wish=JSON.parse(localStorage.getItem("sts_wish")||"[]");
+let current=1;
+let category="All";
+
+function show(id){
+document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+
+document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));
+let nav=document.getElementById("nav-"+id);
+if(nav)nav.classList.add("active");
+
+if(id==="home")renderHome();
+if(id==="shop")renderShop();
+if(id==="cart")renderCart();
+if(id==="wishlist")renderWish();
+window.scrollTo(0,0);
+}
+
+function card(p){
+let liked=wish.includes(p.id);
+return `<div class="product">
+<button class="heart" onclick="toggleWish(event,${p.id})">${liked?"♥":"♡"}</button>
+<div class="product-img" onclick="openProduct(${p.id})">${p.emoji}</div>
+<div class="product-info" onclick="openProduct(${p.id})">
+<div class="product-name">${p.name}</div>
+<div class="price">Rs. ${p.price.toLocaleString()}</div>
+</div>
+</div>`;
+}
+
+function renderHome(){
+document.getElementById("homeProducts").innerHTML=products.slice(0,4).map(card).join("");
+}
+
+function renderShop(){
+let q=(document.getElementById("searchInput")?.value||"").toLowerCase();
+let arr=products.filter(p=>
+(category==="All"||p.cat===category)&&
+(p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q))
+);
+document.getElementById("shopProducts").innerHTML=
+arr.length?arr.map(card).join():
+`<div class="empty" style="grid-column:1/-1"><div>🔎</div><p>No jewelry found.</p></div>`;
+}
+
+function filter(c){
+category=c;
+show("shop");
+}
+
+function openProduct(id){
+let p=products.find(x=>x.id===id);
+current=id;
+document.getElementById("detailImg").textContent=p.emoji;
+document.getElementById("detailName").textContent=p.name;
+document.getElementById("detailPrice").textContent="Rs. "+p.price.toLocaleString();
+document.getElementById("detailDesc").textContent=p.desc;
+show("product");
+}
+
+function addCurrent(){
+addCart(current);
+}
+
+function addCart(id){
+cart.push(id);
+localStorage.setItem("sts_cart",JSON.stringify(cart));
+toast("Added to cart ✦");
+}
+
+function removeCart(index){
+cart.splice(index,1);
+localStorage.setItem("sts_cart",JSON.stringify(cart));
+renderCart();
+}
+
+function renderCart(){
+let box=document.getElementById("cartList");
+if(!cart.length){
+box.innerHTML=`<div class="empty"><div>🛍️</div><h3>Your bag is empty</h3><p style="margin:8px 0 20px">Find something tiny & sparkly.</p><button class="small-btn" onclick="show('shop')">SHOP NOW</button></div>`;
+document.getElementById("checkoutBox").style.display="none";
+return;
+}
+document.getElementById("checkoutBox").style.display="block";
+
+box.innerHTML=cart.map((id,i)=>{
+let p=products.find(x=>x.id===id);
+return `<div class="cart-item">
+<div class="cart-emoji">${p.emoji}</div>
+<div class="cart-info"><h3>${p.name}</h3><p>Rs. ${p.price.toLocaleString()}</p></div>
+<button class="remove" onclick="removeCart(${i})">Remove</button>
+</div>`;
+}).join("");
+}
+
+function toggleWish(e,id){
+e.stopPropagation();
+if(wish.includes(id))wish=wish.filter(x=>x!==id);
+else wish.push(id);
+localStorage.setItem("sts_wish",JSON.stringify(wish));
+renderHome();
+renderShop();
+renderWish();
+}
+
+function renderWish(){
+let arr=products.filter(p=>wish.includes(p.id));
+document.getElementById("wishProducts").innerHTML=
+arr.length?arr.map(card).join():
+`<div class="empty" style="grid-column:1/-1"><div>♡</div><h3>No favorites yet</h3><p style="margin-top:8px">Save your favorite sparks here.</p></div>`;
+}
+
+function placeOrder(){
+let name=document.getElementById("customerName").value.trim();
+let phone=document.getElementById("customerPhone").value.trim();
+let address=document.getElementById("customerAddress").value.trim();
+
+if(!name||!phone||!address){
+toast("Please fill all details");
+return;
+}
+
+let message="She Tiny Spark Jewelry%0A%0A";
+message+="Name: "+encodeURIComponent(name)+"%0A";
+message+="Phone: "+encodeURIComponent(phone)+"%0A";
+message+="Address: "+encodeURIComponent(address)+"%0A%0A";
+message+="Order:%0A";
+
+cart.forEach(id=>{
+let p=products.find(x=>x.id===id);
+message+=encodeURIComponent(p.name)+" - Rs. "+p.price+"%0A";
+});
+
+window.open("https://wa.me/?text="+message,"_blank");
+}
+
+function toast(text){
+let t=document.getElementById("toast");
+t.textContent=text;
+t.style.display="block";
+setTimeout(()=>t.style.display="none",1800);
+}
+
+renderHome();
+</script>
+
+</body>
+</html>
