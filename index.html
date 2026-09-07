@@ -155,7 +155,8 @@ right:9px;top:9px;
 width:34px;height:34px;
 border-radius:50%;
 background:#fff;
-font-size:18px
+font-size:18px;
+z-index:2
 }
 
 .page-title{
@@ -224,7 +225,49 @@ font-size:30px
 .cart-info{flex:1}
 .cart-info h3{font-family:Georgia,serif;font-size:15px}
 .cart-info p{font-size:12px;margin-top:5px}
+
+.qty{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:8px
+}
+.qty button{
+width:25px;
+height:25px;
+border-radius:50%;
+background:#f2e5df;
+color:#4a3035;
+font-weight:bold
+}
+.qty span{
+font-size:12px;
+min-width:15px;
+text-align:center
+}
 .remove{color:#a35d5d;font-size:12px}
+
+.summary{
+background:#fff;
+margin:18px;
+padding:18px;
+border-radius:20px
+}
+.summary-row{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+font-size:13px;
+color:#6e5c5c
+}
+.summary-row.total{
+border-top:1px solid #eadbd5;
+padding-top:13px;
+margin-top:13px;
+font-size:16px;
+font-weight:bold;
+color:#302728
+}
 
 .checkout{
 margin:20px 18px;
@@ -328,11 +371,23 @@ z-index:50
 <h2>Categories</h2>
 <span onclick="show('shop')">View all</span>
 </div>
+
 <div class="categories">
-<div class="cat" onclick="filter('Earrings')"><div class="emoji">💎</div><small>Earrings</small></div>
-<div class="cat" onclick="filter('Necklaces')"><div class="emoji">📿</div><small>Necklaces</small></div>
-<div class="cat" onclick="filter('Bracelets')"><div class="emoji">✨</div><small>Bracelets</small></div>
-<div class="cat" onclick="filter('Rings')"><div class="emoji">💍</div><small>Rings</small></div>
+<div class="cat" onclick="filter('Earrings')">
+<div class="emoji">💎</div><small>Earrings</small>
+</div>
+
+<div class="cat" onclick="filter('Necklaces')">
+<div class="emoji">📿</div><small>Necklaces</small>
+</div>
+
+<div class="cat" onclick="filter('Bracelets')">
+<div class="emoji">✨</div><small>Bracelets</small>
+</div>
+
+<div class="cat" onclick="filter('Rings')">
+<div class="emoji">💍</div><small>Rings</small>
+</div>
 </div>
 </div>
 
@@ -341,12 +396,14 @@ z-index:50
 <h2>New Sparks</h2>
 <span onclick="show('shop')">See all</span>
 </div>
+
 <div class="products" id="homeProducts"></div>
 </div>
 </section>
 
 <!-- SHOP -->
 <section id="shop" class="screen">
+
 <header>
 <div class="header-logo">She Tiny ✦ Spark</div>
 <button class="icon-btn" onclick="show('cart')">🛍️</button>
@@ -361,228 +418,805 @@ z-index:50
 
 <div class="section">
 <div class="categories">
-<div class="cat" onclick="filter('All')">✨<small>All</small></div>
-<div class="cat" onclick="filter('Earrings')">💎<small>Earrings</small></div>
-<div class="cat" onclick="filter('Necklaces')">📿<small>Necklaces</small></div>
-<div class="cat" onclick="filter('Bracelets')">✨<small>Bracelets</small></div>
+
+<div class="cat" onclick="filter('All')">
+✨<small>All</small>
+</div>
+
+<div class="cat" onclick="filter('Earrings')">
+💎<small>Earrings</small>
+</div>
+
+<div class="cat" onclick="filter('Necklaces')">
+📿<small>Necklaces</small>
+</div>
+
+<div class="cat" onclick="filter('Bracelets')">
+✨<small>Bracelets</small>
+</div>
+
+<div class="cat" onclick="filter('Rings')">
+💍<small>Rings</small>
+</div>
+
 </div>
 </div>
 
 <div class="section">
 <div class="products" id="shopProducts"></div>
 </div>
+
 </section>
 
 <!-- PRODUCT -->
 <section id="product" class="screen">
+
 <button class="back" onclick="show('shop')">‹</button>
+
 <div class="detail">
+
 <div class="detail-img" id="detailImg">💎</div>
+
 <h1 id="detailName">Sparkle Studs</h1>
+
 <div class="big-price" id="detailPrice">Rs. 799</div>
-<p id="detailDesc">A delicate little piece designed to bring effortless sparkle to your everyday look.</p>
+
+<p id="detailDesc">
+A delicate little piece designed to bring effortless sparkle to your everyday look.
+</p>
+
 <button class="btn" onclick="addCurrent()">ADD TO CART</button>
+
 </div>
 </section>
 
 <!-- CART -->
 <section id="cart" class="screen">
+
 <div class="page-title">Your Bag 🛍️</div>
+
 <div id="cartList"></div>
 
+<div id="cartSummary"></div>
+
 <div class="checkout" id="checkoutBox">
-<h2 style="font-family:Georgia,serif;margin-bottom:15px">Checkout</h2>
+
+<h2 style="font-family:Georgia,serif;margin-bottom:15px">
+Checkout
+</h2>
+
 <input id="customerName" placeholder="Your name">
+
 <input id="customerPhone" placeholder="Phone number">
+
 <textarea id="customerAddress" rows="3" placeholder="Delivery address"></textarea>
-<button class="btn" onclick="placeOrder()">PLACE ORDER</button>
+
+<button class="btn" onclick="placeOrder()">
+PLACE ORDER ON WHATSAPP
+</button>
+
 </div>
+
 </section>
 
 <!-- WISHLIST -->
 <section id="wishlist" class="screen">
+
 <div class="page-title">Wishlist ♡</div>
+
 <div class="section">
 <div class="products" id="wishProducts"></div>
 </div>
+
 </section>
 
 <!-- PROFILE -->
 <section id="profile" class="screen">
+
 <div class="page-title">My Profile</div>
+
 <div class="empty">
+
 <div>♡</div>
-<h2 style="font-family:Georgia,serif;margin-bottom:10px">She Tiny Spark</h2>
-<p>Jewelry made for your tiny moments and big memories.</p>
+
+<h2 style="font-family:Georgia,serif;margin-bottom:10px">
+She Tiny Spark
+</h2>
+
+<p>
+Jewelry made for your tiny moments and big memories.
+</p>
+
 </div>
+
 </section>
 
 <nav class="nav">
-<button onclick="show('home')" id="nav-home"><b>⌂</b>Home</button>
-<button onclick="show('shop')" id="nav-shop"><b>♡</b>Shop</button>
-<button onclick="show('wishlist')" id="nav-wishlist"><b>♡</b>Wishlist</button>
-<button onclick="show('cart')" id="nav-cart"><b>🛍</b>Bag</button>
-<button onclick="show('profile')" id="nav-profile"><b>☻</b>Profile</button>
+
+<button onclick="show('home')" id="nav-home">
+<b>⌂</b>Home
+</button>
+
+<button onclick="show('shop')" id="nav-shop">
+<b>♡</b>Shop
+</button>
+
+<button onclick="show('wishlist')" id="nav-wishlist">
+<b>♡</b>Wishlist
+</button>
+
+<button onclick="show('cart')" id="nav-cart">
+<b>🛍</b>Bag
+</button>
+
+<button onclick="show('profile')" id="nav-profile">
+<b>☻</b>Profile
+</button>
+
 </nav>
 
-<div class="toast" id="toast">Added to cart ✦</div>
+<div class="toast" id="toast">
+Added to cart ✦
+</div>
 
 <script>
+
 const products=[
-{id:1,name:"Tiny Spark Studs",price:799,cat:"Earrings",emoji:"💎",desc:"A delicate pair of tiny sparkle studs made for everyday elegance."},
-{id:2,name:"Pearl Drop Earrings",price:899,cat:"Earrings",emoji:"🤍",desc:"Soft pearl-inspired drops for a graceful feminine look."},
-{id:3,name:"Golden Tiny Necklace",price:1199,cat:"Necklaces",emoji:"📿",desc:"A minimal necklace that looks beautiful on its own or layered."},
-{id:4,name:"Sweet Heart Bracelet",price:999,cat:"Bracelets",emoji:"✨",desc:"A cute bracelet designed for your everyday little moments."},
-{id:5,name:"Mini Love Ring",price:699,cat:"Rings",emoji:"💍",desc:"A simple little ring with a romantic touch."},
-{id:6,name:"Blush Flower Studs",price:849,cat:"Earrings",emoji:"🌸",desc:"Cute floral-inspired studs for a soft playful look."}
+
+{
+id:1,
+name:"Tiny Spark Studs",
+price:799,
+cat:"Earrings",
+emoji:"💎",
+desc:"A delicate pair of tiny sparkle studs made for everyday elegance."
+},
+
+{
+id:2,
+name:"Pearl Drop Earrings",
+price:899,
+cat:"Earrings",
+emoji:"🤍",
+desc:"Soft pearl-inspired drops for a graceful feminine look."
+},
+
+{
+id:3,
+name:"Golden Tiny Necklace",
+price:1199,
+cat:"Necklaces",
+emoji:"📿",
+desc:"A minimal necklace that looks beautiful on its own or layered."
+},
+
+{
+id:4,
+name:"Sweet Heart Bracelet",
+price:999,
+cat:"Bracelets",
+emoji:"✨",
+desc:"A cute bracelet designed for your everyday little moments."
+},
+
+{
+id:5,
+name:"Mini Love Ring",
+price:699,
+cat:"Rings",
+emoji:"💍",
+desc:"A simple little ring with a romantic touch."
+},
+
+{
+id:6,
+name:"Blush Flower Studs",
+price:849,
+cat:"Earrings",
+emoji:"🌸",
+desc:"Cute floral-inspired studs for a soft playful look."
+}
+
 ];
 
 let cart=JSON.parse(localStorage.getItem("sts_cart")||"[]");
+
 let wish=JSON.parse(localStorage.getItem("sts_wish")||"[]");
+
 let current=1;
+
 let category="All";
 
-function show(id){
-document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
-document.getElementById(id).classList.add("active");
+const DELIVERY_CHARGES=200;
 
-document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));
+const WHATSAPP_NUMBER="923704751306";
+
+
+function show(id){
+
+document.querySelectorAll(".screen")
+.forEach(x=>x.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+document.querySelectorAll(".nav button")
+.forEach(x=>x.classList.remove("active"));
+
 let nav=document.getElementById("nav-"+id);
+
 if(nav)nav.classList.add("active");
 
 if(id==="home")renderHome();
+
 if(id==="shop")renderShop();
+
 if(id==="cart")renderCart();
+
 if(id==="wishlist")renderWish();
+
 window.scrollTo(0,0);
+
 }
+
 
 function card(p){
+
 let liked=wish.includes(p.id);
-return `<div class="product">
-<button class="heart" onclick="toggleWish(event,${p.id})">${liked?"♥":"♡"}</button>
-<div class="product-img" onclick="openProduct(${p.id})">${p.emoji}</div>
-<div class="product-info" onclick="openProduct(${p.id})">
-<div class="product-name">${p.name}</div>
-<div class="price">Rs. ${p.price.toLocaleString()}</div>
+
+return `
+<div class="product">
+
+<button class="heart"
+onclick="toggleWish(event,${p.id})">
+${liked?"♥":"♡"}
+</button>
+
+<div class="product-img"
+onclick="openProduct(${p.id})">
+${p.emoji}
 </div>
-</div>`;
+
+<div class="product-info"
+onclick="openProduct(${p.id})">
+
+<div class="product-name">
+${p.name}
+</div>
+
+<div class="price">
+Rs. ${p.price.toLocaleString()}
+</div>
+
+</div>
+
+</div>
+`;
+
 }
+
 
 function renderHome(){
-document.getElementById("homeProducts").innerHTML=products.slice(0,4).map(card).join("");
+
+document.getElementById("homeProducts")
+.innerHTML=products
+.slice(0,4)
+.map(card)
+.join("");
+
 }
+
 
 function renderShop(){
-let q=(document.getElementById("searchInput")?.value||"").toLowerCase();
+
+let q=(document.getElementById("searchInput")?.value||"")
+.toLowerCase();
+
 let arr=products.filter(p=>
+
 (category==="All"||p.cat===category)&&
-(p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q))
+
+(
+p.name.toLowerCase().includes(q)||
+p.cat.toLowerCase().includes(q)
+)
+
 );
-document.getElementById("shopProducts").innerHTML=
-arr.length?arr.map(card).join():
-`<div class="empty" style="grid-column:1/-1"><div>🔎</div><p>No jewelry found.</p></div>`;
+
+document.getElementById("shopProducts")
+.innerHTML=
+
+arr.length
+?
+arr.map(card).join("")
+:
+
+`
+<div class="empty" style="grid-column:1/-1">
+
+<div>🔎</div>
+
+<p>No jewelry found.</p>
+
+</div>
+`;
+
 }
+
 
 function filter(c){
+
 category=c;
+
 show("shop");
+
 }
+
 
 function openProduct(id){
+
 let p=products.find(x=>x.id===id);
+
 current=id;
-document.getElementById("detailImg").textContent=p.emoji;
-document.getElementById("detailName").textContent=p.name;
-document.getElementById("detailPrice").textContent="Rs. "+p.price.toLocaleString();
-document.getElementById("detailDesc").textContent=p.desc;
+
+document.getElementById("detailImg")
+.textContent=p.emoji;
+
+document.getElementById("detailName")
+.textContent=p.name;
+
+document.getElementById("detailPrice")
+.textContent=
+"Rs. "+p.price.toLocaleString();
+
+document.getElementById("detailDesc")
+.textContent=p.desc;
+
 show("product");
+
 }
+
 
 function addCurrent(){
+
 addCart(current);
+
 }
+
 
 function addCart(id){
+
 cart.push(id);
-localStorage.setItem("sts_cart",JSON.stringify(cart));
+
+localStorage.setItem(
+"sts_cart",
+JSON.stringify(cart)
+);
+
 toast("Added to cart ✦");
+
 }
+
+
+function increaseQty(id){
+
+cart.push(id);
+
+localStorage.setItem(
+"sts_cart",
+JSON.stringify(cart)
+);
+
+renderCart();
+
+}
+
+
+function decreaseQty(id){
+
+let index=cart.indexOf(id);
+
+if(index!==-1){
+
+cart.splice(index,1);
+
+localStorage.setItem(
+"sts_cart",
+JSON.stringify(cart)
+);
+
+}
+
+renderCart();
+
+}
+
 
 function removeCart(index){
+
 cart.splice(index,1);
-localStorage.setItem("sts_cart",JSON.stringify(cart));
+
+localStorage.setItem(
+"sts_cart",
+JSON.stringify(cart)
+);
+
 renderCart();
+
 }
+
+
+function getSubtotal(){
+
+return cart.reduce((total,id)=>{
+
+let p=products.find(x=>x.id===id);
+
+return total+(p?p.price:0);
+
+},0);
+
+}
+
 
 function renderCart(){
+
 let box=document.getElementById("cartList");
+
+let summary=document.getElementById("cartSummary");
+
 if(!cart.length){
-box.innerHTML=`<div class="empty"><div>🛍️</div><h3>Your bag is empty</h3><p style="margin:8px 0 20px">Find something tiny & sparkly.</p><button class="small-btn" onclick="show('shop')">SHOP NOW</button></div>`;
-document.getElementById("checkoutBox").style.display="none";
+
+box.innerHTML=`
+
+<div class="empty">
+
+<div>🛍️</div>
+
+<h3>Your bag is empty</h3>
+
+<p style="margin:8px 0 20px">
+Find something tiny & sparkly.
+</p>
+
+<button class="small-btn"
+onclick="show('shop')">
+SHOP NOW
+</button>
+
+</div>
+
+`;
+
+summary.innerHTML="";
+
+document.getElementById("checkoutBox")
+.style.display="none";
+
 return;
-}
-document.getElementById("checkoutBox").style.display="block";
 
-box.innerHTML=cart.map((id,i)=>{
-let p=products.find(x=>x.id===id);
-return `<div class="cart-item">
-<div class="cart-emoji">${p.emoji}</div>
-<div class="cart-info"><h3>${p.name}</h3><p>Rs. ${p.price.toLocaleString()}</p></div>
-<button class="remove" onclick="removeCart(${i})">Remove</button>
-</div>`;
-}).join("");
 }
 
-function toggleWish(e,id){
-e.stopPropagation();
-if(wish.includes(id))wish=wish.filter(x=>x!==id);
-else wish.push(id);
-localStorage.setItem("sts_wish",JSON.stringify(wish));
-renderHome();
-renderShop();
-renderWish();
-}
+document.getElementById("checkoutBox")
+.style.display="block";
 
-function renderWish(){
-let arr=products.filter(p=>wish.includes(p.id));
-document.getElementById("wishProducts").innerHTML=
-arr.length?arr.map(card).join():
-`<div class="empty" style="grid-column:1/-1"><div>♡</div><h3>No favorites yet</h3><p style="margin-top:8px">Save your favorite sparks here.</p></div>`;
-}
 
-function placeOrder(){
-let name=document.getElementById("customerName").value.trim();
-let phone=document.getElementById("customerPhone").value.trim();
-let address=document.getElementById("customerAddress").value.trim();
-
-if(!name||!phone||!address){
-toast("Please fill all details");
-return;
-}
-
-let message="She Tiny Spark Jewelry%0A%0A";
-message+="Name: "+encodeURIComponent(name)+"%0A";
-message+="Phone: "+encodeURIComponent(phone)+"%0A";
-message+="Address: "+encodeURIComponent(address)+"%0A%0A";
-message+="Order:%0A";
+let grouped={};
 
 cart.forEach(id=>{
-let p=products.find(x=>x.id===id);
-message+=encodeURIComponent(p.name)+" - Rs. "+p.price+"%0A";
+
+if(!grouped[id])grouped[id]=0;
+
+grouped[id]++;
+
 });
 
-window.open("https://wa.me/?text="+message,"_blank");
+
+box.innerHTML=Object.keys(grouped)
+.map(id=>{
+
+let p=products.find(x=>x.id==id);
+
+let qty=grouped[id];
+
+return `
+
+<div class="cart-item">
+
+<div class="cart-emoji">
+${p.emoji}
+</div>
+
+<div class="cart-info">
+
+<h3>${p.name}</h3>
+
+<p>
+Rs. ${p.price.toLocaleString()}
+</p>
+
+<div class="qty">
+
+<button onclick="decreaseQty(${p.id})">
+−
+</button>
+
+<span>${qty}</span>
+
+<button onclick="increaseQty(${p.id})">
++
+</button>
+
+</div>
+
+</div>
+
+<button class="remove"
+onclick="removeOneProduct(${p.id})">
+Remove
+</button>
+
+</div>
+
+`;
+
+}).join("");
+
+
+let subtotal=getSubtotal();
+
+let total=subtotal+DELIVERY_CHARGES;
+
+
+summary.innerHTML=`
+
+<div class="summary">
+
+<div class="summary-row">
+
+<span>Subtotal</span>
+
+<span>Rs. ${subtotal.toLocaleString()}</span>
+
+</div>
+
+<div class="summary-row">
+
+<span>Delivery</span>
+
+<span>Rs. ${DELIVERY_CHARGES.toLocaleString()}</span>
+
+</div>
+
+<div class="summary-row total">
+
+<span>Total</span>
+
+<span>Rs. ${total.toLocaleString()}</span>
+
+</div>
+
+</div>
+
+`;
+
 }
 
-function toast(text){
-let t=document.getElementById("toast");
-t.textContent=text;
-t.style.display="block";
-setTimeout(()=>t.style.display="none",1800);
+
+function removeOneProduct(id){
+
+let index=cart.indexOf(id);
+
+if(index!==-1){
+
+cart.splice(index,1);
+
+localStorage.setItem(
+"sts_cart",
+JSON.stringify(cart)
+);
+
 }
+
+renderCart();
+
+}
+
+
+function toggleWish(e,id){
+
+e.stopPropagation();
+
+if(wish.includes(id))
+wish=wish.filter(x=>x!==id);
+
+else
+wish.push(id);
+
+localStorage.setItem(
+"sts_wish",
+JSON.stringify(wish)
+);
 
 renderHome();
+
+renderShop();
+
+renderWish();
+
+}
+
+
+function renderWish(){
+
+let arr=products.filter(
+p=>wish.includes(p.id)
+);
+
+document.getElementById("wishProducts")
+.innerHTML=
+
+arr.length
+?
+arr.map(card).join("")
+:
+
+`
+<div class="empty"
+style="grid-column:1/-1">
+
+<div>♡</div>
+
+<h3>No favorites yet</h3>
+
+<p style="margin-top:8px">
+Save your favorite sparks here.
+</p>
+
+</div>
+`;
+
+}
+
+
+function placeOrder(){
+
+let name=
+document.getElementById("customerName")
+.value.trim();
+
+let phone=
+document.getElementById("customerPhone")
+.value.trim();
+
+let address=
+document.getElementById("customerAddress")
+.value.trim();
+
+
+if(!name||!phone||!address){
+
+toast("Please fill all details");
+
+return;
+
+}
+
+
+if(!cart.length){
+
+toast("Your bag is empty");
+
+return;
+
+}
+
+
+let subtotal=getSubtotal();
+
+let total=subtotal+DELIVERY_CHARGES;
+
+
+let message=
+"She Tiny Spark Jewelry\n\n";
+
+message+=
+"NEW ORDER\n\n";
+
+message+=
+"Name: "+name+"\n";
+
+message+=
+"Customer Phone: "+phone+"\n";
+
+message+=
+"Address: "+address+"\n\n";
+
+message+=
+"ORDER DETAILS\n";
+
+
+let grouped={};
+
+cart.forEach(id=>{
+
+if(!grouped[id])
+grouped[id]=0;
+
+grouped[id]++;
+
+});
+
+
+Object.keys(grouped).forEach(id=>{
+
+let p=products.find(x=>x.id==id);
+
+let qty=grouped[id];
+
+let itemTotal=p.price*qty;
+
+message+=
+p.name+
+" x"+qty+
+" - Rs. "+
+itemTotal+
+"\n";
+
+});
+
+
+message+="\n";
+
+message+=
+"Subtotal: Rs. "+
+subtotal+
+"\n";
+
+message+=
+"Delivery: Rs. "+
+DELIVERY_CHARGES+
+"\n";
+
+message+=
+"TOTAL: Rs. "+
+total+
+"\n";
+
+
+let whatsappURL=
+"https://wa.me/"+
+WHATSAPP_NUMBER+
+"?text="+
+encodeURIComponent(message);
+
+
+window.open(
+whatsappURL,
+"_blank"
+);
+
+}
+
+
+function toast(text){
+
+let t=document.getElementById("toast");
+
+t.textContent=text;
+
+t.style.display="block";
+
+setTimeout(
+()=>t.style.display="none",
+1800
+);
+
+}
+
+
+renderHome();
+
 </script>
 
 </body>
