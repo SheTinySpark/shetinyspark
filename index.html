@@ -9,6 +9,7 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 body{
 font-family:Arial,sans-serif;
 background:#f8f1ed;
@@ -17,8 +18,19 @@ max-width:480px;
 margin:auto;
 min-height:100vh
 }
-button{font:inherit;border:0;cursor:pointer}
-.screen{display:none;min-height:100vh;padding-bottom:85px}
+
+button{
+font:inherit;
+border:0;
+cursor:pointer
+}
+
+.screen{
+display:none;
+min-height:100vh;
+padding-bottom:85px
+}
+
 .screen.active{display:block}
 
 .welcome{
@@ -29,19 +41,22 @@ justify-content:center;
 text-align:center;
 padding:30px
 }
-.logo{
-font-family:Georgia,serif;
-font-size:36px;
-letter-spacing:1px;
-color:#4a3035
+
+.logo-img{
+width:230px;
+max-width:80%;
+height:auto;
+object-fit:contain;
+margin-bottom:15px
 }
-.spark{color:#b58a6b}
+
 .tagline{
-margin:12px 0 35px;
+margin:5px 0 35px;
 font-size:13px;
 letter-spacing:2px;
 color:#806d6b
 }
+
 .btn{
 background:#4a3035;
 color:white;
@@ -57,13 +72,19 @@ display:flex;
 justify-content:space-between;
 align-items:center
 }
+
 .header-logo{
-font-family:Georgia,serif;
-font-size:23px
+width:145px;
+height:auto;
+max-height:45px;
+object-fit:contain;
+object-position:left center
 }
+
 .icon-btn{
 background:#fff;
-width:42px;height:42px;
+width:42px;
+height:42px;
 border-radius:50%;
 box-shadow:0 3px 12px #00000010
 }
@@ -72,15 +93,22 @@ box-shadow:0 3px 12px #00000010
 margin:5px 18px 25px;
 padding:28px 22px;
 border-radius:25px;
-background:linear-gradient(135deg,#ead8d0,#f6e9e2);
+background:linear-gradient(135deg,#ead8d0,#f6e9e2)
 }
+
 .hero h1{
 font-family:Georgia,serif;
 font-size:31px;
 line-height:1.1;
 margin-bottom:10px
 }
-.hero p{font-size:13px;color:#6e5c5c;margin-bottom:18px}
+
+.hero p{
+font-size:13px;
+color:#6e5c5c;
+margin-bottom:18px
+}
+
 .small-btn{
 background:#4a3035;
 color:#fff;
@@ -89,18 +117,27 @@ border-radius:22px;
 font-size:12px
 }
 
-.section{padding:0 18px;margin-bottom:25px}
+.section{
+padding:0 18px;
+margin-bottom:25px
+}
+
 .section-title{
 display:flex;
 justify-content:space-between;
 align-items:center;
 margin-bottom:14px
 }
+
 .section-title h2{
 font-family:Georgia,serif;
 font-size:22px
 }
-.section-title span{font-size:12px;color:#9a7466}
+
+.section-title span{
+font-size:12px;
+color:#9a7466
+}
 
 .categories{
 display:flex;
@@ -108,8 +145,9 @@ gap:10px;
 overflow:auto;
 padding-bottom:5px
 }
+
 .cat{
-min-width:90px;
+min-width:100px;
 height:82px;
 background:#fff;
 border-radius:18px;
@@ -119,14 +157,22 @@ justify-content:center;
 flex-direction:column;
 box-shadow:0 3px 12px #00000008
 }
-.cat .emoji{font-size:27px;margin-bottom:6px}
-.cat small{font-size:11px}
+
+.cat .emoji{
+font-size:27px;
+margin-bottom:6px
+}
+
+.cat small{
+font-size:11px
+}
 
 .products{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:14px
 }
+
 .product{
 background:#fff;
 border-radius:20px;
@@ -134,6 +180,7 @@ overflow:hidden;
 position:relative;
 box-shadow:0 3px 14px #00000009
 }
+
 .product-img{
 height:150px;
 background:linear-gradient(145deg,#eadbd5,#f8eeea);
@@ -142,17 +189,28 @@ align-items:center;
 justify-content:center;
 font-size:58px
 }
-.product-info{padding:12px}
+
+.product-info{
+padding:12px
+}
+
 .product-name{
 font-family:Georgia,serif;
 font-size:15px;
 margin-bottom:6px
 }
-.price{font-size:13px;font-weight:bold}
+
+.price{
+font-size:13px;
+font-weight:bold
+}
+
 .heart{
 position:absolute;
-right:9px;top:9px;
-width:34px;height:34px;
+right:9px;
+top:9px;
+width:34px;
+height:34px;
 border-radius:50%;
 background:#fff;
 font-size:18px;
@@ -164,6 +222,7 @@ padding:22px 20px;
 font-family:Georgia,serif;
 font-size:29px
 }
+
 .search{
 margin:0 18px 20px;
 background:#fff;
@@ -172,14 +231,18 @@ border-radius:25px;
 display:flex;
 gap:10px
 }
+
 .search input{
-border:0;outline:0;width:100%;
+border:0;
+outline:0;
+width:100%;
 background:transparent
 }
 
 .detail{
 padding:18px
 }
+
 .detail-img{
 height:300px;
 border-radius:25px;
@@ -189,14 +252,19 @@ align-items:center;
 justify-content:center;
 font-size:110px
 }
+
 .detail h1{
 font-family:Georgia,serif;
 font-size:27px;
 margin:20px 0 8px
 }
+
 .detail .big-price{
-font-size:20px;font-weight:bold;margin-bottom:18px
+font-size:20px;
+font-weight:bold;
+margin-bottom:18px
 }
+
 .detail p{
 font-size:14px;
 line-height:1.7;
@@ -213,8 +281,10 @@ display:flex;
 align-items:center;
 gap:13px
 }
+
 .cart-emoji{
-width:60px;height:60px;
+width:60px;
+height:60px;
 border-radius:14px;
 background:#f2e5df;
 display:flex;
@@ -222,9 +292,20 @@ align-items:center;
 justify-content:center;
 font-size:30px
 }
-.cart-info{flex:1}
-.cart-info h3{font-family:Georgia,serif;font-size:15px}
-.cart-info p{font-size:12px;margin-top:5px}
+
+.cart-info{
+flex:1
+}
+
+.cart-info h3{
+font-family:Georgia,serif;
+font-size:15px
+}
+
+.cart-info p{
+font-size:12px;
+margin-top:5px
+}
 
 .qty{
 display:flex;
@@ -232,6 +313,7 @@ align-items:center;
 gap:8px;
 margin-top:8px
 }
+
 .qty button{
 width:25px;
 height:25px;
@@ -240,12 +322,17 @@ background:#f2e5df;
 color:#4a3035;
 font-weight:bold
 }
+
 .qty span{
 font-size:12px;
 min-width:15px;
 text-align:center
 }
-.remove{color:#a35d5d;font-size:12px}
+
+.remove{
+color:#a35d5d;
+font-size:12px
+}
 
 .summary{
 background:#fff;
@@ -253,6 +340,7 @@ margin:18px;
 padding:18px;
 border-radius:20px
 }
+
 .summary-row{
 display:flex;
 justify-content:space-between;
@@ -260,6 +348,7 @@ margin-bottom:10px;
 font-size:13px;
 color:#6e5c5c
 }
+
 .summary-row.total{
 border-top:1px solid #eadbd5;
 padding-top:13px;
@@ -275,7 +364,9 @@ background:#fff;
 padding:20px;
 border-radius:22px
 }
-.checkout input,.checkout textarea{
+
+.checkout input,
+.checkout textarea{
 width:100%;
 padding:13px;
 margin-bottom:10px;
@@ -289,7 +380,11 @@ text-align:center;
 padding:70px 25px;
 color:#806f6d
 }
-.empty div{font-size:45px;margin-bottom:15px}
+
+.empty div{
+font-size:45px;
+margin-bottom:15px
+}
 
 .nav{
 position:fixed;
@@ -306,6 +401,7 @@ align-items:center;
 box-shadow:0 -5px 20px #00000012;
 z-index:20
 }
+
 .nav button{
 background:none;
 font-size:11px;
@@ -315,8 +411,14 @@ flex-direction:column;
 align-items:center;
 gap:4px
 }
-.nav button b{font-size:21px}
-.nav button.active{color:#4a3035}
+
+.nav button b{
+font-size:21px
+}
+
+.nav button.active{
+color:#4a3035
+}
 
 .back{
 background:none;
@@ -344,140 +446,239 @@ z-index:50
 
 <!-- WELCOME -->
 <section id="welcome" class="screen active">
+
 <div class="welcome">
+
 <div>
-<div class="logo">She Tiny <span class="spark">✦</span> Spark</div>
-<div class="tagline">JEWELRY • MADE WITH LOVE</div>
-<button class="btn" onclick="show('home')">EXPLORE COLLECTION</button>
+
+<img
+src="20260911_094907.png"
+alt="She Tiny Spark Jewelry"
+class="logo-img"
+>
+
+<div class="tagline">
+JEWELRY • MADE WITH LOVE
 </div>
+
+<button class="btn" onclick="show('home')">
+EXPLORE COLLECTION
+</button>
+
 </div>
+
+</div>
+
 </section>
+
 
 <!-- HOME -->
 <section id="home" class="screen">
+
 <header>
-<div class="header-logo">She Tiny ✦ Spark</div>
-<button class="icon-btn" onclick="show('cart')">🛍️</button>
+
+<img
+src="20260911_094907.png"
+alt="She Tiny Spark"
+class="header-logo"
+>
+
+<button class="icon-btn" onclick="show('cart')">
+🛍️
+</button>
+
 </header>
 
+
 <div class="hero">
-<h1>Little sparks,<br>big feelings.</h1>
-<p>Discover tiny pieces made to add a little sparkle to your everyday.</p>
-<button class="small-btn" onclick="show('shop')">Shop Collection</button>
+
+<h1>
+Little sparks,<br>
+big feelings.
+</h1>
+
+<p>
+Discover tiny pieces made to add a little sparkle to your everyday.
+</p>
+
+<button class="small-btn" onclick="show('shop')">
+Shop Collection
+</button>
+
 </div>
 
+
 <div class="section">
+
 <div class="section-title">
+
 <h2>Categories</h2>
-<span onclick="show('shop')">View all</span>
+
+<span onclick="show('shop')">
+View all
+</span>
+
 </div>
+
 
 <div class="categories">
+
 <div class="cat" onclick="filter('Earrings')">
-<div class="emoji">💎</div><small>Earrings</small>
+
+<div class="emoji">💎</div>
+
+<small>
+Ear Studs
+</small>
+
 </div>
 
-<div class="cat" onclick="filter('Necklaces')">
-<div class="emoji">📿</div><small>Necklaces</small>
 </div>
 
-<div class="cat" onclick="filter('Bracelets')">
-<div class="emoji">✨</div><small>Bracelets</small>
 </div>
 
-<div class="cat" onclick="filter('Rings')">
-<div class="emoji">💍</div><small>Rings</small>
-</div>
-</div>
-</div>
 
 <div class="section">
+
 <div class="section-title">
+
 <h2>New Sparks</h2>
-<span onclick="show('shop')">See all</span>
+
+<span onclick="show('shop')">
+See all
+</span>
+
 </div>
 
 <div class="products" id="homeProducts"></div>
+
 </div>
+
 </section>
+
 
 <!-- SHOP -->
 <section id="shop" class="screen">
 
 <header>
-<div class="header-logo">She Tiny ✦ Spark</div>
-<button class="icon-btn" onclick="show('cart')">🛍️</button>
+
+<img
+src="20260911_094907.png"
+alt="She Tiny Spark"
+class="header-logo"
+>
+
+<button class="icon-btn" onclick="show('cart')">
+🛍️
+</button>
+
 </header>
 
-<div class="page-title">Our Collection</div>
 
-<div class="search">
-<span>🔍</span>
-<input id="searchInput" placeholder="Search jewelry..." oninput="renderShop()">
+<div class="page-title">
+Our Ear Studs
 </div>
 
+
+<div class="search">
+
+<span>🔍</span>
+
+<input
+id="searchInput"
+placeholder="Search ear studs..."
+oninput="renderShop()"
+>
+
+</div>
+
+
 <div class="section">
+
 <div class="categories">
 
 <div class="cat" onclick="filter('All')">
-✨<small>All</small>
+
+<div class="emoji">✨</div>
+
+<small>All Studs</small>
+
 </div>
+
 
 <div class="cat" onclick="filter('Earrings')">
-💎<small>Earrings</small>
-</div>
 
-<div class="cat" onclick="filter('Necklaces')">
-📿<small>Necklaces</small>
-</div>
+<div class="emoji">💎</div>
 
-<div class="cat" onclick="filter('Bracelets')">
-✨<small>Bracelets</small>
-</div>
+<small>Ear Studs</small>
 
-<div class="cat" onclick="filter('Rings')">
-💍<small>Rings</small>
 </div>
 
 </div>
+
 </div>
+
 
 <div class="section">
+
 <div class="products" id="shopProducts"></div>
+
 </div>
 
 </section>
+
 
 <!-- PRODUCT -->
 <section id="product" class="screen">
 
-<button class="back" onclick="show('shop')">‹</button>
+<button class="back" onclick="show('shop')">
+‹
+</button>
+
 
 <div class="detail">
 
-<div class="detail-img" id="detailImg">💎</div>
+<div class="detail-img" id="detailImg">
+💎
+</div>
 
-<h1 id="detailName">Sparkle Studs</h1>
 
-<div class="big-price" id="detailPrice">Rs. 799</div>
+<h1 id="detailName">
+Tiny Spark Studs
+</h1>
+
+
+<div class="big-price" id="detailPrice">
+Rs. 799
+</div>
+
 
 <p id="detailDesc">
-A delicate little piece designed to bring effortless sparkle to your everyday look.
+A delicate pair of tiny sparkle studs made for everyday elegance.
 </p>
 
-<button class="btn" onclick="addCurrent()">ADD TO CART</button>
+
+<button class="btn" onclick="addCurrent()">
+ADD TO CART
+</button>
 
 </div>
+
 </section>
+
 
 <!-- CART -->
 <section id="cart" class="screen">
 
-<div class="page-title">Your Bag 🛍️</div>
+<div class="page-title">
+Your Bag 🛍️
+</div>
+
 
 <div id="cartList"></div>
 
 <div id="cartSummary"></div>
+
 
 <div class="checkout" id="checkoutBox">
 
@@ -485,11 +686,32 @@ A delicate little piece designed to bring effortless sparkle to your everyday lo
 Checkout
 </h2>
 
-<input id="customerName" placeholder="Your name">
 
-<input id="customerPhone" placeholder="Phone number">
+<input
+id="customerName"
+placeholder="Your name"
+>
 
-<textarea id="customerAddress" rows="3" placeholder="Delivery address"></textarea>
+
+<input
+id="customerPhone"
+placeholder="Phone number"
+>
+
+
+<input
+id="customerEmail"
+type="email"
+placeholder="Email address"
+>
+
+
+<textarea
+id="customerAddress"
+rows="3"
+placeholder="Delivery address"
+></textarea>
+
 
 <button class="btn" onclick="placeOrder()">
 PLACE ORDER ON WHATSAPP
@@ -499,21 +721,31 @@ PLACE ORDER ON WHATSAPP
 
 </section>
 
+
 <!-- WISHLIST -->
 <section id="wishlist" class="screen">
 
-<div class="page-title">Wishlist ♡</div>
+<div class="page-title">
+Wishlist ♡
+</div>
+
 
 <div class="section">
+
 <div class="products" id="wishProducts"></div>
+
 </div>
 
 </section>
 
+
 <!-- PROFILE -->
 <section id="profile" class="screen">
 
-<div class="page-title">My Profile</div>
+<div class="page-title">
+My Profile
+</div>
+
 
 <div class="empty">
 
@@ -531,33 +763,56 @@ Jewelry made for your tiny moments and big memories.
 
 </section>
 
+
+<!-- NAVIGATION -->
 <nav class="nav">
 
 <button onclick="show('home')" id="nav-home">
-<b>⌂</b>Home
+
+<b>⌂</b>
+Home
+
 </button>
+
 
 <button onclick="show('shop')" id="nav-shop">
-<b>♡</b>Shop
+
+<b>♡</b>
+Shop
+
 </button>
+
 
 <button onclick="show('wishlist')" id="nav-wishlist">
-<b>♡</b>Wishlist
+
+<b>♡</b>
+Wishlist
+
 </button>
+
 
 <button onclick="show('cart')" id="nav-cart">
-<b>🛍</b>Bag
+
+<b>🛍</b>
+Bag
+
 </button>
 
+
 <button onclick="show('profile')" id="nav-profile">
-<b>☻</b>Profile
+
+<b>☻</b>
+Profile
+
 </button>
 
 </nav>
 
+
 <div class="toast" id="toast">
 Added to cart ✦
 </div>
+
 
 <script>
 
@@ -574,54 +829,59 @@ desc:"A delicate pair of tiny sparkle studs made for everyday elegance."
 
 {
 id:2,
-name:"Pearl Drop Earrings",
+name:"Pearl Drop Studs",
 price:899,
 cat:"Earrings",
 emoji:"🤍",
-desc:"Soft pearl-inspired drops for a graceful feminine look."
+desc:"Soft pearl-inspired studs for a graceful feminine look."
 },
 
 {
 id:3,
-name:"Golden Tiny Necklace",
-price:1199,
-cat:"Necklaces",
-emoji:"📿",
-desc:"A minimal necklace that looks beautiful on its own or layered."
-},
-
-{
-id:4,
-name:"Sweet Heart Bracelet",
-price:999,
-cat:"Bracelets",
-emoji:"✨",
-desc:"A cute bracelet designed for your everyday little moments."
-},
-
-{
-id:5,
-name:"Mini Love Ring",
-price:699,
-cat:"Rings",
-emoji:"💍",
-desc:"A simple little ring with a romantic touch."
-},
-
-{
-id:6,
 name:"Blush Flower Studs",
 price:849,
 cat:"Earrings",
 emoji:"🌸",
 desc:"Cute floral-inspired studs for a soft playful look."
+},
+
+{
+id:4,
+name:"Mini Heart Studs",
+price:799,
+cat:"Earrings",
+emoji:"💗",
+desc:"Tiny heart-shaped studs made for a cute everyday look."
+},
+
+{
+id:5,
+name:"Sweet Bow Studs",
+price:899,
+cat:"Earrings",
+emoji:"🎀",
+desc:"Cute little bow studs to add a soft feminine touch."
+},
+
+{
+id:6,
+name:"Daisy Studs",
+price:849,
+cat:"Earrings",
+emoji:"🌼",
+desc:"Sweet floral studs for an effortless everyday sparkle."
 }
 
 ];
 
-let cart=JSON.parse(localStorage.getItem("sts_cart")||"[]");
 
-let wish=JSON.parse(localStorage.getItem("sts_wish")||"[]");
+let cart=
+JSON.parse(localStorage.getItem("sts_cart")||"[]");
+
+
+let wish=
+JSON.parse(localStorage.getItem("sts_wish")||"[]");
+
 
 let current=1;
 
@@ -640,20 +900,29 @@ document.querySelectorAll(".screen")
 document.getElementById(id)
 .classList.add("active");
 
+
 document.querySelectorAll(".nav button")
 .forEach(x=>x.classList.remove("active"));
 
+
 let nav=document.getElementById("nav-"+id);
 
-if(nav)nav.classList.add("active");
+if(nav)
+nav.classList.add("active");
 
-if(id==="home")renderHome();
 
-if(id==="shop")renderShop();
+if(id==="home")
+renderHome();
 
-if(id==="cart")renderCart();
+if(id==="shop")
+renderShop();
 
-if(id==="wishlist")renderWish();
+if(id==="cart")
+renderCart();
+
+if(id==="wishlist")
+renderWish();
+
 
 window.scrollTo(0,0);
 
@@ -664,25 +933,36 @@ function card(p){
 
 let liked=wish.includes(p.id);
 
+
 return `
+
 <div class="product">
 
-<button class="heart"
-onclick="toggleWish(event,${p.id})">
+<button
+class="heart"
+onclick="toggleWish(event,${p.id})"
+>
 ${liked?"♥":"♡"}
 </button>
 
-<div class="product-img"
-onclick="openProduct(${p.id})">
+
+<div
+class="product-img"
+onclick="openProduct(${p.id})"
+>
 ${p.emoji}
 </div>
 
-<div class="product-info"
-onclick="openProduct(${p.id})">
+
+<div
+class="product-info"
+onclick="openProduct(${p.id})"
+>
 
 <div class="product-name">
 ${p.name}
 </div>
+
 
 <div class="price">
 Rs. ${p.price.toLocaleString()}
@@ -691,6 +971,7 @@ Rs. ${p.price.toLocaleString()}
 </div>
 
 </div>
+
 `;
 
 }
@@ -699,7 +980,8 @@ Rs. ${p.price.toLocaleString()}
 function renderHome(){
 
 document.getElementById("homeProducts")
-.innerHTML=products
+.innerHTML=
+products
 .slice(0,4)
 .map(card)
 .join("");
@@ -709,10 +991,13 @@ document.getElementById("homeProducts")
 
 function renderShop(){
 
-let q=(document.getElementById("searchInput")?.value||"")
+let q=
+(document.getElementById("searchInput")?.value||"")
 .toLowerCase();
 
-let arr=products.filter(p=>
+
+let arr=
+products.filter(p=>
 
 (category==="All"||p.cat===category)&&
 
@@ -722,6 +1007,7 @@ p.cat.toLowerCase().includes(q)
 )
 
 );
+
 
 document.getElementById("shopProducts")
 .innerHTML=
@@ -736,7 +1022,9 @@ arr.map(card).join("")
 
 <div>🔎</div>
 
-<p>No jewelry found.</p>
+<p>
+No ear studs found.
+</p>
 
 </div>
 `;
@@ -755,22 +1043,29 @@ show("shop");
 
 function openProduct(id){
 
-let p=products.find(x=>x.id===id);
+let p=
+products.find(x=>x.id===id);
+
 
 current=id;
+
 
 document.getElementById("detailImg")
 .textContent=p.emoji;
 
+
 document.getElementById("detailName")
 .textContent=p.name;
+
 
 document.getElementById("detailPrice")
 .textContent=
 "Rs. "+p.price.toLocaleString();
 
+
 document.getElementById("detailDesc")
 .textContent=p.desc;
+
 
 show("product");
 
@@ -788,10 +1083,12 @@ function addCart(id){
 
 cart.push(id);
 
+
 localStorage.setItem(
 "sts_cart",
 JSON.stringify(cart)
 );
+
 
 toast("Added to cart ✦");
 
@@ -802,10 +1099,12 @@ function increaseQty(id){
 
 cart.push(id);
 
+
 localStorage.setItem(
 "sts_cart",
 JSON.stringify(cart)
 );
+
 
 renderCart();
 
@@ -816,9 +1115,11 @@ function decreaseQty(id){
 
 let index=cart.indexOf(id);
 
+
 if(index!==-1){
 
 cart.splice(index,1);
+
 
 localStorage.setItem(
 "sts_cart",
@@ -826,6 +1127,7 @@ JSON.stringify(cart)
 );
 
 }
+
 
 renderCart();
 
@@ -836,10 +1138,12 @@ function removeCart(index){
 
 cart.splice(index,1);
 
+
 localStorage.setItem(
 "sts_cart",
 JSON.stringify(cart)
 );
+
 
 renderCart();
 
@@ -850,7 +1154,8 @@ function getSubtotal(){
 
 return cart.reduce((total,id)=>{
 
-let p=products.find(x=>x.id===id);
+let p=
+products.find(x=>x.id===id);
 
 return total+(p?p.price:0);
 
@@ -861,9 +1166,13 @@ return total+(p?p.price:0);
 
 function renderCart(){
 
-let box=document.getElementById("cartList");
+let box=
+document.getElementById("cartList");
 
-let summary=document.getElementById("cartSummary");
+
+let summary=
+document.getElementById("cartSummary");
+
 
 if(!cart.length){
 
@@ -873,14 +1182,18 @@ box.innerHTML=`
 
 <div>🛍️</div>
 
-<h3>Your bag is empty</h3>
+<h3>
+Your bag is empty
+</h3>
 
 <p style="margin:8px 0 20px">
 Find something tiny & sparkly.
 </p>
 
-<button class="small-btn"
-onclick="show('shop')">
+<button
+class="small-btn"
+onclick="show('shop')"
+>
 SHOP NOW
 </button>
 
@@ -888,14 +1201,18 @@ SHOP NOW
 
 `;
 
+
 summary.innerHTML="";
+
 
 document.getElementById("checkoutBox")
 .style.display="none";
 
+
 return;
 
 }
+
 
 document.getElementById("checkoutBox")
 .style.display="block";
@@ -903,21 +1220,27 @@ document.getElementById("checkoutBox")
 
 let grouped={};
 
+
 cart.forEach(id=>{
 
-if(!grouped[id])grouped[id]=0;
+if(!grouped[id])
+grouped[id]=0;
 
 grouped[id]++;
 
 });
 
 
-box.innerHTML=Object.keys(grouped)
+box.innerHTML=
+Object.keys(grouped)
 .map(id=>{
 
-let p=products.find(x=>x.id==id);
+let p=
+products.find(x=>x.id==id);
+
 
 let qty=grouped[id];
+
 
 return `
 
@@ -927,23 +1250,36 @@ return `
 ${p.emoji}
 </div>
 
+
 <div class="cart-info">
 
-<h3>${p.name}</h3>
+<h3>
+${p.name}
+</h3>
+
 
 <p>
 Rs. ${p.price.toLocaleString()}
 </p>
 
+
 <div class="qty">
 
-<button onclick="decreaseQty(${p.id})">
+<button
+onclick="decreaseQty(${p.id})"
+>
 −
 </button>
 
-<span>${qty}</span>
 
-<button onclick="increaseQty(${p.id})">
+<span>
+${qty}
+</span>
+
+
+<button
+onclick="increaseQty(${p.id})"
+>
 +
 </button>
 
@@ -951,8 +1287,11 @@ Rs. ${p.price.toLocaleString()}
 
 </div>
 
-<button class="remove"
-onclick="removeOneProduct(${p.id})">
+
+<button
+class="remove"
+onclick="removeOneProduct(${p.id})"
+>
 Remove
 </button>
 
@@ -963,9 +1302,12 @@ Remove
 }).join("");
 
 
-let subtotal=getSubtotal();
+let subtotal=
+getSubtotal();
 
-let total=subtotal+DELIVERY_CHARGES;
+
+let total=
+subtotal+DELIVERY_CHARGES;
 
 
 summary.innerHTML=`
@@ -974,25 +1316,39 @@ summary.innerHTML=`
 
 <div class="summary-row">
 
-<span>Subtotal</span>
+<span>
+Subtotal
+</span>
 
-<span>Rs. ${subtotal.toLocaleString()}</span>
+<span>
+Rs. ${subtotal.toLocaleString()}
+</span>
 
 </div>
+
 
 <div class="summary-row">
 
-<span>Delivery</span>
+<span>
+Delivery
+</span>
 
-<span>Rs. ${DELIVERY_CHARGES.toLocaleString()}</span>
+<span>
+Rs. ${DELIVERY_CHARGES.toLocaleString()}
+</span>
 
 </div>
 
+
 <div class="summary-row total">
 
-<span>Total</span>
+<span>
+Total
+</span>
 
-<span>Rs. ${total.toLocaleString()}</span>
+<span>
+Rs. ${total.toLocaleString()}
+</span>
 
 </div>
 
@@ -1005,11 +1361,14 @@ summary.innerHTML=`
 
 function removeOneProduct(id){
 
-let index=cart.indexOf(id);
+let index=
+cart.indexOf(id);
+
 
 if(index!==-1){
 
 cart.splice(index,1);
+
 
 localStorage.setItem(
 "sts_cart",
@@ -1017,6 +1376,7 @@ JSON.stringify(cart)
 );
 
 }
+
 
 renderCart();
 
@@ -1027,16 +1387,22 @@ function toggleWish(e,id){
 
 e.stopPropagation();
 
+
 if(wish.includes(id))
-wish=wish.filter(x=>x!==id);
+
+wish=
+wish.filter(x=>x!==id);
 
 else
+
 wish.push(id);
+
 
 localStorage.setItem(
 "sts_wish",
 JSON.stringify(wish)
 );
+
 
 renderHome();
 
@@ -1049,9 +1415,11 @@ renderWish();
 
 function renderWish(){
 
-let arr=products.filter(
+let arr=
+products.filter(
 p=>wish.includes(p.id)
 );
+
 
 document.getElementById("wishProducts")
 .innerHTML=
@@ -1062,12 +1430,16 @@ arr.map(card).join("")
 :
 
 `
-<div class="empty"
-style="grid-column:1/-1">
+<div
+class="empty"
+style="grid-column:1/-1"
+>
 
 <div>♡</div>
 
-<h3>No favorites yet</h3>
+<h3>
+No favorites yet
+</h3>
 
 <p style="margin-top:8px">
 Save your favorite sparks here.
@@ -1079,22 +1451,51 @@ Save your favorite sparks here.
 }
 
 
+function getNextOrderNumber(){
+
+let number=
+parseInt(
+localStorage.getItem("sts_order_number")||"0"
+);
+
+
+number++;
+
+
+localStorage.setItem(
+"sts_order_number",
+number
+);
+
+
+return "STS-"+String(number).padStart(3,"0");
+
+}
+
+
 function placeOrder(){
 
 let name=
 document.getElementById("customerName")
 .value.trim();
 
+
 let phone=
 document.getElementById("customerPhone")
 .value.trim();
+
+
+let email=
+document.getElementById("customerEmail")
+.value.trim();
+
 
 let address=
 document.getElementById("customerAddress")
 .value.trim();
 
 
-if(!name||!phone||!address){
+if(!name||!phone||!email||!address){
 
 toast("Please fill all details");
 
@@ -1112,31 +1513,62 @@ return;
 }
 
 
-let subtotal=getSubtotal();
+let orderNumber=
+getNextOrderNumber();
 
-let total=subtotal+DELIVERY_CHARGES;
+
+let subtotal=
+getSubtotal();
+
+
+let total=
+subtotal+DELIVERY_CHARGES;
 
 
 let message=
 "She Tiny Spark Jewelry\n\n";
 
+
+message+=
+"ORDER NUMBER: "+
+orderNumber+
+"\n\n";
+
+
 message+=
 "NEW ORDER\n\n";
 
-message+=
-"Name: "+name+"\n";
 
 message+=
-"Customer Phone: "+phone+"\n";
+"Name: "+
+name+
+"\n";
+
 
 message+=
-"Address: "+address+"\n\n";
+"Customer Phone: "+
+phone+
+"\n";
+
+
+message+=
+"Email: "+
+email+
+"\n";
+
+
+message+=
+"Address: "+
+address+
+"\n\n";
+
 
 message+=
 "ORDER DETAILS\n";
 
 
 let grouped={};
+
 
 cart.forEach(id=>{
 
@@ -1150,11 +1582,17 @@ grouped[id]++;
 
 Object.keys(grouped).forEach(id=>{
 
-let p=products.find(x=>x.id==id);
+let p=
+products.find(x=>x.id==id);
 
-let qty=grouped[id];
 
-let itemTotal=p.price*qty;
+let qty=
+grouped[id];
+
+
+let itemTotal=
+p.price*qty;
+
 
 message+=
 p.name+
@@ -1168,15 +1606,18 @@ itemTotal+
 
 message+="\n";
 
+
 message+=
 "Subtotal: Rs. "+
 subtotal+
 "\n";
 
+
 message+=
 "Delivery: Rs. "+
 DELIVERY_CHARGES+
 "\n";
+
 
 message+=
 "TOTAL: Rs. "+
@@ -1201,11 +1642,15 @@ whatsappURL,
 
 function toast(text){
 
-let t=document.getElementById("toast");
+let t=
+document.getElementById("toast");
+
 
 t.textContent=text;
 
+
 t.style.display="block";
+
 
 setTimeout(
 ()=>t.style.display="none",
