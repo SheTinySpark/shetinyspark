@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f8f6f1">
-<meta name="description" content="She Tiny Spark Jewelry">
-<title>She Tiny Spark Jewelry</title>
+<meta name="theme-color" content="#f8f3ef">
+<meta name="description" content="She Tiny Spark - Handmade Accessories">
+<title>She Tiny Spark</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -22,14 +22,25 @@
 }
 
 :root{
-  --ivory:#f8f6f1;
+  --ivory:#f8f3ef;
   --paper:#fffdfa;
   --black:#171615;
   --gold:#c9a96a;
   --gold-dark:#a88b57;
   --muted:#7a746e;
-  --line:#e5dfd5;
-  --soft:#f0ebe3;
+  --line:#e7ddd8;
+  --soft:#f2e9e6;
+
+  /* SOFT COLORS */
+  --pink:#efd6d5;
+  --pink-deep:#c98f95;
+  --lavender:#ddd8e9;
+  --lavender-deep:#958ba9;
+  --sage:#dce6da;
+  --sage-deep:#7e9479;
+  --peach:#f3dfce;
+  --peach-deep:#c99470;
+
   --shadow:0 12px 35px rgba(23,22,21,.08);
   --radius:14px;
 }
@@ -132,6 +143,7 @@ textarea{
   justify-content:center;
   position:relative;
   animation:logoReveal 1.2s ease;
+  background:rgba(255,253,250,.42);
 }
 
 .logo-frame:before{
@@ -202,7 +214,7 @@ header{
   justify-content:space-between;
   padding:0 24px;
   border-bottom:1px solid var(--line);
-  background:rgba(248,246,241,.97);
+  background:rgba(248,243,239,.97);
   position:sticky;
   top:0;
   z-index:10;
@@ -279,6 +291,18 @@ header{
   align-items:center;
   justify-content:center;
   overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 20% 25%,
+      rgba(239,214,213,.38),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 82% 75%,
+      rgba(221,216,233,.35),
+      transparent 30%
+    );
 }
 
 .collection-circle{
@@ -290,6 +314,7 @@ header{
   align-items:center;
   justify-content:center;
   position:relative;
+  background:rgba(255,253,250,.38);
 }
 
 .collection-circle:before{
@@ -377,19 +402,67 @@ header{
 .categories{
   display:flex;
   gap:12px;
+  overflow-x:auto;
+  padding-bottom:5px;
+  scrollbar-width:none;
+}
+
+.categories::-webkit-scrollbar{
+  display:none;
 }
 
 .cat{
   background:var(--paper);
   border:1px solid var(--line);
+  min-width:100px;
   width:100px;
   height:100px;
+  flex-shrink:0;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   gap:10px;
   transition:.2s ease;
+  border-radius:10px;
+}
+
+/* CATEGORY COLORS */
+
+.cat:nth-child(1){
+  background:linear-gradient(
+    145deg,
+    #fffdfa,
+    var(--pink)
+  );
+  border-color:#ead4d3;
+}
+
+.cat:nth-child(2){
+  background:linear-gradient(
+    145deg,
+    #fffdfa,
+    var(--lavender)
+  );
+  border-color:#d9d2e4;
+}
+
+.cat:nth-child(3){
+  background:linear-gradient(
+    145deg,
+    #fffdfa,
+    var(--sage)
+  );
+  border-color:#d5dfd2;
+}
+
+.cat:nth-child(4){
+  background:linear-gradient(
+    145deg,
+    #fffdfa,
+    var(--peach)
+  );
+  border-color:#ead9ca;
 }
 
 .cat:active{
@@ -404,8 +477,9 @@ header{
 
 .cat small{
   font-size:9px;
-  letter-spacing:1px;
+  letter-spacing:.8px;
   color:var(--muted);
+  text-align:center;
 }
 
 /* =========================
@@ -424,6 +498,7 @@ header{
   overflow:hidden;
   position:relative;
   transition:.25s ease;
+  border-radius:10px;
 }
 
 .product-card:active{
@@ -439,6 +514,44 @@ header{
   font-family:'Playfair Display',serif;
   font-size:58px;
   color:var(--gold-dark);
+}
+
+/* PRODUCT COLORS */
+
+.product-card:nth-child(4n+1) .product-visual{
+  background:linear-gradient(
+    145deg,
+    #f8eeed,
+    var(--pink)
+  );
+  color:var(--pink-deep);
+}
+
+.product-card:nth-child(4n+2) .product-visual{
+  background:linear-gradient(
+    145deg,
+    #f3f0f7,
+    var(--lavender)
+  );
+  color:var(--lavender-deep);
+}
+
+.product-card:nth-child(4n+3) .product-visual{
+  background:linear-gradient(
+    145deg,
+    #f1f6ef,
+    var(--sage)
+  );
+  color:var(--sage-deep);
+}
+
+.product-card:nth-child(4n) .product-visual{
+  background:linear-gradient(
+    145deg,
+    #faf1e9,
+    var(--peach)
+  );
+  color:var(--peach-deep);
 }
 
 .product-info{
@@ -723,6 +836,7 @@ header{
   align-items:center;
   justify-content:center;
   position:relative;
+  background:rgba(255,253,250,.45);
 }
 
 .profile-logo:before{
@@ -872,11 +986,13 @@ header{
     <div class="welcome-inner">
 
       <div class="logo-frame">
+
         <img
           src="logo_black_white.png"
-          alt="She Tiny Spark Jewelry"
+          alt="She Tiny Spark"
           class="logo-img"
         >
+
       </div>
 
       <div class="welcome-note">
@@ -884,11 +1000,15 @@ header{
       </div>
 
       <div class="tagline">
-        JEWELRY • MADE WITH LOVE
+        HANDMADE • MADE WITH LOVE
       </div>
 
-      <button class="btn" onclick="show('home')">
+      <button
+        class="btn"
+        onclick="show('home')">
+
         EXPLORE COLLECTION
+
       </button>
 
     </div>
@@ -915,21 +1035,34 @@ header{
 
     <div class="header-actions">
 
-      <button class="icon-btn" onclick="show('shop')">
+      <button
+        class="icon-btn"
+        onclick="show('shop')">
+
         ⌕
+
       </button>
 
-      <button class="icon-btn" onclick="show('wishlist')">
+      <button
+        class="icon-btn"
+        onclick="show('wishlist')">
+
         ♡
+
       </button>
 
-      <button class="icon-btn" onclick="show('cart')">
+      <button
+        class="icon-btn"
+        onclick="show('cart')">
+
         ♧
+
       </button>
 
     </div>
 
   </header>
+
 
 
   <div class="hero">
@@ -944,14 +1077,20 @@ header{
     </h1>
 
     <p>
-      Handmade pieces created to add a soft, personal spark to your everyday look.
+      Handmade pieces created to add a soft,
+      personal spark to your everyday style.
     </p>
 
-    <button class="small-btn" onclick="show('shop')">
-      SHOP THE STUDS →
+    <button
+      class="small-btn"
+      onclick="show('shop')">
+
+      SHOP THE COLLECTION →
+
     </button>
 
   </div>
+
 
 
   <!-- LARGE LOGO FEATURE -->
@@ -983,27 +1122,81 @@ header{
   </div>
 
 
+
   <!-- CATEGORIES -->
 
   <div class="section">
 
     <div class="section-title">
-      <h2>Categories</h2>
+
+      <h2>
+        Categories
+      </h2>
 
       <span onclick="show('shop')">
         VIEW ALL
       </span>
+
     </div>
 
 
     <div class="categories">
 
-      <div class="cat" onclick="filter('Earrings')">
+      <div
+        class="cat"
+        onclick="filter('Hair Clips')">
 
-        <div class="emoji">✦</div>
+        <div class="emoji">
+          ✦
+        </div>
 
         <small>
-          Ear Studs
+          Hair Clips
+        </small>
+
+      </div>
+
+
+      <div
+        class="cat"
+        onclick="filter('Barrette Clips')">
+
+        <div class="emoji">
+          ୨୧
+        </div>
+
+        <small>
+          Barrette Clips
+        </small>
+
+      </div>
+
+
+      <div
+        class="cat"
+        onclick="filter('Keychains')">
+
+        <div class="emoji">
+          ♡
+        </div>
+
+        <small>
+          Keychains
+        </small>
+
+      </div>
+
+
+      <div
+        class="cat"
+        onclick="filter('Spectacle Holders')">
+
+        <div class="emoji">
+          ⌁
+        </div>
+
+        <small>
+          Spectacle Holders
         </small>
 
       </div>
@@ -1011,6 +1204,7 @@ header{
     </div>
 
   </div>
+
 
 
   <!-- NEW SPARKS -->
@@ -1028,6 +1222,7 @@ header{
       </span>
 
     </div>
+
 
     <div
       class="products"
@@ -1056,12 +1251,20 @@ header{
 
     <div class="header-actions">
 
-      <button class="icon-btn" onclick="show('wishlist')">
+      <button
+        class="icon-btn"
+        onclick="show('wishlist')">
+
         ♡
+
       </button>
 
-      <button class="icon-btn" onclick="show('cart')">
+      <button
+        class="icon-btn"
+        onclick="show('cart')">
+
         ♧
+
       </button>
 
     </div>
@@ -1069,49 +1272,103 @@ header{
   </header>
 
 
+
   <div class="page-title">
-    Our Ear Studs
+    Our Collection
   </div>
+
 
 
   <div class="search">
 
-    <span>⌕</span>
+    <span>
+      ⌕
+    </span>
 
     <input
       id="searchInput"
-      placeholder="Search ear studs..."
+      placeholder="Search products..."
       oninput="renderShop()"
     >
 
   </div>
 
 
+
   <div class="section">
 
     <div class="categories">
 
-      <div class="cat" onclick="filter('All')">
+      <div
+        class="cat"
+        onclick="filter('All')">
 
         <div class="emoji">
           ✦
         </div>
 
         <small>
-          All Studs
+          All
         </small>
 
       </div>
 
 
-      <div class="cat" onclick="filter('Earrings')">
+      <div
+        class="cat"
+        onclick="filter('Hair Clips')">
+
+        <div class="emoji">
+          ✦
+        </div>
+
+        <small>
+          Hair Clips
+        </small>
+
+      </div>
+
+
+      <div
+        class="cat"
+        onclick="filter('Barrette Clips')">
+
+        <div class="emoji">
+          ୨୧
+        </div>
+
+        <small>
+          Barrettes
+        </small>
+
+      </div>
+
+
+      <div
+        class="cat"
+        onclick="filter('Keychains')">
 
         <div class="emoji">
           ♡
         </div>
 
         <small>
-          Ear Studs
+          Keychains
+        </small>
+
+      </div>
+
+
+      <div
+        class="cat"
+        onclick="filter('Spectacle Holders')">
+
+        <div class="emoji">
+          ⌁
+        </div>
+
+        <small>
+          Glasses Holders
         </small>
 
       </div>
@@ -1119,6 +1376,7 @@ header{
     </div>
 
   </div>
+
 
 
   <div class="section">
@@ -1143,8 +1401,11 @@ header{
   <button
     class="back"
     onclick="show('shop')">
+
     ‹
+
   </button>
+
 
 
   <div class="detail">
@@ -1152,31 +1413,40 @@ header{
     <div
       class="detail-img"
       id="detailImg">
+
       ✦
+
     </div>
 
 
     <h1 id="detailName">
-      Tiny Spark Studs
+      Soft Bow Hair Clip
     </h1>
 
 
     <div
       class="big-price"
       id="detailPrice">
-      Rs. 799
+
+      Rs. 499
+
     </div>
 
 
     <p id="detailDesc">
-      A delicate pair of tiny sparkle studs made for everyday elegance.
+
+      A sweet handmade hair accessory
+      designed for an easy everyday look.
+
     </p>
 
 
     <button
       class="btn"
       onclick="addCurrent()">
+
       ADD TO CART
+
     </button>
 
   </div>
@@ -1239,7 +1509,9 @@ header{
     <button
       class="btn"
       onclick="placeOrder()">
+
       PLACE ORDER ON WHATSAPP
+
     </button>
 
   </div>
@@ -1285,14 +1557,11 @@ header{
 
   <div class="profile-page">
 
-
-    <!-- ORIGINAL LOGO — NO ST TEXT -->
-
     <div class="profile-logo">
 
       <img
         src="logo_black_white.png"
-        alt="She Tiny Spark Jewelry"
+        alt="She Tiny Spark"
       >
 
     </div>
@@ -1304,8 +1573,10 @@ header{
 
 
     <div class="profile-tagline">
-      Tiny handmade jewelry<br>
+
+      Tiny handmade pieces<br>
       made with a little love.
+
     </div>
 
 
@@ -1318,11 +1589,12 @@ header{
       <div
         class="order-count-number"
         id="orderCount">
+
         0
+
       </div>
 
     </div>
-
 
   </div>
 
@@ -1394,7 +1666,9 @@ header{
 <div
   class="toast"
   id="toast">
+
   Added to cart ✦
+
 </div>
 
 
@@ -1407,58 +1681,131 @@ header{
 
 const products = [
 
+  /* =========================
+     HAIR CLIPS
+  ========================= */
+
   {
     id:1,
-    name:"Tiny Spark Studs",
-    price:799,
-    cat:"Earrings",
-    emoji:"✦",
-    desc:"A delicate pair of tiny sparkle studs made for everyday elegance."
+    name:"Soft Bow Hair Clip",
+    price:499,
+    cat:"Hair Clips",
+    emoji:"୨୧",
+    desc:"A sweet handmade hair clip designed to add a soft feminine touch to everyday looks."
   },
 
   {
     id:2,
-    name:"Pearl Drop Studs",
-    price:899,
-    cat:"Earrings",
-    emoji:"♡",
-    desc:"Soft pearl-inspired studs for a graceful feminine look."
+    name:"Daisy Hair Clip",
+    price:499,
+    cat:"Hair Clips",
+    emoji:"✿",
+    desc:"A playful floral hair clip made for simple everyday styling."
   },
 
   {
     id:3,
-    name:"Blush Flower Studs",
-    price:849,
-    cat:"Earrings",
-    emoji:"✿",
-    desc:"Sweet little floral studs designed to add a soft romantic touch."
+    name:"Pearl Bloom Hair Clip",
+    price:549,
+    cat:"Hair Clips",
+    emoji:"✦",
+    desc:"A delicate floral-inspired clip with a soft elegant finish."
   },
+
+
+  /* =========================
+     BARRETTE CLIPS
+  ========================= */
 
   {
     id:4,
-    name:"Mini Heart Studs",
-    price:799,
-    cat:"Earrings",
-    emoji:"♥",
-    desc:"Tiny heart-shaped studs for everyday cute moments."
+    name:"Blush Bow Barrette",
+    price:599,
+    cat:"Barrette Clips",
+    emoji:"୨୧",
+    desc:"A graceful barrette designed to make an everyday hairstyle feel a little more special."
   },
 
   {
     id:5,
-    name:"Sweet Bow Studs",
-    price:899,
-    cat:"Earrings",
-    emoji:"୨୧",
-    desc:"Cute bow-inspired studs with a delicate feminine finish."
+    name:"Flower Garden Barrette",
+    price:649,
+    cat:"Barrette Clips",
+    emoji:"✿",
+    desc:"A charming floral barrette for a soft and romantic everyday look."
   },
 
   {
     id:6,
-    name:"Daisy Studs",
-    price:849,
-    cat:"Earrings",
+    name:"Pearl Leaf Barrette",
+    price:599,
+    cat:"Barrette Clips",
+    emoji:"❧",
+    desc:"A delicate leaf-inspired barrette with a pretty handmade feel."
+  },
+
+
+  /* =========================
+     KEYCHAINS
+  ========================= */
+
+  {
+    id:7,
+    name:"Tiny Bow Keychain",
+    price:399,
+    cat:"Keychains",
+    emoji:"୨୧",
+    desc:"A tiny bow charm made to add a cute personal detail to your keys or bag."
+  },
+
+  {
+    id:8,
+    name:"Daisy Charm Keychain",
+    price:399,
+    cat:"Keychains",
     emoji:"✾",
-    desc:"Minimal daisy studs made for a fresh and playful look."
+    desc:"A cheerful floral charm for your everyday bag, keys or pouch."
+  },
+
+  {
+    id:9,
+    name:"Little Heart Keychain",
+    price:399,
+    cat:"Keychains",
+    emoji:"♥",
+    desc:"A tiny heart charm made for a sweet little everyday spark."
+  },
+
+
+  /* =========================
+     SPECTACLE HOLDERS
+  ========================= */
+
+  {
+    id:10,
+    name:"Pearl Loop Holder",
+    price:699,
+    cat:"Spectacle Holders",
+    emoji:"⌁",
+    desc:"A pretty spectacle holder designed to keep your glasses close while adding a delicate accessory detail."
+  },
+
+  {
+    id:11,
+    name:"Floral Charm Holder",
+    price:699,
+    cat:"Spectacle Holders",
+    emoji:"✿",
+    desc:"A feminine spectacle holder finished with a charming floral-inspired detail."
+  },
+
+  {
+    id:12,
+    name:"Sweet Bow Holder",
+    price:649,
+    cat:"Spectacle Holders",
+    emoji:"୨୧",
+    desc:"A simple bow-inspired spectacle holder made for a cute and practical everyday look."
   }
 
 ];
@@ -1563,8 +1910,9 @@ function card(p){
 
   return `
 
-    <div class="product-card"
-         onclick="openProduct(${p.id})">
+    <div
+      class="product-card"
+      onclick="openProduct(${p.id})">
 
       <div class="product-visual">
         ${p.emoji}
@@ -1681,10 +2029,12 @@ function renderShop(){
           class="empty"
           style="grid-column:1/-1">
 
-          <div>⌕</div>
+          <div>
+            ⌕
+          </div>
 
           <h3>
-            No studs found
+            No products found
           </h3>
 
           <p>
@@ -1831,7 +2181,9 @@ function renderWish(){
           class="empty"
           style="grid-column:1/-1">
 
-          <div>♡</div>
+          <div>
+            ♡
+          </div>
 
           <h3>
             No favorites yet
@@ -1894,7 +2246,9 @@ function renderCart(){
 
       <div class="empty">
 
-        <div>♧</div>
+        <div>
+          ♧
+        </div>
 
         <h3>
           Your bag is empty
@@ -2159,7 +2513,7 @@ function placeOrder(){
 
 
   let message =
-    "She Tiny Spark Jewelry\n\n";
+    "She Tiny Spark\n\n";
 
 
   message +=
