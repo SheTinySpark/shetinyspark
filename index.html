@@ -1,521 +1,866 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>She Tiny Spark | Handmade Jewelry</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
-:root{--ink:#211b20;--pink:#f4a4b9;--hot:#e94e91;--cream:#fff9f4;--muted:#80737a;--line:#eadfe2;--navy:#182f40}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:var(--ink);background:#fffaf7}
-button,input,textarea{font:inherit}
-button{border:0;cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--hot);outline-offset:3px}
-.app{max-width:480px;margin:auto;min-height:100vh;padding-bottom:78px;overflow:hidden;background:#fffaf7}
+<title>She Tiny Spark | Handmade Jewelry & Accessories</title>
+<meta name="theme-color" content="#192f40">
 
-/* OLD BUTTERFLY INTRO — KEPT */
-.intro{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#fff2ed;transition:opacity .7s,visibility .7s}
-.intro.hide{opacity:0;visibility:hidden;pointer-events:none}
-.intro-center{text-align:center;position:relative}
-.intro-logo{width:185px;max-width:65vw;object-fit:contain;opacity:0;animation:logoReveal 1s 1.5s forwards}
-.intro-tag{font-size:10px;letter-spacing:4px;margin-top:15px;color:#76515f;opacity:0;animation:logoReveal .8s 2s forwards}
-.butterfly{position:absolute;width:64px;height:55px;left:-85px;top:-65px;animation:butterflyFly 2.6s ease-in-out forwards}
-.wing{position:absolute;width:32px;height:40px;top:4px;background:linear-gradient(140deg,#ff6fae,#e33e87);border:1px solid #fff;border-radius:80% 20% 65% 30%}
-.wing.left{left:0;transform-origin:right bottom;animation:flap .18s infinite alternate}
-.wing.right{right:0;transform-origin:left bottom;border-radius:20% 80% 30% 65%;animation:flap2 .18s infinite alternate}
-.bfly-body{position:absolute;width:4px;height:26px;left:30px;top:18px;background:#382130;border-radius:10px;z-index:2}
-.bfly-body:before,.bfly-body:after{content:"";position:absolute;width:2px;height:11px;background:#382130;top:-8px}
-.bfly-body:before{left:0;transform:rotate(-35deg)}
-.bfly-body:after{right:0;transform:rotate(35deg)}
-@keyframes butterflyFly{0%{left:-85px;top:10px;opacity:0;transform:rotate(-20deg)}15%{opacity:1}42%{left:45%;top:-35px;transform:rotate(12deg)}65%{left:80%;top:-10px;transform:rotate(-10deg)}100%{left:120%;top:-65px;opacity:0;transform:rotate(15deg)}}
-@keyframes flap{to{transform:rotate(-24deg) scaleX(.7)}}
-@keyframes flap2{to{transform:rotate(24deg) scaleX(.7)}}
-@keyframes logoReveal{to{opacity:1}}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+
+:root {
+  --ink:#211b20;
+  --pink:#f4a4b9;
+  --hot:#e94e91;
+  --cream:#fff9f4;
+  --muted:#80737a;
+  --line:#eadfe2;
+  --navy:#192f40;
+  --navy-light:#506777;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'DM Sans',sans-serif; color:var(--ink); background:#fffaf7; }
+button,input,textarea { font:inherit; }
+button { border:0; cursor:pointer; }
+a { color:inherit; }
+button:focus-visible,input:focus-visible,textarea:focus-visible { outline:2px solid var(--hot); outline-offset:3px; }
+
+.app { max-width:480px; margin:auto; min-height:100vh; padding-bottom:78px; overflow:hidden; background:#fffaf7; }
+
+/* OPENING ANIMATION - ORIGINAL FLYING BUTTERFLY */
+.intro {
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  background:#fff2ed;
+  transition:opacity .7s,visibility .7s;
+}
+.intro.hide { opacity:0; visibility:hidden; pointer-events:none; }
+.intro-center { text-align:center; position:relative; }
+.intro-logo { width:185px; max-width:65vw; object-fit:contain; opacity:0; animation:logoReveal 1s 1.5s forwards; }
+.intro-tag { font-size:10px; letter-spacing:4px; margin-top:15px; color:#76515f; opacity:0; animation:logoReveal .8s 2s forwards; }
+
+.butterfly {
+  position:absolute; width:64px; height:55px;
+  left:-85px; top:-65px;
+  animation:butterflyFly 2.6s ease-in-out forwards;
+}
+.wing {
+  position:absolute; width:32px; height:40px; top:4px;
+  background:linear-gradient(140deg,#ff6fae,#e33e87);
+  border:1px solid #fff;
+  border-radius:80% 20% 65% 30%;
+}
+.wing.left { left:0; transform-origin:right bottom; animation:flap .18s infinite alternate; }
+.wing.right { right:0; transform-origin:left bottom; border-radius:20% 80% 30% 65%; animation:flap2 .18s infinite alternate; }
+.bfly-body { position:absolute; width:4px; height:26px; left:30px; top:18px; background:#382130; border-radius:10px; z-index:2; }
+.bfly-body:before,.bfly-body:after { content:""; position:absolute; width:2px; height:11px; background:#382130; top:-8px; }
+.bfly-body:before { left:0; transform:rotate(-35deg); }
+.bfly-body:after { right:0; transform:rotate(35deg); }
+
+@keyframes butterflyFly {
+  0% { left:-85px; top:10px; opacity:0; transform:rotate(-20deg); }
+  15% { opacity:1; }
+  42% { left:45%; top:-35px; transform:rotate(12deg); }
+  65% { left:80%; top:-10px; transform:rotate(-10deg); }
+  100% { left:120%; top:-65px; opacity:0; transform:rotate(15deg); }
+}
+@keyframes flap { to { transform:rotate(-24deg) scaleX(.7); } }
+@keyframes flap2 { to { transform:rotate(24deg) scaleX(.7); } }
+@keyframes logoReveal { to { opacity:1; } }
 
 /* HEADER */
-.header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;min-height:83px;background:#fffaf7ed;backdrop-filter:blur(15px);border-bottom:1px solid #eadfe288}
-.logo{width:105px;height:58px;object-fit:contain}
-.brand{flex:1;min-width:0}
-.brand-name{font:500 22px 'Playfair Display',serif;letter-spacing:1px}
-.brand-tag{font-size:8px;letter-spacing:3px;color:#80737a;margin-top:5px}
-.header-actions{display:flex;gap:7px;align-items:center}
-.icon-btn{width:39px;height:39px;border-radius:50%;background:white;border:1px solid #eee2e5;font-size:22px;color:#30232b;display:grid;place-items:center}
-.bag-btn{height:39px;padding:0 10px;border-radius:25px;background:#241d23;color:white;display:flex;align-items:center;gap:6px;font-size:19px}
-.count{min-width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:var(--pink);color:#241d23;font-size:11px;font-weight:800;padding:2px}
+.header {
+  position:sticky; top:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 15px; min-height:82px;
+  background:#fffaf7ed; backdrop-filter:blur(15px);
+  border-bottom:1px solid #eadfe288;
+}
+.logo { width:112px; height:58px; object-fit:contain; }
+.header-actions { display:flex; gap:8px; align-items:center; }
+.icon-btn {
+  width:41px; height:41px; border-radius:50%;
+  background:white; border:1px solid #eee2e5;
+  font-size:24px; color:#30232b; display:grid; place-items:center;
+}
+.bag-btn {
+  height:41px; padding:0 11px; border-radius:25px;
+  background:#241d23; color:white; display:flex;
+  align-items:center; gap:7px; font-size:21px;
+}
+.count { min-width:20px; height:20px; border-radius:50%; display:grid; place-items:center; background:var(--pink); color:#241d23; font-size:11px; font-weight:800; padding:2px; }
 
-/* NAVIGATION */
-.top-nav{display:flex;gap:25px;overflow-x:auto;white-space:nowrap;padding:16px 18px;background:#fffaf7;border-bottom:1px solid var(--line);scrollbar-width:none}
-.top-nav::-webkit-scrollbar{display:none}
-.top-nav button{background:transparent;font-size:12px;letter-spacing:1.3px;color:#393039}
-.page{display:none;padding:20px 18px 30px}
-.page.active{display:block}
+/* MAIN PAGES */
+.page { display:none; padding:20px 17px 30px; }
+.page.active { display:block; }
 
-/* HERO */
-.hero{position:relative;margin:12px 0 30px;border-radius:30px;overflow:hidden;min-height:375px;padding:30px 23px 25px;background:linear-gradient(135deg,#ffe1e8,#ffd4c0 52%,#fff0d9)}
-.hero-kicker{font-size:10px;letter-spacing:2.5px;font-weight:800;color:#9c3d68}
-.hero h1{font:500 46px/1.05 'Playfair Display',serif;margin-top:18px;max-width:320px}
-.hero h1 em{color:#d83f83;font-weight:500}
-.hero p{color:#74515e;line-height:1.7;font-size:13px;max-width:260px;margin-top:15px}
-.hero-bottom{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:23px}
-.primary-btn,.shop-now{padding:14px 19px;border-radius:28px;background:#231d22;color:white;font-size:11px;font-weight:800;letter-spacing:.5px}
-.hero-note{font-size:10px;color:#6d4a58;font-weight:700}
-.hero-sticker{position:absolute;right:16px;bottom:25px;width:88px;height:88px;border-radius:50%;background:#fff9f0;display:grid;place-items:center;text-align:center;color:#d34983;font:italic 14px/1.2 'Playfair Display',serif;transform:rotate(10deg)}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:8px;margin:28px 2px 15px}
-.section-head h2{font:500 27px 'Playfair Display',serif}
-.section-head span{font-size:9px;letter-spacing:1px;color:#9a6578;text-align:right}
-.categories{display:flex;gap:10px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
-.categories::-webkit-scrollbar,.filters::-webkit-scrollbar{display:none}
-.category{flex:none;width:108px;height:108px;border-radius:22px;padding:12px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:#ffe0e8;color:#33222c}
-.category:nth-child(2){background:#ffe2c8}.category:nth-child(3){background:#f8c3d7}.category:nth-child(4){background:#d7eadb}.category:nth-child(5){background:#f7d7bd}.category:nth-child(6){background:#ffe9bd}
-.cat-icon{font-size:25px}.cat-name{font-size:11px;font-weight:800;line-height:1.3}
-.search{margin-top:22px}
-.search input{width:100%;height:48px;border-radius:28px;padding:0 18px;border:1px solid var(--line);background:white;outline:none}
-.filters{display:flex;gap:8px;overflow-x:auto;padding:13px 0 18px;scrollbar-width:none}
-.filter{flex:none;padding:10px 14px;border-radius:24px;background:#f4ecee;color:#78636d;font-size:11px;font-weight:700}
-.filter.active{background:#262027;color:white}
+.hero {
+  position:relative; margin:7px 0 29px; border-radius:28px; overflow:hidden;
+  min-height:380px; padding:30px 22px 24px;
+  background:linear-gradient(135deg,#ffe1e8 0%,#ffd4c0 52%,#fff0d9 100%);
+}
+.hero:after {
+  content:""; position:absolute; width:210px; height:210px;
+  border-radius:50%; background:#ffffff55; right:-80px; top:30px;
+  pointer-events:none;
+}
+.hero-kicker { position:relative; z-index:1; font-size:10px; letter-spacing:2.5px; font-weight:800; color:#9c3d68; }
+.hero h1 { position:relative; z-index:1; font:500 46px/1.06 'Playfair Display',serif; margin-top:19px; }
+.hero h1 em { color:#d83f83; font-weight:500; }
+.hero p { position:relative; z-index:1; color:#74515e; line-height:1.7; font-size:13px; max-width:265px; margin-top:15px; }
+.hero-bottom { position:relative; z-index:1; display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:23px; }
+.primary-btn,.shop-now { padding:14px 19px; border-radius:28px; background:#231d22; color:white; font-size:11px; font-weight:800; letter-spacing:.5px; }
+.hero-note { font-size:10px; color:#6d4a58; font-weight:700; }
+.hero-sticker {
+  position:absolute; right:17px; bottom:24px; width:88px; height:88px;
+  border-radius:50%; background:#fff9f0; display:grid; place-items:center;
+  text-align:center; color:#d34983; font:italic 14px/1.2 'Playfair Display',serif;
+  transform:rotate(10deg); box-shadow:0 8px 24px #8b456022;
+}
+.section-head { display:flex; justify-content:space-between; align-items:end; gap:8px; margin:28px 2px 15px; }
+.section-head h2 { font:500 27px 'Playfair Display',serif; }
+.section-head span { font-size:9px; letter-spacing:1px; color:#9a6578; text-align:right; }
+
+.categories { display:flex; gap:10px; overflow-x:auto; padding:2px 0 10px; scrollbar-width:none; }
+.categories::-webkit-scrollbar,.filters::-webkit-scrollbar { display:none; }
+.category {
+  flex:none; width:108px; height:112px; border-radius:22px; padding:12px;
+  text-align:left; display:flex; flex-direction:column; justify-content:space-between;
+  background:#ffe0e8; color:#33222c;
+}
+.category:nth-child(2) { background:#ffe2c8; }
+.category:nth-child(3) { background:#f8c3d7; }
+.category:nth-child(4) { background:#d7eadb; }
+.category:nth-child(5) { background:#f7d7bd; }
+.category:nth-child(6) { background:#ffe9bd; }
+.cat-icon { font-size:25px; }
+.cat-name { font-size:11px; font-weight:800; line-height:1.3; }
+
+.search { margin-top:22px; }
+.search input { width:100%; height:49px; border-radius:28px; padding:0 17px; border:1px solid var(--line); background:white; outline:none; }
+.filters { display:flex; gap:8px; overflow-x:auto; padding:13px 0 18px; scrollbar-width:none; }
+.filter { flex:none; padding:10px 14px; border-radius:24px; background:#f4ecee; color:#78636d; font-size:11px; font-weight:700; }
+.filter.active { background:#262027; color:white; }
 
 /* PRODUCT CARDS */
-.product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.product-card{border:1px solid #f0e4e6;border-radius:22px;background:white;padding:8px;overflow:hidden}
-.image-wrap{position:relative}
-.product-img{display:block;width:100%;aspect-ratio:1/1.08;object-fit:cover;border-radius:16px;background:#f7e9e8;cursor:pointer}
-.heart{position:absolute;right:7px;top:7px;width:32px;height:32px;border-radius:50%;background:#fffdf4ed;color:#d84985;font-size:21px}
-.product-info{padding:11px 4px 5px}
-.product-name{font:500 16px/1.2 'Playfair Display',serif;cursor:pointer}
-.product-desc{font-size:10px;line-height:1.5;color:#8a7880;margin-top:5px;min-height:30px}
-.product-bottom{display:flex;justify-content:space-between;align-items:center;gap:5px;margin-top:10px}
-.price{font-size:12px;font-weight:800}
-.add-btn{background:#f8d5e1;color:#7e294f;border-radius:20px;padding:9px 10px;font-size:10px;font-weight:800}
-.page-title{font:500 32px 'Playfair Display',serif;margin:9px 0 22px}
-.back{width:40px;height:40px;border-radius:50%;background:#f5e9ed;font-size:22px;margin-bottom:15px}
-.detail-img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:25px}
-.detail-name{font:500 30px 'Playfair Display',serif;margin-top:17px}
-.detail-price{font-weight:800;font-size:20px;margin:10px 0;color:#cf4380}
-.detail-desc{font-size:14px;color:var(--muted);line-height:1.7}
-.detail-add{width:100%;margin-top:20px}
+.product-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.product-card { border:1px solid #f0e4e6; border-radius:22px; background:white; padding:8px; overflow:hidden; }
+.image-wrap { position:relative; }
+.product-img { display:block; width:100%; aspect-ratio:1/1.08; object-fit:cover; border-radius:16px; background:#f7e9e8; cursor:pointer; }
+.heart { position:absolute; right:7px; top:7px; width:32px; height:32px; border-radius:50%; background:#fffdf4ed; color:#d84985; font-size:21px; }
+.product-info { padding:11px 4px 5px; }
+.product-name { font:500 16px/1.2 'Playfair Display',serif; cursor:pointer; }
+.product-desc { font-size:10px; line-height:1.5; color:#8a7880; margin-top:5px; min-height:30px; }
+.product-bottom { display:flex; justify-content:space-between; align-items:center; gap:5px; margin-top:10px; }
+.price { font-size:12px; font-weight:800; }
+.add-btn { background:#f8d5e1; color:#7e294f; border-radius:20px; padding:9px 10px; font-size:10px; font-weight:800; }
 
-/* CART AND WISHLIST */
-.cart-item{display:flex;align-items:center;gap:11px;padding:10px;margin-bottom:10px;border:1px solid #f0e5e7;border-radius:20px;background:white}
-.cart-item img{width:62px;height:62px;border-radius:13px;object-fit:cover}
-.cart-info{flex:1;min-width:0}
-.cart-info strong{font:500 15px 'Playfair Display',serif}
-.cart-info span{display:block;color:#b33e78;font-weight:800;font-size:12px;margin-top:5px}
-.remove{width:30px;height:30px;flex:none;border-radius:50%;background:#fae5eb;color:#a13d68;font-size:20px}
-.summary{margin-top:17px;padding:18px;border-radius:23px;background:#fff0e8}
-.summary-row{display:flex;justify-content:space-between;gap:10px;margin:12px 0;font-size:13px}
-.summary-row.total{border-top:1px solid #e8d3d7;padding-top:14px;font-weight:800;font-size:17px}
-.summary .primary-btn{width:100%;margin-top:10px}
-.empty{text-align:center;padding:30px 16px;border-radius:24px;background:#fff0e8;color:#765c68}
-.empty-icon{font-size:38px;margin-bottom:12px}
-.form-group{margin-bottom:14px}
-.form-group label{display:block;font-size:12px;font-weight:800;margin:0 0 7px 5px}
-.form-group input,.form-group textarea{width:100%;padding:14px;border:1px solid #eadfe2;border-radius:15px;background:white;outline:none}
-.form-group textarea{min-height:85px;resize:vertical}
-.whatsapp-btn{width:100%;padding:16px;border-radius:27px;background:#1fae64;color:white;font-weight:800}
+.page-title { font:500 33px 'Playfair Display',serif; margin:9px 0 22px; }
+.back { width:40px; height:40px; border-radius:50%; background:#f5e9ed; font-size:22px; margin-bottom:15px; }
+.detail-img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:24px; background:#f7e9e8; }
+.detail-name { font:500 30px 'Playfair Display',serif; margin-top:17px; }
+.detail-price { font-weight:800; font-size:20px; margin:10px 0; color:#cf4380; }
+.detail-desc { font-size:14px; color:var(--muted); line-height:1.7; }
+.detail-add { width:100%; margin-top:20px; }
+
+/* CART / WISHLIST */
+.cart-item { display:flex; align-items:center; gap:10px; padding:10px; margin-bottom:10px; border:1px solid #f0e5e7; border-radius:19px; background:white; }
+.cart-item img { width:62px; height:62px; border-radius:13px; object-fit:cover; background:#f7e9e8; }
+.cart-info { flex:1; min-width:0; }
+.cart-info strong { font:500 15px 'Playfair Display',serif; }
+.cart-info span { display:block; color:#b33e78; font-weight:800; font-size:12px; margin-top:5px; }
+.remove { width:30px; height:30px; flex:none; border-radius:50%; background:#fae5eb; color:#a13d68; font-size:20px; }
+.summary { margin-top:17px; padding:17px; border-radius:22px; background:#fff0e8; }
+.summary-row { display:flex; justify-content:space-between; gap:10px; margin:12px 0; font-size:13px; }
+.summary-row.total { border-top:1px solid #e8d3d7; padding-top:14px; font-weight:800; font-size:17px; }
+.summary .primary-btn { width:100%; margin-top:10px; }
+.empty { text-align:center; padding:30px 16px; border-radius:22px; background:#fff0e8; color:#765c68; }
+.empty-icon { font-size:38px; margin-bottom:12px; }
+.form-group { margin-bottom:14px; }
+.form-group label { display:block; font-size:12px; font-weight:800; margin:0 0 7px 5px; }
+.form-group input,.form-group textarea { width:100%; padding:14px; border:1px solid #eadfe2; border-radius:15px; background:white; outline:none; }
+.form-group textarea { min-height:85px; resize:vertical; }
+.whatsapp-btn { width:100%; padding:16px; border-radius:27px; background:#1fae64; color:white; font-weight:800; }
 
 /* FOOTER */
-.footer{background:var(--navy);color:#d3dce3;padding:34px 25px 25px}
-.footer h3{font-size:15px;letter-spacing:2px;color:white;margin:27px 0 17px}
-.footer h3:first-child{margin-top:0}
-.footer p,.footer a{font-size:13px;line-height:1.9;color:#d3dce3;text-decoration:none}
-.footer-links{display:grid;gap:8px}
-.footer-links a{cursor:pointer}
-.socials{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 26px}
-.social{width:43px;height:43px;border:2px solid #496071;border-radius:50%;display:grid;place-items:center;color:white;text-decoration:none;font-size:15px;font-weight:600}
-.social:hover{background:#29495e}
-.footer-contact{margin-top:26px}
-.whatsapp-link{display:inline-block;margin-top:18px;padding:12px 18px;border:1px solid #71818d;border-radius:28px;letter-spacing:2px;font-size:11px!important;color:white!important}
-.newsletter{margin-top:30px;padding:20px 16px;background:#213b4e;border-radius:18px}
-.newsletter h3{margin:0 0 9px}
-.newsletter p{font-size:12px;margin-bottom:13px}
-.newsletter-form{display:flex;gap:7px}
-.newsletter-form input{width:100%;min-width:0;padding:12px;border:0;border-radius:8px;font-size:12px}
-.newsletter-form button{background:#f3b2c7;color:#35212b;border-radius:8px;padding:0 12px;font-size:11px;font-weight:800}
-.footer-bottom{border-top:1px solid #496071;margin-top:30px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.footer-bottom p{font-size:11px}
-.policy-page{font-size:13px;line-height:1.9;color:#65565e}
-.policy-page h2{font:500 25px 'Playfair Display',serif;margin:5px 0 17px;color:#29212a}
-.policy-page h3{font-size:14px;margin:20px 0 7px;color:#29212a}
-.policy-page p{margin:10px 0}
+.site-footer {
+  background:var(--navy);
+  color:#d2dce4;
+  padding:35px 25px 23px;
+  margin-top:15px;
+}
+.footer-heading {
+  color:#fff;
+  font-size:17px;
+  letter-spacing:3px;
+  font-weight:800;
+  margin:30px 0 20px;
+}
+.footer-heading:first-child { margin-top:0; }
+.footer-links { display:flex; flex-direction:column; gap:17px; }
+.footer-links a {
+  color:#d2dce4;
+  text-decoration:none;
+  font-size:15px;
+  line-height:1.5;
+}
+.footer-links a:hover { color:#f4a4b9; }
+.footer-description { font-size:14px; line-height:1.9; color:#d2dce4; }
 
-/* FIXED BOTTOM NAV */
-.bottom-nav{position:fixed;z-index:100;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;height:73px;background:#fffdfbf2;backdrop-filter:blur(15px);border-top:1px solid #eee3e5;display:flex;align-items:center;justify-content:space-around}
-.nav{flex:1;height:67px;background:transparent;color:#756b72;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;font-size:22px}
-.nav span{font-size:9px}
-.nav.active{color:#d34983}
-.toast{position:fixed;z-index:10000;bottom:87px;left:50%;transform:translate(-50%,12px);background:#292129;color:white;padding:12px 16px;border-radius:25px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;white-space:nowrap}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:370px){.brand-name{font-size:18px}.brand-tag{font-size:7px;letter-spacing:2px}.logo{width:78px}.hero h1{font-size:40px}.hero{padding:25px 18px}.hero-sticker{width:76px;height:76px;font-size:12px}.product-name{font-size:14px}.footer{padding-left:20px;padding-right:20px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important}}
+.social-icons {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin:25px 0 35px;
+}
+.social-icon {
+  width:52px;
+  height:52px;
+  flex:none;
+  border:2px solid #506777;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#d5e0e8;
+  text-decoration:none;
+  transition:all .25s ease;
+}
+.social-icon svg { width:24px; height:24px; fill:currentColor; }
+.social-icon:hover {
+  background:var(--pink);
+  border-color:var(--pink);
+  color:var(--navy);
+  transform:translateY(-3px);
+}
+
+.footer-contact { margin-top:33px; }
+.footer-contact p { font-size:14px; line-height:1.9; }
+.footer-whatsapp {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:20px;
+  padding:13px 20px;
+  border:1px solid #506777;
+  border-radius:28px;
+  color:white;
+  text-decoration:none;
+  letter-spacing:1.5px;
+  font-size:11px;
+  font-weight:700;
+}
+.footer-whatsapp:hover { background:#244458; }
+
+.newsletter { margin-top:35px; }
+.newsletter p { font-size:14px; line-height:1.8; margin-bottom:15px; }
+.newsletter-form { display:flex; gap:7px; }
+.newsletter-form input {
+  min-width:0;
+  flex:1;
+  padding:13px 12px;
+  border:1px solid #506777;
+  border-radius:8px;
+  background:#213b4e;
+  color:white;
+}
+.newsletter-form input::placeholder { color:#b7c5cf; }
+.newsletter-form button {
+  padding:0 14px;
+  border-radius:8px;
+  background:var(--pink);
+  color:#192f40;
+  font-size:11px;
+  font-weight:800;
+}
+.footer-bottom {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:10px;
+  border-top:1px solid #506777;
+  margin-top:35px;
+  padding-top:20px;
+  font-size:11px;
+  line-height:1.8;
+  color:#c4d0d9;
+}
+
+/* POLICY PAGES */
+.policy-content h2 { font:500 23px 'Playfair Display',serif; margin:23px 0 10px; }
+.policy-content p,.policy-content li { font-size:14px; line-height:1.9; color:#756770; }
+.policy-content ul { padding-left:20px; margin:10px 0; }
+.policy-content p { margin-bottom:12px; }
+.policy-content .policy-note { padding:14px; background:#fff0e8; border-radius:14px; color:#765c68; }
+
+/* BOTTOM NAVIGATION */
+.bottom-nav {
+  position:fixed; z-index:100; bottom:0; left:50%; transform:translateX(-50%);
+  width:100%; max-width:480px; height:75px;
+  background:#fffdfbf2; backdrop-filter:blur(15px);
+  border-top:1px solid #eee3e5;
+  display:flex; align-items:center; justify-content:space-around;
+}
+.nav { flex:1; height:67px; background:transparent; color:#8f858b; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:4px; font-size:23px; }
+.nav span { font-size:9px; letter-spacing:.5px; }
+.nav.active { color:#d34983; }
+
+.toast {
+  position:fixed; z-index:10000; bottom:90px; left:50%;
+  transform:translate(-50%,12px); background:#292129; color:white;
+  padding:12px 18px; border-radius:25px; font-size:12px;
+  opacity:0; pointer-events:none; transition:.25s; white-space:nowrap;
+}
+.toast.show { opacity:1; transform:translate(-50%,0); }
+
+@media(max-width:370px) {
+  .hero { padding:26px 18px; min-height:370px; }
+  .hero h1 { font-size:40px; }
+  .hero-sticker { width:76px; height:76px; font-size:12px; right:12px; }
+  .logo { width:92px; }
+  .product-name { font-size:14px; }
+  .site-footer { padding:30px 19px 20px; }
+  .social-icons { gap:9px; }
+  .social-icon { width:47px; height:47px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; scroll-behavior:auto!important; }
+}
 </style>
 </head>
+
 <body>
 <div class="app">
 
-<!-- SAME OLD FLYING BUTTERFLY INTRO -->
+<!-- OPENING: FLYING BUTTERFLY + LOGO -->
 <div class="intro" id="intro">
- <div class="intro-center">
-  <div class="butterfly">
-   <div class="wing left"></div><div class="wing right"></div><div class="bfly-body"></div>
+  <div class="intro-center">
+    <div class="butterfly">
+      <div class="wing left"></div>
+      <div class="wing right"></div>
+      <div class="bfly-body"></div>
+    </div>
+    <img src="logo_black_white.png" class="intro-logo" alt="She Tiny Spark">
+    <div class="intro-tag">LITTLE THINGS · BIG SPARK</div>
   </div>
-  <img src="logo_black_white.png" class="intro-logo" alt="She Tiny Spark">
-  <div class="intro-tag">LITTLE THINGS · BIG SPARK</div>
- </div>
 </div>
 
+<!-- HEADER -->
 <header class="header">
- <img src="logo_black_white.png" class="logo" alt="She Tiny Spark">
- <div class="brand">
-  <div class="brand-name">She Tiny Spark</div>
-  <div class="brand-tag">HANDMADE JEWELRY</div>
- </div>
- <div class="header-actions">
-  <button class="icon-btn" aria-label="Wishlist" onclick="showPage('wishlist')">♡<span id="wishCount" style="font-size:10px"></span></button>
-  <button class="bag-btn" aria-label="Shopping bag" onclick="showPage('cart')">♧ <span class="count" id="bagCount">0</span></button>
- </div>
+  <img src="logo_black_white.png" class="logo" alt="She Tiny Spark">
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Search" onclick="focusSearch()">⌕</button>
+    <button class="icon-btn" aria-label="Wishlist" onclick="showPage('wishlist')">♡</button>
+    <button class="bag-btn" aria-label="Shopping bag" onclick="showPage('cart')">
+      ♧ <span class="count" id="bagCount">0</span>
+    </button>
+  </div>
 </header>
 
-<nav class="top-nav">
- <button onclick="showPage('home')">HOME</button>
- <button onclick="goShop()">SHOP ALL</button>
- <button onclick="goCategories()">CATEGORIES</button>
- <button onclick="goJustIn()">JUST IN</button>
- <button onclick="goSale()">SALE</button>
-</nav>
-
+<!-- HOME -->
 <section class="page active" id="homePage">
- <div class="hero">
-  <div class="hero-kicker">YOUR LITTLE STYLE CORNER</div>
-  <h1>Small things.<br><em>Big sparkle.</em></h1>
-  <p>Discover cute accessories and handmade little details made to brighten your everyday.</p>
-  <div class="hero-bottom">
-   <button class="shop-now" onclick="goShop()">SHOP NOW ↗</button>
-   <span class="hero-note">Made for your kind of pretty.</span>
+  <div class="hero">
+    <div class="hero-kicker">YOUR LITTLE STYLE CORNER</div>
+    <h1>Small things.<br><em>Big sparkle.</em></h1>
+    <p>Discover cute accessories and handmade little details made to brighten your everyday.</p>
+    <div class="hero-bottom">
+      <button class="shop-now" onclick="goShop()">SHOP NOW ↗</button>
+      <span class="hero-note">Made for your kind of pretty.</span>
+    </div>
+    <div class="hero-sticker">a little<br>extra lovely ♡</div>
   </div>
-  <div class="hero-sticker">a little<br>extra lovely ♡</div>
- </div>
 
- <div id="categoriesSection">
-  <div class="section-head"><h2>Shop categories</h2><span>FIND YOUR FAVOURITE</span></div>
+  <div class="section-head">
+    <h2>Shop categories</h2><span>FIND YOUR FAVOURITE</span>
+  </div>
+
   <div class="categories">
-   <button class="category" onclick="filterCategory('Hair Clips')"><span class="cat-icon">🎀</span><span class="cat-name">Hair Clips</span></button>
-   <button class="category" onclick="filterCategory('Barrette Clips')"><span class="cat-icon">✧</span><span class="cat-name">Barrette Clips</span></button>
-   <button class="category" onclick="filterCategory('Keychains')"><span class="cat-icon">♡</span><span class="cat-name">Keychains</span></button>
-   <button class="category" onclick="filterCategory('Spectacle Holders')"><span class="cat-icon">⌁</span><span class="cat-name">Spectacle Holders</span></button>
-   <button class="category" onclick="filterCategory('Necklaces')"><span class="cat-icon">◇</span><span class="cat-name">Necklaces</span></button>
-   <button class="category" onclick="filterCategory('Page Holders')"><span class="cat-icon">▤</span><span class="cat-name">Page Holders</span></button>
+    <button class="category" onclick="filterCategory('Hair Clips')"><span class="cat-icon">🎀</span><span class="cat-name">Hair Clips</span></button>
+    <button class="category" onclick="filterCategory('Barrette Clips')"><span class="cat-icon">✧</span><span class="cat-name">Barrettes</span></button>
+    <button class="category" onclick="filterCategory('Keychains')"><span class="cat-icon">♡</span><span class="cat-name">Keychains</span></button>
+    <button class="category" onclick="filterCategory('Spectacle Holders')"><span class="cat-icon">⌁</span><span class="cat-name">Glasses Holders</span></button>
+    <button class="category" onclick="filterCategory('Necklaces')"><span class="cat-icon">◇</span><span class="cat-name">Necklaces</span></button>
+    <button class="category" onclick="filterCategory('Page Holders')"><span class="cat-icon">▤</span><span class="cat-name">Page Holders</span></button>
   </div>
- </div>
 
- <div class="search"><input id="searchInput" type="search" placeholder="Search your little favourite..." oninput="renderProducts()"></div>
- <div class="filters">
-  <button class="filter active" onclick="filterCategory('All',this)">All</button>
-  <button class="filter" onclick="filterCategory('Hair Clips',this)">Hair Clips</button>
-  <button class="filter" onclick="filterCategory('Barrette Clips',this)">Barrettes</button>
-  <button class="filter" onclick="filterCategory('Keychains',this)">Keychains</button>
-  <button class="filter" onclick="filterCategory('Spectacle Holders',this)">Glasses Holders</button>
-  <button class="filter" onclick="filterCategory('Necklaces',this)">Necklaces</button>
-  <button class="filter" onclick="filterCategory('Page Holders',this)">Page Holders</button>
- </div>
- <div class="section-head"><h2 id="productHeading">Little favourites</h2><span>MADE FOR YOU ♡</span></div>
- <div class="product-grid" id="productGrid"></div>
+  <div class="search">
+    <input id="searchInput" type="search" placeholder="Search your little favourite..." oninput="renderProducts()">
+  </div>
+
+  <div class="filters">
+    <button class="filter active" onclick="filterCategory('All',this)">All</button>
+    <button class="filter" onclick="filterCategory('Hair Clips',this)">Hair Clips</button>
+    <button class="filter" onclick="filterCategory('Barrette Clips',this)">Barrettes</button>
+    <button class="filter" onclick="filterCategory('Keychains',this)">Keychains</button>
+    <button class="filter" onclick="filterCategory('Spectacle Holders',this)">Glasses Holders</button>
+    <button class="filter" onclick="filterCategory('Necklaces',this)">Necklaces</button>
+    <button class="filter" onclick="filterCategory('Page Holders',this)">Page Holders</button>
+  </div>
+
+  <div class="section-head"><h2>Little favourites</h2><span>MADE FOR YOU ♡</span></div>
+  <div class="product-grid" id="productGrid"></div>
 </section>
 
+<!-- PRODUCT DETAILS -->
 <section class="page" id="detailPage">
- <button class="back" onclick="showPage('home')">←</button>
- <img id="detailImage" class="detail-img" src="" alt="">
- <h1 id="detailName" class="detail-name"></h1>
- <div id="detailPrice" class="detail-price"></div>
- <p id="detailDesc" class="detail-desc"></p>
- <button class="primary-btn detail-add" onclick="addCurrentProduct()">ADD TO BAG ♡</button>
+  <button class="back" onclick="showPage('home')">←</button>
+  <img id="detailImage" class="detail-img" src="" alt="">
+  <h1 id="detailName" class="detail-name"></h1>
+  <div id="detailPrice" class="detail-price"></div>
+  <p id="detailDesc" class="detail-desc"></p>
+  <button class="primary-btn detail-add" onclick="addCurrentProduct()">ADD TO BAG ♡</button>
 </section>
 
+<!-- WISHLIST -->
 <section class="page" id="wishlistPage">
- <h1 class="page-title">Your Wishlist ♡</h1>
- <div id="wishlistItems"></div>
+  <h1 class="page-title">Your Wishlist ♡</h1>
+  <div id="wishlistItems"></div>
 </section>
 
+<!-- CART -->
 <section class="page" id="cartPage">
- <h1 class="page-title">Your Bag ♧</h1>
- <div id="cartItems"></div>
- <div id="cartSummary"></div>
+  <h1 class="page-title">Your Bag ♧</h1>
+  <div id="cartItems"></div>
+  <div id="cartSummary"></div>
 </section>
 
+<!-- ACCOUNT -->
 <section class="page" id="profilePage">
- <h1 class="page-title">My Account</h1>
- <div class="empty"><div class="empty-icon">♡</div><h2>She Tiny Spark</h2>
- <p style="margin-top:8px">Little things, big sparkle.</p>
- <p style="margin-top:12px">Orders placed: <strong id="orderCount">0</strong></p></div>
+  <h1 class="page-title">My Account</h1>
+  <div class="empty">
+    <div class="empty-icon">♡</div>
+    <h2>She Tiny Spark</h2>
+    <p style="margin-top:8px">Little things, big sparkle.</p>
+    <p style="margin-top:12px">Orders placed: <strong id="orderCount">0</strong></p>
+  </div>
 </section>
 
+<!-- CHECKOUT -->
 <section class="page" id="checkoutPage">
- <button class="back" onclick="showPage('cart')">←</button>
- <h1 class="page-title">Almost yours!</h1>
- <div class="form-group"><label for="customerName">Your name *</label><input id="customerName" autocomplete="name" placeholder="Enter your name"></div>
- <div class="form-group"><label for="customerPhone">WhatsApp / phone *</label><input id="customerPhone" type="tel" autocomplete="tel" placeholder="03XXXXXXXXX"></div>
- <div class="form-group"><label for="customerEmail">Email (optional)</label><input id="customerEmail" type="email" autocomplete="email" placeholder="Your email"></div>
- <div class="form-group"><label for="customerAddress">Complete delivery address *</label><textarea id="customerAddress" autocomplete="street-address" placeholder="House, street, area, city"></textarea></div>
- <button class="whatsapp-btn" onclick="placeOrder()">ORDER ON WHATSAPP ↗</button>
+  <button class="back" onclick="showPage('cart')">←</button>
+  <h1 class="page-title">Almost yours!</h1>
+  <div class="form-group"><label for="customerName">Your name *</label><input id="customerName" autocomplete="name" placeholder="Enter your name"></div>
+  <div class="form-group"><label for="customerPhone">WhatsApp / phone *</label><input id="customerPhone" type="tel" autocomplete="tel" placeholder="03XXXXXXXXX"></div>
+  <div class="form-group"><label for="customerEmail">Email (optional)</label><input id="customerEmail" type="email" autocomplete="email" placeholder="Your email"></div>
+  <div class="form-group"><label for="customerAddress">Complete delivery address *</label><textarea id="customerAddress" autocomplete="street-address" placeholder="House, street, area, city"></textarea></div>
+  <button class="whatsapp-btn" onclick="placeOrder()">ORDER ON WHATSAPP ↗</button>
 </section>
 
-<!-- POLICY PAGES -->
-<section class="page policy-page" id="aboutPage">
- <button class="back" onclick="showPage('home')">←</button>
- <h2>About She Tiny Spark</h2>
- <p>Welcome to She Tiny Spark — your little corner for cute accessories and handmade details.</p>
- <p>We believe little things can add a special sparkle to everyday life. Each design is chosen or handmade with care.</p>
- <p>Thank you for supporting our small business. ♡</p>
-</section>
-
-<section class="page policy-page" id="contactPage">
- <button class="back" onclick="showPage('home')">←</button>
- <h2>Contact Us</h2>
- <p>Questions about a product or order? We'd love to hear from you.</p>
- <p>Message us on WhatsApp or Instagram using the links below.</p>
- <a class="whatsapp-link" href="https://wa.me/923704751306" target="_blank" rel="noopener">CHAT ON WHATSAPP ↗</a>
-</section>
-
-<section class="page policy-page" id="privacyPage">
- <button class="back" onclick="showPage('home')">←</button>
- <h2>Privacy Policy</h2>
- <p>We use the information you provide, such as your name, phone number and delivery address, to process and deliver your order.</p>
- <p>Your order details are prepared for you to send to us through WhatsApp. Please do not provide information that is not needed for your order.</p>
- <p>Your cart and wishlist may be saved in your browser on your device.</p>
-</section>
-
-<section class="page policy-page" id="termsPage">
- <button class="back" onclick="showPage('home')">←</button>
- <h2>Terms &amp; Conditions</h2>
- <p>By placing an order, you confirm that your contact and delivery details are correct.</p>
- <p>Product colours may look slightly different on different screens. Handmade items may have small variations.</p>
- <p>Orders are confirmed through WhatsApp. Prices and delivery charges should be confirmed before payment or dispatch.</p>
-</section>
-
-<section class="page policy-page" id="returnsPage">
- <button class="back" onclick="showPage('home')">←</button>
- <h2>Return &amp; Exchange Policy</h2>
- <p>Please check your parcel carefully when it arrives.</p>
- <h3>Report a problem within 48 hours</h3>
- <p>If you receive a damaged, defective or incorrect item, contact us within 48 hours of receiving your parcel.</p>
- <h3>Unboxing video is required</h3>
- <p>Please record a clear, continuous unboxing video from the sealed parcel to the product, showing the parcel and any issue. This helps us review damage or missing-item claims.</p>
- <p>Contact us on WhatsApp or Instagram with your order details and video so we can review your concern.</p>
- <p><strong>Note:</strong> Please confirm the final return or exchange decision with us before sending any item back. This is a starter policy template; update it to match the exact policy you decide to offer.</p>
-</section>
-
-<section class="page policy-page" id="disclaimerPage">
- <button class="back" onclick="showPage('home')">←</button>
- <h2>Disclaimer</h2>
- <p>Product photos are for illustration. Colours and small details may vary due to lighting, screens and the handmade nature of some products.</p>
- <p>Prices, availability and delivery details are subject to confirmation when your order is placed.</p>
+<!-- POLICY / INFORMATION PAGES -->
+<section class="page" id="infoPage">
+  <button class="back" onclick="showPage('home')">←</button>
+  <h1 class="page-title" id="infoTitle">Information</h1>
+  <div class="policy-content" id="infoContent"></div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
- <h3>USEFUL LINKS</h3>
- <div class="footer-links">
-  <a href="#shop" onclick="goShop();return false">Shop Online</a>
-  <a href="#contact" onclick="showPage('contact');return false">Contact Us</a>
-  <a href="#about" onclick="showPage('about');return false">About Us</a>
-  <a href="#privacy" onclick="showPage('privacy');return false">Privacy Policy</a>
-  <a href="#terms" onclick="showPage('terms');return false">Terms &amp; Conditions</a>
-  <a href="#returns" onclick="showPage('returns');return false">Return &amp; Exchange Policy</a>
-  <a href="#disclaimer" onclick="showPage('disclaimer');return false">Disclaimer</a>
- </div>
+<footer class="site-footer">
 
- <h3>CONNECT WITH US</h3>
- <p>Follow us for new designs, updates and a little inspiration.</p>
- <div class="socials">
-  <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
-  <a class="social" href="https://wa.me/923704751306" target="_blank" rel="noopener" aria-label="WhatsApp">wa</a>
-  <a class="social" href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok">♪</a>
-  <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
- </div>
+  <h2 class="footer-heading">USEFUL LINKS</h2>
+  <div class="footer-links">
+    <a href="#shop" onclick="goShop();return false;">Shop Online</a>
+    <a href="#contact" onclick="showInfo('Contact Us');return false;">Contact Us</a>
+    <a href="#about" onclick="showInfo('About Us');return false;">About Us</a>
+    <a href="#privacy" onclick="showInfo('Privacy Policy');return false;">Privacy Policy</a>
+    <a href="#terms" onclick="showInfo('Terms & Conditions');return false;">Terms &amp; Conditions</a>
+    <a href="#returns" onclick="showInfo('Return & Exchange Policy');return false;">Return &amp; Exchange Policy</a>
+    <a href="#disclaimer" onclick="showInfo('Disclaimer');return false;">Disclaimer</a>
+  </div>
 
- <div class="footer-contact">
-  <h3>CONTACT</h3>
-  <p>Questions or order queries?</p>
-  <p>Message us on WhatsApp or Instagram.</p>
-  <a class="whatsapp-link" href="https://wa.me/923704751306" target="_blank" rel="noopener">CHAT ON WHATSAPP</a>
- </div>
+  <h2 class="footer-heading">CONNECT WITH US</h2>
+  <p class="footer-description">Follow us for new designs, updates and a little inspiration.</p>
 
- <div class="newsletter">
-  <h3>JOIN OUR NEWSLETTER</h3>
-  <p>Get updates about new designs and little offers.</p>
-  <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-   <input id="newsletterEmail" type="email" placeholder="Your email address" required aria-label="Your email address">
-   <button type="submit">JOIN</button>
-  </form>
- </div>
+  <!-- ONLY INSTAGRAM, WHATSAPP, TIKTOK & YOUTUBE -->
+  <div class="social-icons">
 
- <div class="footer-bottom">
-  <p>© 2026 She Tiny Spark. All rights reserved.</p>
-  <p>Handmade with care ♡</p>
- </div>
+    <a class="social-icon" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="17.5" cy="6.5" r="1.2"/>
+      </svg>
+    </a>
+
+    <a class="social-icon" href="https://wa.me/923704751306" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9.5 9.5 0 0 1-4.8-1.3l-.4-.2-3.5.9.9-3.4-.2-.4A9.5 9.5 0 1 1 12 21Zm5.2-7.1c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.3-1.6-1.5-1.9-.1-.3 0-.4.2-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-1-2.1-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.2.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4-.1-.2-.3-.3-.6-.4Z"/>
+      </svg>
+    </a>
+
+    <a class="social-icon" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M19.6 7.2a6.8 6.8 0 0 1-4.1-1.4v8.1a6.2 6.2 0 1 1-6.2-6.2c.4 0 .8 0 1.2.1v3.5a2.8 2.8 0 1 0 1.9 2.7V1.5h3.2c.3 2.6 1.8 4.3 4 4.8v3.2Z"/>
+      </svg>
+    </a>
+
+    <a class="social-icon" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/>
+      </svg>
+    </a>
+
+  </div>
+
+  <div class="footer-contact" id="contact">
+    <h2 class="footer-heading">CONTACT</h2>
+    <p>Questions or order queries?<br>Message us on WhatsApp or Instagram.</p>
+    <a class="footer-whatsapp" href="https://wa.me/923704751306" target="_blank" rel="noopener noreferrer">CHAT ON WHATSAPP ↗</a>
+  </div>
+
+  <div class="newsletter">
+    <h2 class="footer-heading">JOIN OUR NEWSLETTER</h2>
+    <p>Get updates about new designs and little surprises.</p>
+    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+      <input type="email" id="newsletterEmail" placeholder="Your email address" aria-label="Your email address" required>
+      <button type="submit">JOIN</button>
+    </form>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 She Tiny Spark. All rights reserved.</span>
+    <span>Handmade with care ♡</span>
+  </div>
 </footer>
 
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
- <button class="nav active" id="navHome" onclick="showPage('home')">⌂<span>HOME</span></button>
- <button class="nav" id="navShop" onclick="goShop()">◇<span>SHOP</span></button>
- <button class="nav" id="navWishlist" onclick="showPage('wishlist')">♡<span>WISHLIST</span></button>
- <button class="nav" id="navBag" onclick="showPage('cart')">♧<span>CART</span></button>
- <button class="nav" id="navProfile" onclick="showPage('profile')">☺<span>MY ACCOUNT</span></button>
+  <button class="nav active" id="navHome" onclick="showPage('home')">⌂<span>HOME</span></button>
+  <button class="nav" id="navShop" onclick="goShop()">◇<span>SHOP</span></button>
+  <button class="nav" id="navWishlist" onclick="showPage('wishlist')">♡<span>WISHLIST</span></button>
+  <button class="nav" id="navBag" onclick="showPage('cart')">♧<span>CART</span></button>
+  <button class="nav" id="navProfile" onclick="showPage('profile')">☻<span>MY ACCOUNT</span></button>
 </nav>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </div>
 
 <script>
-const products=[
-{id:1,name:"Sweet Bow Clip",category:"Hair Clips",price:299,image:"https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=700&q=85",desc:"A cute accessory for everyday looks."},
-{id:2,name:"Pearl Barrette",category:"Barrette Clips",price:399,image:"https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=700&q=85",desc:"A delicate finishing touch for your hair."},
-{id:3,name:"Tiny Charm Keychain",category:"Keychains",price:299,image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=85",desc:"A little charm for your favourite bag."},
-{id:4,name:"Pretty Glasses Holder",category:"Spectacle Holders",price:449,image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=85",desc:"A pretty everyday accessory for your glasses."},
-{id:5,name:"Tiny Charm Necklace",category:"Necklaces",price:499,image:"https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=700&q=85",desc:"Simple, delicate and easy to style."},
-{id:6,name:"Little Flower Clip",category:"Hair Clips",price:299,image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=85",desc:"A playful detail for your everyday style."},
-{id:7,name:"Ribbon Barrette",category:"Barrette Clips",price:349,image:"https://images.unsplash.com/photo-1635767798638-3665a7e4a3c2?auto=format&fit=crop&w=700&q=85",desc:"A sweet and simple hair accessory."},
-{id:8,name:"Little Love Charm",category:"Keychains",price:349,image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=85",desc:"A cute little gift for yourself or a friend."},
-{id:9,name:"Pearl Glasses Chain",category:"Spectacle Holders",price:499,image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=85",desc:"Keep your glasses close in style."},
-{id:10,name:"Everyday Necklace",category:"Necklaces",price:549,image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=85",desc:"A minimal piece for daily wear."},
-{id:11,name:"Cute Page Holder",category:"Page Holders",price:299,image:"https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=700&q=85",desc:"A little companion for your reading time."},
-{id:12,name:"Floral Page Clip",category:"Page Holders",price:349,image:"https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=85",desc:"Keep your place while reading in style."}
+const products = [
+  {id:1,name:"Sweet Bow Clip",category:"Hair Clips",price:299,image:"https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=700&q=85",desc:"A cute accessory for everyday looks."},
+  {id:2,name:"Pearl Barrette",category:"Barrette Clips",price:399,image:"https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=700&q=85",desc:"A delicate finishing touch for your hair."},
+  {id:3,name:"Tiny Charm Keychain",category:"Keychains",price:299,image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=85",desc:"A little charm for your favourite bag."},
+  {id:4,name:"Pretty Glasses Holder",category:"Spectacle Holders",price:449,image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=85",desc:"A pretty everyday accessory for your glasses."},
+  {id:5,name:"Tiny Charm Necklace",category:"Necklaces",price:499,image:"https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=700&q=85",desc:"Simple, delicate and easy to style."},
+  {id:6,name:"Little Flower Clip",category:"Hair Clips",price:299,image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=85",desc:"A playful detail for your everyday style."},
+  {id:7,name:"Ribbon Barrette",category:"Barrette Clips",price:349,image:"https://images.unsplash.com/photo-1635767798638-3665a7e4a3c2?auto=format&fit=crop&w=700&q=85",desc:"A sweet and simple hair accessory."},
+  {id:8,name:"Little Love Charm",category:"Keychains",price:349,image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=85",desc:"A cute little gift for yourself or a friend."},
+  {id:9,name:"Pearl Glasses Chain",category:"Spectacle Holders",price:499,image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=85",desc:"Keep your glasses close in style."},
+  {id:10,name:"Everyday Necklace",category:"Necklaces",price:549,image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=85",desc:"A minimal piece for daily wear."},
+  {id:11,name:"Cute Page Holder",category:"Page Holders",price:299,image:"https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=700&q=85",desc:"A little companion for your reading time."},
+  {id:12,name:"Floral Page Clip",category:"Page Holders",price:349,image:"https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=85",desc:"Keep your place while reading in style."}
 ];
 
-let category="All",currentProduct=null;
-let cart=JSON.parse(localStorage.getItem("sts_cart")||"[]");
-let wishlist=JSON.parse(localStorage.getItem("sts_wishlist")||"[]");
+let category = "All";
+let currentProduct = null;
+let cart = JSON.parse(localStorage.getItem("sts_cart") || "[]");
+let wishlist = JSON.parse(localStorage.getItem("sts_wishlist") || "[]");
 let toastTimer;
-setTimeout(()=>document.getElementById("intro").classList.add("hide"),3600);
 
-function money(n){return "Rs "+Number(n).toLocaleString("en-PK")}
+setTimeout(() => document.getElementById("intro").classList.add("hide"), 3600);
 
-function renderProducts(){
- const grid=document.getElementById("productGrid");
- const search=document.getElementById("searchInput").value.toLowerCase().trim();
- const list=products.filter(p=>(category==="All"||p.category===category)&&(!search||(p.name+" "+p.category).toLowerCase().includes(search)));
- if(!list.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1">No products found. Try another search.</div>';return}
- grid.innerHTML=list.map(p=>`
- <article class="product-card"><div class="image-wrap">
- <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" onclick="openProduct(${p.id})">
- <button class="heart" aria-label="Toggle wishlist" onclick="toggleWishlist(${p.id})">${wishlist.includes(p.id)?"♥":"♡"}</button>
- </div><div class="product-info">
- <div class="product-name" onclick="openProduct(${p.id})">${p.name}</div>
- <div class="product-desc">${p.desc}</div>
- <div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add-btn" onclick="addToCart(${p.id})">ADD +</button></div>
- </div></article>`).join("");
+function money(n) {
+  return "Rs " + Number(n).toLocaleString("en-PK");
 }
-function filterCategory(value,btn){
- category=value;
- document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
- if(btn)btn.classList.add("active");
- else document.querySelectorAll(".filter").forEach(b=>{
-  const label=value==="Spectacle Holders"?"Glasses Holders":value==="Barrette Clips"?"Barrettes":value;
-  if(b.textContent.trim()===label)b.classList.add("active");
- });
- document.getElementById("searchInput").value="";
- renderProducts();
- showPage("home");
- document.getElementById("productGrid").scrollIntoView({behavior:"smooth",block:"start"});
+
+function renderProducts() {
+  const grid = document.getElementById("productGrid");
+  const search = document.getElementById("searchInput").value.toLowerCase().trim();
+  const list = products.filter(p =>
+    (category === "All" || p.category === category) &&
+    (!search || (p.name + " " + p.category).toLowerCase().includes(search))
+  );
+
+  if (!list.length) {
+    grid.innerHTML = '<div class="empty" style="grid-column:1/-1">No products found. Try another search.</div>';
+    return;
+  }
+
+  grid.innerHTML = list.map(p => `
+    <article class="product-card">
+      <div class="image-wrap">
+        <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" onclick="openProduct(${p.id})">
+        <button class="heart" aria-label="Toggle wishlist" onclick="toggleWishlist(${p.id})">${wishlist.includes(p.id) ? "♥" : "♡"}</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name" onclick="openProduct(${p.id})">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-bottom">
+          <span class="price">${money(p.price)}</span>
+          <button class="add-btn" onclick="addToCart(${p.id})">ADD +</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
 }
-function openProduct(id){
- currentProduct=products.find(p=>p.id===id);if(!currentProduct)return;
- document.getElementById("detailImage").src=currentProduct.image;
- document.getElementById("detailImage").alt=currentProduct.name;
- document.getElementById("detailName").textContent=currentProduct.name;
- document.getElementById("detailPrice").textContent=money(currentProduct.price);
- document.getElementById("detailDesc").textContent=currentProduct.desc;
- showPage("detail");
+
+function filterCategory(value, btn) {
+  category = value;
+  document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+
+  if (btn) {
+    btn.classList.add("active");
+  } else {
+    document.querySelectorAll(".filter").forEach(b => {
+      const label = value === "Spectacle Holders" ? "Glasses Holders" :
+                    value === "Barrette Clips" ? "Barrettes" : value;
+      if (b.textContent.trim() === label) b.classList.add("active");
+    });
+  }
+
+  const search = document.getElementById("searchInput");
+  if (search) search.value = "";
+  renderProducts();
+  document.getElementById("productGrid").scrollIntoView({behavior:"smooth",block:"start"});
 }
-function addCurrentProduct(){if(currentProduct)addToCart(currentProduct.id)}
-function addToCart(id){
- const p=products.find(x=>x.id===id);if(!p)return;
- cart.push({...p,cartId:Date.now()+"-"+Math.random().toString(36).slice(2)});
- localStorage.setItem("sts_cart",JSON.stringify(cart));
- updateBag();renderCart();toast("Added to your bag ♡");
+
+function openProduct(id) {
+  currentProduct = products.find(p => p.id === id);
+  if (!currentProduct) return;
+
+  document.getElementById("detailImage").src = currentProduct.image;
+  document.getElementById("detailImage").alt = currentProduct.name;
+  document.getElementById("detailName").textContent = currentProduct.name;
+  document.getElementById("detailPrice").textContent = money(currentProduct.price);
+  document.getElementById("detailDesc").textContent = currentProduct.desc;
+  showPage("detail");
 }
-function updateBag(){
- document.getElementById("bagCount").textContent=cart.length;
- document.getElementById("wishCount").textContent=wishlist.length||"";
+
+function addCurrentProduct() {
+  if (currentProduct) addToCart(currentProduct.id);
 }
-function renderCart(){
- const box=document.getElementById("cartItems"),summary=document.getElementById("cartSummary");
- if(!cart.length){
-  box.innerHTML='<div class="empty"><div class="empty-icon">♧</div><h3>Your bag is waiting</h3><p style="margin-top:8px">Find a little something you love.</p></div>';summary.innerHTML="";return;
- }
- box.innerHTML=cart.map(item=>`<div class="cart-item"><img src="${item.image}" alt="${item.name}"><div class="cart-info"><strong>${item.name}</strong><span>${money(item.price)}</span></div><button class="remove" aria-label="Remove item" onclick="removeCart('${item.cartId}')">×</button></div>`).join("");
- const subtotal=cart.reduce((s,p)=>s+p.price,0);
- summary.innerHTML=`<div class="summary"><div class="summary-row"><span>Subtotal</span><strong>${money(subtotal)}</strong></div><div class="summary-row"><span>Delivery</span><strong>Rs 200</strong></div><div class="summary-row total"><span>Total</span><strong>${money(subtotal+200)}</strong></div><button class="primary-btn" onclick="showPage('checkout')">CONTINUE TO ORDER ↗</button></div>`;
+
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  cart.push({...p,cartId:Date.now() + "-" + Math.random().toString(36).slice(2)});
+  localStorage.setItem("sts_cart",JSON.stringify(cart));
+  updateBag();
+  renderCart();
+  toast("Added to your bag ♡");
 }
-function removeCart(id){
- cart=cart.filter(item=>String(item.cartId)!==String(id));
- localStorage.setItem("sts_cart",JSON.stringify(cart));updateBag();renderCart();toast("Removed from bag");
+
+function updateBag() {
+  document.getElementById("bagCount").textContent = cart.length;
 }
-function toggleWishlist(id){
- wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];
- localStorage.setItem("sts_wishlist",JSON.stringify(wishlist));
- renderProducts();renderWishlist();updateBag();
- toast(wishlist.includes(id)?"Saved to wishlist ♡":"Removed from wishlist");
+
+function renderCart() {
+  const box = document.getElementById("cartItems");
+  const summary = document.getElementById("cartSummary");
+
+  if (!cart.length) {
+    box.innerHTML = '<div class="empty"><div class="empty-icon">♧</div><h3>Your bag is waiting</h3><p style="margin-top:8px">Find a little something you love.</p></div>';
+    summary.innerHTML = "";
+    return;
+  }
+
+  box.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <img src="${item.image}" alt="${item.name}">
+      <div class="cart-info"><strong>${item.name}</strong><span>${money(item.price)}</span></div>
+      <button class="remove" aria-label="Remove ${item.name}" onclick="removeCart('${item.cartId}')">×</button>
+    </div>
+  `).join("");
+
+  const subtotal = cart.reduce((s,p) => s + p.price,0);
+  summary.innerHTML = `
+    <div class="summary">
+      <div class="summary-row"><span>Subtotal</span><strong>${money(subtotal)}</strong></div>
+      <div class="summary-row"><span>Delivery</span><strong>Rs 200</strong></div>
+      <div class="summary-row total"><span>Total</span><strong>${money(subtotal+200)}</strong></div>
+      <button class="primary-btn" onclick="showPage('checkout')">CONTINUE TO ORDER ↗</button>
+    </div>
+  `;
 }
-function renderWishlist(){
- const box=document.getElementById("wishlistItems");
- const items=products.filter(p=>wishlist.includes(p.id));
- if(!items.length){box.innerHTML='<div class="empty"><div class="empty-icon">♡</div><h3>Your wishlist is empty</h3><p style="margin-top:8px">Tap the heart on anything you love.</p></div>';return}
- box.innerHTML=items.map(p=>`<div class="cart-item"><img src="${p.image}" alt="${p.name}"><div class="cart-info"><strong>${p.name}</strong><span>${money(p.price)}</span></div><button class="remove" onclick="toggleWishlist(${p.id})" aria-label="Remove from wishlist">♥</button><button class="add-btn" onclick="addToCart(${p.id})">ADD +</button></div>`).join("");
+
+function removeCart(id) {
+  cart = cart.filter(item => String(item.cartId) !== String(id));
+  localStorage.setItem("sts_cart",JSON.stringify(cart));
+  updateBag();
+  renderCart();
+  toast("Removed from bag");
 }
-function showPage(page){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- const target=document.getElementById(page+"Page");if(target)target.classList.add("active");
- document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));
- const ids={home:"navHome",wishlist:"navWishlist",cart:"navBag",profile:"navProfile"};
- if(ids[page])document.getElementById(ids[page]).classList.add("active");
- if(page==="cart")renderCart();
- if(page==="wishlist")renderWishlist();
- if(page==="profile")document.getElementById("orderCount").textContent=localStorage.getItem("sts_orders")||"0";
- window.scrollTo({top:0,behavior:"smooth"});
+
+function toggleWishlist(id) {
+  wishlist = wishlist.includes(id) ? wishlist.filter(x => x !== id) : [...wishlist,id];
+  localStorage.setItem("sts_wishlist",JSON.stringify(wishlist));
+  renderProducts();
+  renderWishlist();
+  toast(wishlist.includes(id) ? "Saved to wishlist ♡" : "Removed from wishlist");
 }
-function goShop(){
- showPage("home");
- setTimeout(()=>{document.getElementById("searchInput").focus();document.getElementById("searchInput").scrollIntoView({behavior:"smooth",block:"center"});},120);
+
+function renderWishlist() {
+  const box = document.getElementById("wishlistItems");
+  const items = products.filter(p => wishlist.includes(p.id));
+
+  if (!items.length) {
+    box.innerHTML = '<div class="empty"><div class="empty-icon">♡</div><h3>Your wishlist is empty</h3><p style="margin-top:8px">Tap the heart on anything you love.</p></div>';
+    return;
+  }
+
+  box.innerHTML = items.map(p => `
+    <div class="cart-item">
+      <img src="${p.image}" alt="${p.name}">
+      <div class="cart-info"><strong>${p.name}</strong><span>${money(p.price)}</span></div>
+      <button class="remove" aria-label="Remove from wishlist" onclick="toggleWishlist(${p.id})">♥</button>
+      <button class="add-btn" onclick="addToCart(${p.id})">ADD +</button>
+    </div>
+  `).join("");
 }
-function goCategories(){showPage("home");document.getElementById("categoriesSection").scrollIntoView({behavior:"smooth"})}
-function goJustIn(){filterCategory("All");document.getElementById("productHeading").textContent="Just In"}
-function goSale(){filterCategory("All");document.getElementById("productHeading").textContent="Sale"}
-function placeOrder(){
- if(!cart.length)return toast("Your bag is empty");
- const name=document.getElementById("customerName").value.trim();
- const phone=document.getElementById("customerPhone").value.trim();
- const email=document.getElementById("customerEmail").value.trim();
- const address=document.getElementById("customerAddress").value.trim();
- if(!name||!phone||!address)return toast("Please fill in the required details");
- const subtotal=cart.reduce((s,p)=>s+p.price,0),total=subtotal+200;
- const orderNo=Number(localStorage.getItem("sts_order_no")||0)+1;
- const items=cart.map(p=>`• ${p.name} — ${money(p.price)}`).join("\n");
- const message=`✨ SHE TINY SPARK ✨\n\nOrder: STS-${String(orderNo).padStart(3,"0")}\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email||"Not provided"}\nAddress: ${address}\n\nItems:\n${items}\n\nSubtotal: ${money(subtotal)}\nDelivery: Rs 200\nTOTAL: ${money(total)}\n\nThank you for shopping with She Tiny Spark ♡`;
- const whatsappNumber="923704751306";
- const url="https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(message);
- const opened=window.open(url,"_blank");
- if(!opened){window.location.href=url}
- localStorage.setItem("sts_order_no",String(orderNo));
- localStorage.setItem("sts_orders",String(Number(localStorage.getItem("sts_orders")||0)+1));
- cart=[];localStorage.setItem("sts_cart",JSON.stringify(cart));
- updateBag();renderCart();toast("Order message prepared ♡");
+
+function showPage(page) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  const target = document.getElementById(page + "Page");
+  if (target) target.classList.add("active");
+
+  document.querySelectorAll(".nav").forEach(n => n.classList.remove("active"));
+  const ids = {home:"navHome",wishlist:"navWishlist",cart:"navBag",profile:"navProfile"};
+  if (ids[page]) document.getElementById(ids[page]).classList.add("active");
+
+  if (page === "cart") renderCart();
+  if (page === "wishlist") renderWishlist();
+  if (page === "profile") document.getElementById("orderCount").textContent = localStorage.getItem("sts_orders") || "0";
+
+  window.scrollTo({top:0,behavior:"smooth"});
 }
-function subscribeNewsletter(event){
- event.preventDefault();
- const email=document.getElementById("newsletterEmail").value.trim();
- if(!email)return;
- let list=JSON.parse(localStorage.getItem("sts_newsletter")||"[]");
- if(!list.includes(email)){list.push(email);localStorage.setItem("sts_newsletter",JSON.stringify(list))}
- document.getElementById("newsletterEmail").value="";
- toast("Thank you for joining ♡");
+
+function goShop() {
+  showPage("home");
+  setTimeout(() => {
+    document.getElementById("searchInput").focus();
+    document.getElementById("searchInput").scrollIntoView({behavior:"smooth",block:"center"});
+  },120);
 }
-function toast(message){
- const box=document.getElementById("toast");box.textContent=message;box.classList.add("show");
- clearTimeout(toastTimer);toastTimer=setTimeout(()=>box.classList.remove("show"),2200);
+
+function focusSearch() {
+  goShop();
 }
-renderProducts();renderWishlist();renderCart();updateBag();
+
+/* FOOTER INFORMATION PAGES */
+const infoPages = {
+  "About Us": `
+    <p>Welcome to She Tiny Spark, a little corner for handmade accessories and tiny details that make everyday style feel special.</p>
+    <p>Our collection includes hair accessories, keychains, spectacle holders, simple necklaces and page holders.</p>
+    <p>Thank you for supporting our small creative business.</p>
+  `,
+  "Contact Us": `
+    <p>Have a question about a product or your order?</p>
+    <p>Contact us through WhatsApp or Instagram using the social links on our website.</p>
+    <p>We will respond as soon as we can.</p>
+    <p><a href="https://wa.me/923704751306" target="_blank" rel="noopener noreferrer">Message us on WhatsApp ↗</a></p>
+  `,
+  "Privacy Policy": `
+    <p>We use the details you provide at checkout, such as your name, phone number and delivery address, to prepare your order.</p>
+    <p>Please do not submit information that is not needed to process your purchase.</p>
+    <p>Order details prepared through this website are sent to WhatsApp when you choose to place an order.</p>
+  `,
+  "Terms & Conditions": `
+    <p>By placing an order, you confirm that the contact and delivery details you provide are accurate.</p>
+    <p>Product colours may look slightly different depending on your screen. Handmade items may have small variations.</p>
+    <p>Prices, designs and availability may change. Your order is not confirmed until it has been reviewed with you.</p>
+    <p>Delivery is currently listed as Rs 200 and may need confirmation before dispatch.</p>
+  `,
+  "Return & Exchange Policy": `
+    <p>At She Tiny Spark, we want you to be happy with your order. Please read the following instructions before contacting us about a return or exchange.</p>
+    <h2>Report a problem within 48 hours</h2>
+    <p>If your parcel arrives damaged or you receive an incorrect item, contact us within 48 hours of receiving your parcel.</p>
+    <h2>Unboxing video required</h2>
+    <p>Please record a continuous unboxing video starting with the sealed parcel and showing the opening of the package and the item received. Keep the packaging until your issue has been reviewed.</p>
+    <p>Send your order details, clear photos if relevant, and the unboxing video through WhatsApp so we can review the issue.</p>
+    <p class="policy-note">Please contact us before sending any item back. A return or exchange is not confirmed until we have reviewed the request and agreed on the next steps.</p>
+    <p>Since accessories may be handmade, slight variations in colour or finish can occur. This policy should be reviewed and adjusted to match your actual business arrangements before you begin taking orders.</p>
+  `,
+  "Disclaimer": `
+    <p>Product photographs and descriptions are provided to help customers understand the items offered. Colours may vary slightly on different screens.</p>
+    <p>Product availability, prices and delivery details should be confirmed before an order is finalised.</p>
+  `
+};
+
+function showInfo(title) {
+  document.getElementById("infoTitle").textContent = title;
+  document.getElementById("infoContent").innerHTML = infoPages[title] || "<p>Information coming soon.</p>";
+  showPage("info");
+}
+
+/* DEMO NEWSLETTER FORM */
+function subscribeNewsletter(event) {
+  event.preventDefault();
+  const email = document.getElementById("newsletterEmail").value.trim();
+  if (!email) return;
+  toast("Thanks for your interest ♡");
+  event.target.reset();
+  // This demo form does not save or send email addresses.
+}
+
+function placeOrder() {
+  if (!cart.length) return toast("Your bag is empty");
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const email = document.getElementById("customerEmail").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+
+  if (!name || !phone || !address) return toast("Please fill in the required details");
+
+  const subtotal = cart.reduce((s,p) => s + p.price,0);
+  const total = subtotal + 200;
+  const orderNo = Number(localStorage.getItem("sts_order_no") || 0) + 1;
+  const items = cart.map(p => `• ${p.name} — ${money(p.price)}`).join("\n");
+
+  const message = `✨ SHE TINY SPARK ✨
+
+Order: STS-${String(orderNo).padStart(3,"0")}
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email || "Not provided"}
+Address: ${address}
+
+Items:
+${items}
+
+Subtotal: ${money(subtotal)}
+Delivery: Rs 200
+TOTAL: ${money(total)}
+
+Thank you for shopping with She Tiny Spark ♡`;
+
+  // Replace this with your correct WhatsApp number if needed.
+  const whatsappNumber = "923704751306";
+  const url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+
+  const opened = window.open(url,"_blank");
+
+  if (!opened) {
+    window.location.href = url;
+  }
+
+  localStorage.setItem("sts_order_no",String(orderNo));
+  localStorage.setItem("sts_orders",String(Number(localStorage.getItem("sts_orders") || 0) + 1));
+  cart = [];
+  localStorage.setItem("sts_cart",JSON.stringify(cart));
+  updateBag();
+  renderCart();
+  toast("Order message prepared ♡");
+}
+
+function toast(message) {
+  const box = document.getElementById("toast");
+  box.textContent = message;
+  box.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => box.classList.remove("show"),2200);
+}
+
+renderProducts();
+renderWishlist();
+renderCart();
+updateBag();
 </script>
+</div>
 </body>
 </html>
