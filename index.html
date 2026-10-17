@@ -500,27 +500,33 @@ font-size:10px;
 font-weight:800
 }
 
-/* PRODUCT DETAIL GALLERY */
+/* DETAIL GALLERY */
 
 .detail-gallery{
 position:relative;
-width:100%
+width:100%;
+background:#fff;
+border-radius:25px;
+overflow:hidden
 }
 
 .detail-img{
 display:block;
 width:100%;
-aspect-ratio:1;
-object-fit:cover;
-border-radius:25px
+height:auto;
+max-height:75vh;
+object-fit:contain;
+border-radius:25px;
+background:#fff;
+cursor:pointer
 }
 
 .gallery-arrow{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-width:40px;
-height:40px;
+width:44px;
+height:44px;
 border-radius:50%;
 background:#ffffffdd;
 color:#211b20;
@@ -557,6 +563,66 @@ padding:0
 .gallery-dot.active{
 background:#d34983;
 transform:scale(1.25)
+}
+
+/* FULL SCREEN PHOTO */
+
+.photo-modal{
+display:none;
+position:fixed;
+inset:0;
+z-index:20000;
+background:#000000ee;
+align-items:center;
+justify-content:center;
+padding:15px
+}
+
+.photo-modal.show{
+display:flex
+}
+
+.photo-modal img{
+max-width:100%;
+max-height:90vh;
+width:auto;
+height:auto;
+object-fit:contain;
+border-radius:10px
+}
+
+.photo-close{
+position:absolute;
+top:15px;
+right:15px;
+width:45px;
+height:45px;
+border-radius:50%;
+background:#fff;
+color:#211b20;
+font-size:28px;
+z-index:20002
+}
+
+.photo-modal-arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:45px;
+height:45px;
+border-radius:50%;
+background:#fff;
+color:#211b20;
+font-size:30px;
+z-index:20002
+}
+
+.photo-modal-left{
+left:15px
+}
+
+.photo-modal-right{
+right:15px
 }
 
 .detail-name{
@@ -1128,7 +1194,13 @@ aria-label="Previous photo"
 ‹
 </button>
 
-<img id="detailImage" class="detail-img" src="" alt="">
+<img
+id="detailImage"
+class="detail-img"
+src=""
+alt=""
+onclick="openFullPhoto()"
+>
 
 <button
 class="gallery-arrow gallery-right"
@@ -1141,6 +1213,46 @@ aria-label="Next photo"
 </div>
 
 <div id="galleryDots" class="gallery-dots"></div>
+
+
+<div
+class="photo-modal"
+id="photoModal"
+onclick="closeFullPhoto(event)"
+>
+
+<button
+class="photo-close"
+onclick="closeFullPhoto()"
+aria-label="Close photo"
+>
+×
+</button>
+
+<button
+class="photo-modal-arrow photo-modal-left"
+onclick="changeFullPhoto(-1,event)"
+aria-label="Previous photo"
+>
+‹
+</button>
+
+<img
+id="fullPhoto"
+src=""
+alt=""
+>
+
+<button
+class="photo-modal-arrow photo-modal-right"
+onclick="changeFullPhoto(1,event)"
+aria-label="Next photo"
+>
+›
+</button>
+
+</div>
+
 
 <h1 id="detailName" class="detail-name"></h1>
 
@@ -1542,7 +1654,7 @@ images:[
 "IMG-20261016-WA6081.jpg",
 "IMG-20261016-WA2845.jpg"
 ],
-desc:"A delicate shell necklace with a pearl detail, made for soft everyday styling."
+desc:"A delicate shell pearl necklace made for soft everyday styling. Customers can also choose a silver chain instead of the gold chain according to their personal preference."
 },
 
 {
@@ -1754,11 +1866,14 @@ detailImageIndex=0;
 
 renderDetailGallery();
 
-document.getElementById("detailName").textContent=currentProduct.name;
+document.getElementById("detailName").textContent=
+currentProduct.name;
 
-document.getElementById("detailPrice").textContent=money(currentProduct.price);
+document.getElementById("detailPrice").textContent=
+money(currentProduct.price);
 
-document.getElementById("detailDesc").textContent=currentProduct.desc;
+document.getElementById("detailDesc").textContent=
+currentProduct.desc;
 
 showPage("detail");
 
@@ -1769,17 +1884,23 @@ function renderDetailGallery(){
 
 if(!currentProduct)return;
 
-const images=currentProduct.images||[currentProduct.image];
+const images=
+currentProduct.images||[currentProduct.image];
 
-const image=document.getElementById("detailImage");
+const image=
+document.getElementById("detailImage");
 
-image.src=images[detailImageIndex];
+image.src=
+images[detailImageIndex];
 
-image.alt=currentProduct.name;
+image.alt=
+currentProduct.name;
 
-const dots=document.getElementById("galleryDots");
+const dots=
+document.getElementById("galleryDots");
 
-dots.innerHTML=images.map((img,index)=>`
+dots.innerHTML=
+images.map((img,index)=>`
 
 <button
 class="gallery-dot ${index===detailImageIndex?"active":""}"
@@ -1796,7 +1917,8 @@ function setDetailImage(index){
 
 if(!currentProduct)return;
 
-const images=currentProduct.images||[currentProduct.image];
+const images=
+currentProduct.images||[currentProduct.image];
 
 detailImageIndex=index;
 
@@ -1813,7 +1935,56 @@ renderDetailGallery();
 
 function changeDetailImage(direction){
 
-setDetailImage(detailImageIndex+direction);
+setDetailImage(
+detailImageIndex+direction
+);
+
+}
+
+
+function openFullPhoto(){
+
+if(!currentProduct)return;
+
+const images=
+currentProduct.images||[currentProduct.image];
+
+document.getElementById("fullPhoto").src=
+images[detailImageIndex];
+
+document.getElementById("fullPhoto").alt=
+currentProduct.name;
+
+document.getElementById("photoModal")
+.classList.add("show");
+
+}
+
+
+function closeFullPhoto(event){
+
+if(event &&
+event.target!==event.currentTarget)
+return;
+
+document.getElementById("photoModal")
+.classList.remove("show");
+
+}
+
+
+function changeFullPhoto(direction,event){
+
+if(event)
+event.stopPropagation();
+
+changeDetailImage(direction);
+
+const images=
+currentProduct.images||[currentProduct.image];
+
+document.getElementById("fullPhoto").src=
+images[detailImageIndex];
 
 }
 
@@ -1853,16 +2024,19 @@ toast("Added to your bag ♡");
 
 function updateBag(){
 
-document.getElementById("bagCount").textContent=cart.length;
+document.getElementById("bagCount").textContent=
+cart.length;
 
 }
 
 
 function renderCart(){
 
-const box=document.getElementById("cartItems");
+const box=
+document.getElementById("cartItems");
 
-const summary=document.getElementById("cartSummary");
+const summary=
+document.getElementById("cartSummary");
 
 if(!cart.length){
 
@@ -1887,17 +2061,25 @@ return;
 }
 
 
-box.innerHTML=cart.map(item=>`
+box.innerHTML=
+cart.map(item=>`
 
 <div class="cart-item">
 
-<img src="${item.image}" alt="${item.name}">
+<img
+src="${item.image}"
+alt="${item.name}"
+>
 
 <div class="cart-info">
 
-<strong>${item.name}</strong>
+<strong>
+${item.name}
+</strong>
 
-<span>${money(item.price)}</span>
+<span>
+${money(item.price)}
+</span>
 
 </div>
 
@@ -1914,7 +2096,8 @@ onclick="removeCart('${item.cartId}')"
 `).join("");
 
 
-const subtotal=cart.reduce(
+const subtotal=
+cart.reduce(
 (s,p)=>s+p.price,
 0
 );
@@ -1975,7 +2158,8 @@ toast("Removed from bag");
 
 function toggleWishlist(id){
 
-wishlist=wishlist.includes(id)
+wishlist=
+wishlist.includes(id)
 ?wishlist.filter(x=>x!==id)
 :[...wishlist,id];
 
@@ -1999,9 +2183,11 @@ wishlist.includes(id)
 
 function renderWishlist(){
 
-const box=document.getElementById("wishlistItems");
+const box=
+document.getElementById("wishlistItems");
 
-const items=products.filter(
+const items=
+products.filter(
 p=>wishlist.includes(p.id)
 );
 
@@ -2028,17 +2214,25 @@ return;
 }
 
 
-box.innerHTML=items.map(p=>`
+box.innerHTML=
+items.map(p=>`
 
 <div class="cart-item">
 
-<img src="${p.image}" alt="${p.name}">
+<img
+src="${p.image}"
+alt="${p.name}"
+>
 
 <div class="cart-info">
 
-<strong>${p.name}</strong>
+<strong>
+${p.name}
+</strong>
 
-<span>${money(p.price)}</span>
+<span>
+${money(p.price)}
+</span>
 
 </div>
 
@@ -2069,7 +2263,8 @@ function showPage(page){
 document.querySelectorAll(".page")
 .forEach(p=>p.classList.remove("active"));
 
-const target=document.getElementById(page+"Page");
+const target=
+document.getElementById(page+"Page");
 
 if(target)
 target.classList.add("active");
@@ -2165,7 +2360,8 @@ const content={
 };
 
 
-document.getElementById("policyTitle").textContent=title;
+document.getElementById("policyTitle").textContent=
+title;
 
 document.getElementById("policyText").innerHTML=
 content[title]||"<p>Information coming soon.</p>";
@@ -2180,7 +2376,8 @@ function subscribeEmail(event){
 event.preventDefault();
 
 const email=
-document.getElementById("newsletterEmail").value.trim();
+document.getElementById("newsletterEmail")
+.value.trim();
 
 if(!email)return;
 
@@ -2221,11 +2418,14 @@ return toast("Please fill in the required details");
 const subtotal=
 cart.reduce((s,p)=>s+p.price,0);
 
-const total=subtotal+200;
+const total=
+subtotal+200;
 
 
 const orderNo=
-Number(localStorage.getItem("sts_order_no")||0)+1;
+Number(
+localStorage.getItem("sts_order_no")||0
+)+1;
 
 
 const items=
@@ -2255,7 +2455,9 @@ TOTAL: ${money(total)}
 Thank you for shopping with She Tiny Spark ♡`;
 
 
-const whatsappNumber="923704751306";
+const whatsappNumber=
+"923704751306";
+
 
 const url=
 "https://wa.me/"+
@@ -2264,7 +2466,8 @@ whatsappNumber+
 encodeURIComponent(message);
 
 
-const opened=window.open(url,"_blank");
+const opened=
+window.open(url,"_blank");
 
 
 if(!opened){
@@ -2284,7 +2487,9 @@ String(orderNo)
 localStorage.setItem(
 "sts_orders",
 String(
-Number(localStorage.getItem("sts_orders")||0)+1
+Number(
+localStorage.getItem("sts_orders")||0
+)+1
 )
 );
 
@@ -2307,7 +2512,8 @@ toast("Order message prepared ♡");
 
 function toast(message){
 
-const box=document.getElementById("toast");
+const box=
+document.getElementById("toast");
 
 box.textContent=message;
 
