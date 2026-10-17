@@ -500,25 +500,63 @@ font-size:10px;
 font-weight:800
 }
 
-.page-title{
-font:500 34px 'Playfair Display',serif;
-margin:9px 0 22px
-}
+/* PRODUCT DETAIL GALLERY */
 
-.back{
-width:40px;
-height:40px;
-border-radius:50%;
-background:#f5e9ed;
-font-size:22px;
-margin-bottom:15px
+.detail-gallery{
+position:relative;
+width:100%
 }
 
 .detail-img{
+display:block;
 width:100%;
 aspect-ratio:1;
 object-fit:cover;
 border-radius:25px
+}
+
+.gallery-arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:40px;
+height:40px;
+border-radius:50%;
+background:#ffffffdd;
+color:#211b20;
+font-size:30px;
+line-height:1;
+z-index:2;
+box-shadow:0 2px 10px #00000018
+}
+
+.gallery-left{
+left:10px
+}
+
+.gallery-right{
+right:10px
+}
+
+.gallery-dots{
+display:flex;
+justify-content:center;
+gap:7px;
+margin:12px 0 4px
+}
+
+.gallery-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#dfcbd1;
+border:0;
+padding:0
+}
+
+.gallery-dot.active{
+background:#d34983;
+transform:scale(1.25)
 }
 
 .detail-name{
@@ -1080,7 +1118,29 @@ Page Holders
 ←
 </button>
 
+<div class="detail-gallery">
+
+<button
+class="gallery-arrow gallery-left"
+onclick="changeDetailImage(-1)"
+aria-label="Previous photo"
+>
+‹
+</button>
+
 <img id="detailImage" class="detail-img" src="" alt="">
+
+<button
+class="gallery-arrow gallery-right"
+onclick="changeDetailImage(1)"
+aria-label="Next photo"
+>
+›
+</button>
+
+</div>
+
+<div id="galleryDots" class="gallery-dots"></div>
 
 <h1 id="detailName" class="detail-name"></h1>
 
@@ -1471,13 +1531,17 @@ image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&
 desc:"A pretty everyday accessory for your glasses."
 },
 
-/* NEW NECKLACE */
 {
 id:5,
 name:"Shell Pearl Necklace",
 category:"Necklaces",
 price:749,
-image:"contact.jpg",
+image:"IMG-20261017-WA8385.jpg",
+images:[
+"IMG-20261017-WA8385.jpg",
+"IMG-20261016-WA6081.jpg",
+"IMG-20261016-WA2845.jpg"
+],
 desc:"A delicate shell necklace with a pearl detail, made for soft everyday styling."
 },
 
@@ -1518,15 +1582,6 @@ desc:"Keep your glasses close in style."
 },
 
 {
-id:10,
-name:"Everyday Necklace",
-category:"Necklaces",
-price:549,
-image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=85",
-desc:"A minimal piece for daily wear."
-},
-
-{
 id:11,
 name:"Cute Page Holder",
 category:"Page Holders",
@@ -1549,6 +1604,7 @@ desc:"Keep your place while reading in style."
 
 let category="All";
 let currentProduct=null;
+let detailImageIndex=0;
 
 let cart=JSON.parse(localStorage.getItem("sts_cart")||"[]");
 
@@ -1694,9 +1750,9 @@ currentProduct=products.find(p=>p.id===id);
 
 if(!currentProduct)return;
 
-document.getElementById("detailImage").src=currentProduct.image;
+detailImageIndex=0;
 
-document.getElementById("detailImage").alt=currentProduct.name;
+renderDetailGallery();
 
 document.getElementById("detailName").textContent=currentProduct.name;
 
@@ -1705,6 +1761,59 @@ document.getElementById("detailPrice").textContent=money(currentProduct.price);
 document.getElementById("detailDesc").textContent=currentProduct.desc;
 
 showPage("detail");
+
+}
+
+
+function renderDetailGallery(){
+
+if(!currentProduct)return;
+
+const images=currentProduct.images||[currentProduct.image];
+
+const image=document.getElementById("detailImage");
+
+image.src=images[detailImageIndex];
+
+image.alt=currentProduct.name;
+
+const dots=document.getElementById("galleryDots");
+
+dots.innerHTML=images.map((img,index)=>`
+
+<button
+class="gallery-dot ${index===detailImageIndex?"active":""}"
+onclick="setDetailImage(${index})"
+aria-label="View photo ${index+1}"
+></button>
+
+`).join("");
+
+}
+
+
+function setDetailImage(index){
+
+if(!currentProduct)return;
+
+const images=currentProduct.images||[currentProduct.image];
+
+detailImageIndex=index;
+
+if(detailImageIndex<0)
+detailImageIndex=images.length-1;
+
+if(detailImageIndex>=images.length)
+detailImageIndex=0;
+
+renderDetailGallery();
+
+}
+
+
+function changeDetailImage(direction){
+
+setDetailImage(detailImageIndex+direction);
 
 }
 
