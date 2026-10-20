@@ -67,13 +67,30 @@ button{border:0;cursor:pointer}
 .section-head span{font-size:9px;letter-spacing:1px;color:#9a6578;text-align:right}
 .categories{display:flex;gap:10px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
 .category{flex:none;width:112px;height:112px;border-radius:23px;padding:13px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;background:#ffe0e8;color:#33222c}
-.category:nth-child(2){background:#ffe2c8}.category:nth-child(3){background:#f8c3d7}.category:nth-child(4){background:#d7eadb}.category:nth-child(5){background:#f7d7bd}
-.cat-icon{font-size:26px}.cat-name{font-size:11px;font-weight:800;line-height:1.3}
+.category:nth-child(2){background:#ffe2c8}
+.category:nth-child(3){background:#f8c3d7}
+.category:nth-child(4){background:#d7eadb}
+.category:nth-child(5){background:#f7d7bd}
+
+.cat-icon{display:flex;align-items:center;justify-content:flex-start}
+.cat-icon svg{
+width:29px;
+height:29px;
+fill:none;
+stroke:currentColor;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round
+}
+
+.cat-name{font-size:11px;font-weight:800;line-height:1.3}
+
 .search{margin-top:22px}
 .search input{width:100%;height:50px;border-radius:28px;padding:0 18px;border:1px solid var(--line);background:white}
 .filters{display:flex;gap:8px;overflow-x:auto;padding:13px 0 18px;scrollbar-width:none}
 .filter{flex:none;padding:10px 15px;border-radius:24px;background:#f4ecee;color:#78636d;font-size:11px;font-weight:700}
 .filter.active{background:#262027;color:white}
+
 .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
 .product-card{border:1px solid #f0e4e6;border-radius:23px;background:white;padding:8px;overflow:hidden}
 .image-wrap{position:relative}
@@ -99,11 +116,13 @@ button{border:0;cursor:pointer}
 .photo-close{position:absolute;top:15px;right:15px;width:45px;height:45px;border-radius:50%;background:#fff;color:#211b20;font-size:28px;z-index:20002}
 .photo-modal-arrow{position:absolute;top:50%;transform:translateY(-50%);width:45px;height:45px;border-radius:50%;background:#fff;color:#211b20;font-size:30px;z-index:20002}
 .photo-modal-left{left:15px}.photo-modal-right{right:15px}
+
 .detail-name{font:500 31px 'Playfair Display',serif;margin-top:17px}
 .detail-price{font-weight:800;font-size:20px;margin:10px 0;color:#cf4380}
 .detail-desc{font-size:14px;color:var(--muted);line-height:1.7}
 .detail-add{width:100%;margin-top:20px}
 .back{background:transparent;font-size:28px;margin-bottom:10px;color:#211b20}
+
 .page-title{font:500 31px 'Playfair Display',serif;margin-bottom:20px}
 .cart-item{display:flex;align-items:center;gap:11px;padding:10px;margin-bottom:10px;border:1px solid #f0e5e7;border-radius:20px;background:white}
 .cart-item img{width:66px;height:66px;border-radius:14px;object-fit:cover}
@@ -117,6 +136,7 @@ button{border:0;cursor:pointer}
 .summary .primary-btn{width:100%;margin-top:10px}
 .empty{text-align:center;padding:35px 18px;border-radius:24px;background:#fff0e8;color:#765c68}
 .empty-icon{font-size:40px;margin-bottom:12px}
+
 .form-group{margin-bottom:14px}
 .form-group label{display:block;font-size:12px;font-weight:800;margin:0 0 7px 5px}
 .form-group input,.form-group textarea{width:100%;padding:14px;border:1px solid #eadfe2;border-radius:16px;background:white}
@@ -140,6 +160,7 @@ button{border:0;cursor:pointer}
 .newsletter input{min-width:0;width:100%;padding:13px;border-radius:8px;border:0;background:white}
 .newsletter button{padding:0 13px;border-radius:8px;background:#f4a4b9;color:#241d23;font-weight:800;font-size:12px}
 .copyright{border-top:1px solid #465d6b;margin-top:32px;padding-top:22px;font-size:12px;line-height:1.8;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
 .policy-content{font-size:14px;line-height:1.8;color:#67565e}
 .policy-content h2{font:500 25px 'Playfair Display',serif;margin:20px 0 10px;color:#241d23}
 .policy-content p{margin:10px 0}
@@ -148,6 +169,7 @@ button{border:0;cursor:pointer}
 .nav{flex:1;height:67px;background:transparent;color:#9b9096;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;font-size:22px}
 .nav span{font-size:9px;letter-spacing:.5px}
 .nav.active{color:#d34983}
+
 .toast{position:fixed;z-index:10000;bottom:90px;left:50%;transform:translate(-50%,12px);background:#292129;color:white;padding:12px 18px;border-radius:25px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;white-space:nowrap}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
@@ -159,6 +181,7 @@ button{border:0;cursor:pointer}
 .product-name{font-size:14px}
 .footer{padding:26px 18px}
 }
+
 @media(prefers-reduced-motion:reduce){
 *,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important}
 }
@@ -209,11 +232,70 @@ button{border:0;cursor:pointer}
 </div>
 
 <div class="categories">
-<button class="category" onclick="filterCategory('Barrette Hair Clips')"><span class="cat-icon">🎀</span><span class="cat-name">Barrette Hair Clips</span></button>
-<button class="category" onclick="filterCategory('Keychains')"><span class="cat-icon">♡</span><span class="cat-name">Keychains</span></button>
-<button class="category" onclick="filterCategory('Spectacle Holders')"><span class="cat-icon">⌁</span><span class="cat-name">Glasses Holders</span></button>
-<button class="category" onclick="filterCategory('Necklaces')"><span class="cat-icon">◇</span><span class="cat-name">Necklaces</span></button>
-<button class="category" onclick="filterCategory('Page Holders')"><span class="cat-icon">▤</span><span class="cat-name">Page Holders</span></button>
+
+<button class="category" onclick="filterCategory('Necklaces')">
+<span class="cat-icon">
+<svg viewBox="0 0 32 32">
+<path d="M8 4c1 8 4 12 8 12s7-4 8-12"/>
+<path d="M8 4c1 5 2 9 8 12"/>
+<path d="M24 4c-1 5-2 9-8 12"/>
+<path d="M16 16v5"/>
+<path d="M12.5 24.5 16 21l3.5 3.5L16 28z"/>
+</svg>
+</span>
+<span class="cat-name">Necklaces</span>
+</button>
+
+<button class="category" onclick="filterCategory('Bag Charms')">
+<span class="cat-icon">
+<svg viewBox="0 0 32 32">
+<path d="M8 11h16l2 16H6l2-16Z"/>
+<path d="M12 11V8a4 4 0 0 1 8 0v3"/>
+<circle cx="16" cy="19" r="2.5"/>
+<path d="M16 21.5v4"/>
+</svg>
+</span>
+<span class="cat-name">Bag Charms</span>
+</button>
+
+<button class="category" onclick="filterCategory('Barrette Hair Clips')">
+<span class="cat-icon">
+<svg viewBox="0 0 32 32">
+<path d="M7 12c3-4 6-4 9 0 3-4 6-4 9 0"/>
+<path d="M8 15c2 5 5 7 8 7s6-2 8-7"/>
+<path d="M11 13h10"/>
+<path d="M13 11l3 3 3-3"/>
+</svg>
+</span>
+<span class="cat-name">Barrette Hair Clips</span>
+</button>
+
+<button class="category" onclick="filterCategory('Spectacle Holders')">
+<span class="cat-icon">
+<svg viewBox="0 0 32 32">
+<circle cx="10" cy="17" r="5"/>
+<circle cx="22" cy="17" r="5"/>
+<path d="M15 16h2"/>
+<path d="M5 15 3 13"/>
+<path d="M27 15l2-2"/>
+<path d="M7 13c-1-4 1-7 4-8"/>
+<path d="M25 13c1-4-1-7-4-8"/>
+</svg>
+</span>
+<span class="cat-name">Glasses Holders</span>
+</button>
+
+<button class="category" onclick="filterCategory('Page Holders')">
+<span class="cat-icon">
+<svg viewBox="0 0 32 32">
+<path d="M8 5h16v22l-8-5-8 5V5Z"/>
+<path d="M12 10h8"/>
+<path d="M12 14h8"/>
+</svg>
+</span>
+<span class="cat-name">Page Holders</span>
+</button>
+
 </div>
 
 <div class="search">
@@ -222,10 +304,10 @@ button{border:0;cursor:pointer}
 
 <div class="filters">
 <button class="filter active" onclick="filterCategory('All',this)">All</button>
-<button class="filter" onclick="filterCategory('Barrette Hair Clips',this)">Barrette Hair Clips</button>
-<button class="filter" onclick="filterCategory('Keychains',this)">Keychains</button>
-<button class="filter" onclick="filterCategory('Spectacle Holders',this)">Glasses Holders</button>
 <button class="filter" onclick="filterCategory('Necklaces',this)">Necklaces</button>
+<button class="filter" onclick="filterCategory('Bag Charms',this)">Bag Charms</button>
+<button class="filter" onclick="filterCategory('Barrette Hair Clips',this)">Barrette Hair Clips</button>
+<button class="filter" onclick="filterCategory('Spectacle Holders',this)">Glasses Holders</button>
 <button class="filter" onclick="filterCategory('Page Holders',this)">Page Holders</button>
 </div>
 
@@ -243,7 +325,7 @@ button{border:0;cursor:pointer}
 
 <div class="detail-gallery">
 <button class="gallery-arrow gallery-left" onclick="changeDetailImage(-1)" aria-label="Previous photo">‹</button>
-<img id="detailImage" class="detail-img" src="" alt="" onclick="openFullPhoto">
+<img id="detailImage" class="detail-img" src="" alt="" onclick="openFullPhoto()">
 <button class="gallery-arrow gallery-right" onclick="changeDetailImage(1)" aria-label="Next photo">›</button>
 </div>
 
@@ -402,15 +484,11 @@ const products=[
 
 {id:2,name:"Pearl Barrette",category:"Barrette Hair Clips",price:399,image:"https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=700&q=85",desc:"A delicate finishing touch for your hair."},
 
-{id:3,name:"Tiny Charm Keychain",category:"Keychains",price:299,image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=85",desc:"A little charm for your favourite bag."},
-
 {id:5,name:"Shell Pearl Necklace",category:"Necklaces",price:599,image:"IMG-20261017-WA8385.jpg",images:["IMG-20261017-WA8385.jpg","IMG-20261016-WA6081.jpg","IMG-20261016-WA2845.jpg"],desc:"A delicate shell pearl necklace made for soft everyday styling. Customers can also choose a silver chain instead of the gold chain according to their personal preference."},
 
 {id:6,name:"Little Flower Clip",category:"Barrette Hair Clips",price:299,image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=85",desc:"A playful detail for your everyday style."},
 
 {id:7,name:"Ribbon Barrette",category:"Barrette Hair Clips",price:349,image:"https://images.unsplash.com/photo-1635767798638-3665a7e4a3c2?auto=format&fit=crop&w=700&q=85",desc:"A sweet and simple hair accessory."},
-
-{id:8,name:"Little Love Charm",category:"Keychains",price:349,image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=85",desc:"A cute little gift for yourself or a friend."},
 
 {id:10,name:"Swan Necklace",category:"Necklaces",price:699,image:"IMG-20261017-WA8759.jpg",images:["IMG-20261017-WA8759.jpg","IMG-20261016-WA8346.jpg","IMG-20261016-WA1985.jpg"],desc:"A delicate swan-inspired necklace made for soft and elegant everyday styling. Customers can also choose a silver chain according to their personal preference."},
 
@@ -458,7 +536,79 @@ const products=[
 
 {id:34,name:"Snowy The Sweetie",category:"Spectacle Holders",price:599,image:"IMG-20261015-WA2590.jpg",images:["IMG-20261015-WA2590.jpg","MG-20261015-WA3046.jpg"],desc:"A cute sweetie-inspired glasses holder made to keep your spectacles close in style."},
 
-{id:35,name:"Sunny The Ginger Cat",category:"Spectacle Holders",price:599,image:"IMG-20261015-WA8567.jpg",images:["IMG-20261015-WA8567.jpg","IMG-20261015-WA6570.jpg"],desc:"A cute cat-inspired glasses holder made to keep your spectacles close in style."}
+{id:35,name:"Sunny The Ginger Cat",category:"Spectacle Holders",price:599,image:"IMG-20261015-WA8567.jpg",images:["IMG-20261015-WA8567.jpg","IMG-20261015-WA6570.jpg"],desc:"A cute cat-inspired glasses holder made to keep your spectacles close in style."},
+
+/* BAG CHARMS */
+
+{
+id:36,
+name:"Froggy Strawberry Cottage",
+category:"Bag Charms",
+price:549,
+image:"IMG-20261020-WA4116.jpg",
+images:["IMG-20261020-WA4116.jpg","IMG-20261020-WA6881.jpg"],
+desc:"A cute Froggy Strawberry Cottage bag charm. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:37,
+name:"Choco Drizzle Heart",
+category:"Bag Charms",
+price:399,
+image:"IMG-20261020-WA6110.jpg",
+images:["IMG-20261020-WA6110.jpg","IMG-20261020-WA0806.jpg"],
+desc:"A sweet Choco Drizzle Heart bag charm. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:38,
+name:"Cozy Cottage Meadow",
+category:"Bag Charms",
+price:499,
+image:"IMG-20261020-WA1458.jpg",
+images:["IMG-20261020-WA1458.jpg","IMG-20261020-WA3024.jpg"],
+desc:"A cozy Cottage Meadow bag charm made for a cute little everyday detail. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:39,
+name:"Beary Sweet Spots",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261020-WA4466.jpg",
+images:["IMG-20261020-WA4466.jpg","IMG-20261020-WA2512.jpg"],
+desc:"A beary sweet bag charm made to add a playful touch to your favourite bag. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:40,
+name:"Midnight Kitty Love",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261020-WA2454.jpg",
+images:["IMG-20261020-WA2454.jpg","IMG-20261020-WA1114.jpg"],
+desc:"A cute Midnight Kitty Love bag charm for your favourite bag. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:41,
+name:"Ginger Kitty Berry",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261020-WA6037.jpg",
+images:["IMG-20261020-WA6037.jpg","IMG-20261020-WA7404.jpg"],
+desc:"A sweet Ginger Kitty Berry bag charm made for a little extra sparkle. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:42,
+name:"Lucky Star Black Cat",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261020-WA5148.jpg",
+images:["IMG-20261020-WA5148.jpg","IMG-20261020-WA4447.jpg"],
+desc:"A Lucky Star Black Cat bag charm made for a cute everyday look. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+}
 
 ];
 
@@ -468,6 +618,19 @@ let detailImageIndex=0;
 let cart=JSON.parse(localStorage.getItem("sts_cart")||"[]");
 let wishlist=JSON.parse(localStorage.getItem("sts_wishlist")||"[]");
 let toastTimer;
+
+/* REMOVE OLD KEYCHAIN PRODUCTS FROM OLD LOCAL STORAGE */
+cart=cart.filter(x=>
+x.category!=="Keychains" &&
+products.some(p=>p.id===x.id)
+);
+
+wishlist=wishlist.filter(id=>
+products.some(p=>p.id===id)
+);
+
+localStorage.setItem("sts_cart",JSON.stringify(cart));
+localStorage.setItem("sts_wishlist",JSON.stringify(wishlist));
 
 setTimeout(()=>document.getElementById("intro").classList.add("hide"),3600);
 
@@ -503,22 +666,92 @@ return threes*599+399;
 }
 
 
+/* BAG CHARM BUNDLE PRICING */
+
+function getBagCharmBundlePrice(items){
+
+if(!items.length)return 0;
+
+const prices=items
+.map(item=>Number(item.price||0))
+.sort((a,b)=>b-a);
+
+let total=0;
+
+/*
+Any 2 = Rs 849
+Any 3 = Rs 1,199
+
+The bundle is only applied when it actually gives
+a discount compared with the individual prices.
+*/
+
+while(prices.length>=3){
+
+const group=prices.splice(0,3);
+const individualTotal=group.reduce((sum,p)=>sum+p,0);
+
+total+=Math.min(1199,individualTotal);
+}
+
+if(prices.length===2){
+
+const individualTotal=prices[0]+prices[1];
+total+=Math.min(849,individualTotal);
+
+}else if(prices.length===1){
+
+total+=prices[0];
+
+}
+
+return total;
+}
+
+
 function getCartPricing(){
 
-const pageHolders=cart.filter(x=>x.category==="Page Holders");
-const otherItems=cart.filter(x=>x.category!=="Page Holders");
+const pageHolders=cart.filter(
+x=>x.category==="Page Holders"
+);
 
-const pageHolderTotal=getPageHolderBundlePrice(pageHolders.length);
+const bagCharms=cart.filter(
+x=>x.category==="Bag Charms"
+);
 
-const otherTotal=otherItems.reduce(
+const otherItems=cart.filter(
+x=>x.category!=="Page Holders" &&
+x.category!=="Bag Charms"
+);
+
+const pageHolderTotal=
+getPageHolderBundlePrice(pageHolders.length);
+
+const bagCharmTotal=
+getBagCharmBundlePrice(bagCharms);
+
+const otherTotal=
+otherItems.reduce(
 (s,p)=>s+Number(p.price||0),0
 );
 
 return{
+
 pageHolderCount:pageHolders.length,
+
 pageHolderTotal,
+
+bagCharmCount:bagCharms.length,
+
+bagCharmTotal,
+
 otherTotal,
-subtotal:pageHolderTotal+otherTotal
+
+subtotal:
+pageHolderTotal+
+bagCharmTotal+
+otherTotal
+
 };
 
 }
@@ -527,16 +760,28 @@ subtotal:pageHolderTotal+otherTotal
 function renderProducts(){
 
 const grid=document.getElementById("productGrid");
-const search=document.getElementById("searchInput").value.toLowerCase().trim();
+
+const search=
+document.getElementById("searchInput")
+.value
+.toLowerCase()
+.trim();
 
 const list=products.filter(p=>
 (category==="All"||p.category===category)&&
-(!search||(p.name+" "+p.category).toLowerCase().includes(search))
+(!search||
+(p.name+" "+p.category)
+.toLowerCase()
+.includes(search))
 );
 
 if(!list.length){
-grid.innerHTML='<div class="empty" style="grid-column:1/-1">No products found. Try another search.</div>';
+
+grid.innerHTML=
+'<div class="empty" style="grid-column:1/-1">No products found. Try another search.</div>';
+
 return;
+
 }
 
 grid.innerHTML=list.map(p=>`
@@ -563,15 +808,29 @@ onclick="toggleWishlist(${p.id})"
 
 <div class="product-info">
 
-<div class="product-name" onclick="openProduct(${p.id})">
+<div
+class="product-name"
+onclick="openProduct(${p.id})"
+>
 ${p.name}
 </div>
 
 <div class="product-desc">
+
 ${p.desc}
-${p.category==="Page Holders"
+
+${
+p.category==="Page Holders"
 ?`<br><strong style="color:#d34983">2 for Rs 399 • 3 for Rs 599</strong>`
-:""}
+:""
+}
+
+${
+p.category==="Bag Charms"
+?`<br><strong style="color:#d34983">Any 2 for Rs 849 • Any 3 for Rs 1,199</strong>`
+:""
+}
+
 </div>
 
 <div class="product-bottom">
@@ -580,7 +839,10 @@ ${p.category==="Page Holders"
 ${money(p.price)}
 </span>
 
-<button class="add-btn" onclick="addToCart(${p.id})">
+<button
+class="add-btn"
+onclick="addToCart(${p.id})"
+>
 ADD +
 </button>
 
@@ -612,7 +874,9 @@ document.querySelectorAll(".filter").forEach(b=>{
 
 if(
 b.textContent.trim()===
-(value==="Spectacle Holders"?"Glasses Holders":value)
+(value==="Spectacle Holders"
+?"Glasses Holders"
+:value)
 )
 b.classList.add("active");
 
@@ -621,9 +885,11 @@ b.classList.add("active");
 }
 
 document.getElementById("searchInput").value="";
+
 renderProducts();
 
-document.getElementById("productGrid").scrollIntoView({
+document.getElementById("productGrid")
+.scrollIntoView({
 behavior:"smooth",
 block:"start"
 });
@@ -633,22 +899,43 @@ block:"start"
 
 function openProduct(id){
 
-currentProduct=products.find(p=>p.id===id);
+currentProduct=
+products.find(p=>p.id===id);
 
 if(!currentProduct)return;
 
 detailImageIndex=0;
+
 renderDetailGallery();
 
-document.getElementById("detailName").textContent=
+document.getElementById("detailName")
+.textContent=
 currentProduct.name;
 
-document.getElementById("detailPrice").textContent=
-currentProduct.category==="Page Holders"
-?money(currentProduct.price)+" • 2 for Rs 399 • 3 for Rs 599"
-:money(currentProduct.price);
+if(currentProduct.category==="Page Holders"){
 
-document.getElementById("detailDesc").textContent=
+document.getElementById("detailPrice")
+.textContent=
+money(currentProduct.price)+
+" • 2 for Rs 399 • 3 for Rs 599";
+
+}else if(currentProduct.category==="Bag Charms"){
+
+document.getElementById("detailPrice")
+.textContent=
+money(currentProduct.price)+
+" • Any 2 for Rs 849 • Any 3 for Rs 1,199";
+
+}else{
+
+document.getElementById("detailPrice")
+.textContent=
+money(currentProduct.price);
+
+}
+
+document.getElementById("detailDesc")
+.textContent=
 currentProduct.desc;
 
 showPage("detail");
@@ -660,15 +947,24 @@ function renderDetailGallery(){
 
 if(!currentProduct)return;
 
-const images=currentProduct.images||[currentProduct.image];
-const image=document.getElementById("detailImage");
+const images=
+currentProduct.images||
+[currentProduct.image];
 
-image.src=images[detailImageIndex];
-image.alt=currentProduct.name;
+const image=
+document.getElementById("detailImage");
 
-const dots=document.getElementById("galleryDots");
+image.src=
+images[detailImageIndex];
 
-dots.innerHTML=images.map((img,index)=>`
+image.alt=
+currentProduct.name;
+
+const dots=
+document.getElementById("galleryDots");
+
+dots.innerHTML=
+images.map((img,index)=>`
 
 <button
 class="gallery-dot ${index===detailImageIndex?"active":""}"
@@ -685,7 +981,9 @@ function setDetailImage(index){
 
 if(!currentProduct)return;
 
-const images=currentProduct.images||[currentProduct.image];
+const images=
+currentProduct.images||
+[currentProduct.image];
 
 detailImageIndex=index;
 
@@ -701,7 +999,11 @@ renderDetailGallery();
 
 
 function changeDetailImage(direction){
-setDetailImage(detailImageIndex+direction);
+
+setDetailImage(
+detailImageIndex+direction
+);
+
 }
 
 
@@ -709,37 +1011,48 @@ function openFullPhoto(){
 
 if(!currentProduct)return;
 
-const images=currentProduct.images||[currentProduct.image];
+const images=
+currentProduct.images||
+[currentProduct.image];
 
-document.getElementById("fullPhoto").src=
+document.getElementById("fullPhoto")
+.src=
 images[detailImageIndex];
 
-document.getElementById("fullPhoto").alt=
+document.getElementById("fullPhoto")
+.alt=
 currentProduct.name;
 
-document.getElementById("photoModal").classList.add("show");
+document.getElementById("photoModal")
+.classList.add("show");
 
 }
 
 
 function closeFullPhoto(event){
 
-if(event&&event.target!==event.currentTarget)return;
+if(event&&event.target!==event.currentTarget)
+return;
 
-document.getElementById("photoModal").classList.remove("show");
+document.getElementById("photoModal")
+.classList.remove("show");
 
 }
 
 
 function changeFullPhoto(direction,event){
 
-if(event)event.stopPropagation();
+if(event)
+event.stopPropagation();
 
 changeDetailImage(direction);
 
-const images=currentProduct.images||[currentProduct.image];
+const images=
+currentProduct.images||
+[currentProduct.image];
 
-document.getElementById("fullPhoto").src=
+document.getElementById("fullPhoto")
+.src=
 images[detailImageIndex];
 
 }
@@ -747,7 +1060,8 @@ images[detailImageIndex];
 
 function addCurrentProduct(){
 
-if(currentProduct)addToCart(currentProduct.id);
+if(currentProduct)
+addToCart(currentProduct.id);
 
 }
 
@@ -756,41 +1070,103 @@ if(currentProduct)addToCart(currentProduct.id);
 
 function addToCart(id){
 
-const p=products.find(x=>x.id===id);
+const p=
+products.find(x=>x.id===id);
 
 if(!p)return;
 
 cart.push({
+
 ...p,
-cartId:Date.now()+"-"+Math.random().toString(36).slice(2)
+
+cartId:
+Date.now()+
+"-"+
+Math.random()
+.toString(36)
+.slice(2)
+
 });
 
-localStorage.setItem("sts_cart",JSON.stringify(cart));
+localStorage.setItem(
+"sts_cart",
+JSON.stringify(cart)
+);
 
 updateBag();
 renderCart();
 
 if(p.category==="Page Holders"){
 
-const count=cart.filter(
+const count=
+cart.filter(
 x=>x.category==="Page Holders"
 ).length;
 
 if(count===1)
-toast("Added ♡ Add another Page Holder for Rs 399 total");
+
+toast(
+"Added ♡ Add another Page Holder for Rs 399 total"
+);
 
 else if(count===2)
-toast("2 Page Holders = Rs 399 ♡");
+
+toast(
+"2 Page Holders = Rs 399 ♡"
+);
 
 else if(count===3)
-toast("3 Page Holders = Rs 599 ♡");
+
+toast(
+"3 Page Holders = Rs 599 ♡"
+);
 
 else
-toast("Page Holder bundle price applied ♡");
+
+toast(
+"Page Holder bundle price applied ♡"
+);
+
+}else if(p.category==="Bag Charms"){
+
+const items=
+cart.filter(
+x=>x.category==="Bag Charms"
+);
+
+const count=items.length;
+
+if(count===1){
+
+toast(
+"Added ♡ Add another Bag Charm for the mix & match offer"
+);
+
+}else if(count===2){
+
+toast(
+"2 Bag Charms = Rs 849 ♡"
+);
+
+}else if(count===3){
+
+toast(
+"3 Bag Charms = Rs 1,199 ♡"
+);
 
 }else{
 
-toast("Added to your bag ♡");
+toast(
+"Bag Charm mix & match price applied ♡"
+);
+
+}
+
+}else{
+
+toast(
+"Added to your bag ♡"
+);
 
 }
 
@@ -799,50 +1175,74 @@ toast("Added to your bag ♡");
 
 function updateBag(){
 
-document.getElementById("bagCount").textContent=cart.length;
+document.getElementById("bagCount")
+.textContent=
+cart.length;
 
 }
 
 
 function renderCart(){
 
-const box=document.getElementById("cartItems");
-const summary=document.getElementById("cartSummary");
+const box=
+document.getElementById("cartItems");
+
+const summary=
+document.getElementById("cartSummary");
 
 if(!cart.length){
 
 box.innerHTML=`
 
 <div class="empty">
+
 <div class="empty-icon">♧</div>
+
 <h3>Your bag is waiting</h3>
-<p style="margin-top:8px">Find a little something you love.</p>
+
+<p style="margin-top:8px">
+Find a little something you love.
+</p>
+
 </div>
 
 `;
 
 summary.innerHTML="";
+
 return;
 
 }
 
 
-box.innerHTML=cart.map(item=>`
+box.innerHTML=
+cart.map(item=>`
 
 <div class="cart-item">
 
-<img src="${item.image}" alt="${item.name}">
+<img
+src="${item.image}"
+alt="${item.name}"
+>
 
 <div class="cart-info">
 
-<strong>${item.name}</strong>
+<strong>
+${item.name}
+</strong>
 
 <span>
+
 ${
 item.category==="Page Holders"
 ?"Page Holder • Mix & Match"
-:money(item.price)
+:
+item.category==="Bag Charms"
+?"Bag Charm • Mix & Match"
+:
+money(item.price)
 }
+
 </span>
 
 </div>
@@ -851,14 +1251,18 @@ item.category==="Page Holders"
 class="remove"
 aria-label="Remove ${item.name}"
 onclick="removeCart('${item.cartId}')"
->×</button>
+>
+×
+</button>
 
 </div>
 
 `).join("");
 
 
-const pricing=getCartPricing();
+const pricing=
+getCartPricing();
+
 
 let pageHolderInfo="";
 
@@ -867,12 +1271,50 @@ if(pricing.pageHolderCount){
 pageHolderInfo=`
 
 <div class="summary-row">
-<span>Page Holders (${pricing.pageHolderCount})</span>
-<strong>${money(pricing.pageHolderTotal)}</strong>
+<span>
+Page Holders (${pricing.pageHolderCount})
+</span>
+
+<strong>
+${money(pricing.pageHolderTotal)}
+</strong>
 </div>
 
 <div style="font-size:11px;color:#8a6874;line-height:1.5;margin-top:-5px">
-Mix & match any designs • 2 for Rs 399 • 3 for Rs 599
+
+Mix & match any designs •
+2 for Rs 399 •
+3 for Rs 599
+
+</div>
+
+`;
+
+}
+
+
+let bagCharmInfo="";
+
+if(pricing.bagCharmCount){
+
+bagCharmInfo=`
+
+<div class="summary-row">
+<span>
+Bag Charms (${pricing.bagCharmCount})
+</span>
+
+<strong>
+${money(pricing.bagCharmTotal)}
+</strong>
+</div>
+
+<div style="font-size:11px;color:#8a6874;line-height:1.5;margin-top:-5px">
+
+Mix & match any designs •
+Any 2 for Rs 849 •
+Any 3 for Rs 1,199
+
 </div>
 
 `;
@@ -886,24 +1328,54 @@ summary.innerHTML=`
 
 ${pageHolderInfo}
 
+${bagCharmInfo}
+
 <div class="summary-row">
-<span>Other items</span>
-<strong>${money(pricing.otherTotal)}</strong>
+
+<span>
+Other items
+</span>
+
+<strong>
+${money(pricing.otherTotal)}
+</strong>
+
 </div>
 
 <div class="summary-row">
-<span>Subtotal</span>
-<strong>${money(pricing.subtotal)}</strong>
+
+<span>
+Subtotal
+</span>
+
+<strong>
+${money(pricing.subtotal)}
+</strong>
+
 </div>
 
 <div class="summary-row">
-<span>Delivery</span>
-<strong>Rs 200</strong>
+
+<span>
+Delivery
+</span>
+
+<strong>
+Rs 200
+</strong>
+
 </div>
 
 <div class="summary-row total">
-<span>Total</span>
-<strong>${money(pricing.subtotal+200)}</strong>
+
+<span>
+Total
+</span>
+
+<strong>
+${money(pricing.subtotal+200)}
+</strong>
+
 </div>
 
 <button
@@ -922,11 +1394,17 @@ CONTINUE TO ORDER ↗
 
 function removeCart(id){
 
-cart=cart.filter(
-item=>String(item.cartId)!==String(id)
+cart=
+cart.filter(
+item=>
+String(item.cartId)!==
+String(id)
 );
 
-localStorage.setItem("sts_cart",JSON.stringify(cart));
+localStorage.setItem(
+"sts_cart",
+JSON.stringify(cart)
+);
 
 updateBag();
 renderCart();
@@ -942,7 +1420,11 @@ function toggleWishlist(id){
 
 wishlist=
 wishlist.includes(id)
-?wishlist.filter(x=>x!==id)
+
+?wishlist.filter(
+x=>x!==id
+)
+
 :[...wishlist,id];
 
 localStorage.setItem(
@@ -964,9 +1446,11 @@ wishlist.includes(id)
 
 function renderWishlist(){
 
-const box=document.getElementById("wishlistItems");
+const box=
+document.getElementById("wishlistItems");
 
-const items=products.filter(
+const items=
+products.filter(
 p=>wishlist.includes(p.id)
 );
 
@@ -975,9 +1459,15 @@ if(!items.length){
 box.innerHTML=`
 
 <div class="empty">
+
 <div class="empty-icon">♡</div>
+
 <h3>Your wishlist is empty</h3>
-<p style="margin-top:8px">Tap the heart on anything you love.</p>
+
+<p style="margin-top:8px">
+Tap the heart on anything you love.
+</p>
+
 </div>
 
 `;
@@ -987,22 +1477,41 @@ return;
 }
 
 
-box.innerHTML=items.map(p=>`
+box.innerHTML=
+items.map(p=>`
 
 <div class="cart-item">
 
-<img src="${p.image}" alt="${p.name}">
+<img
+src="${p.image}"
+alt="${p.name}"
+>
 
 <div class="cart-info">
 
-<strong>${p.name}</strong>
+<strong>
+${p.name}
+</strong>
 
 <span>
+
 ${
 p.category==="Page Holders"
+
 ?"Rs 299 • 2 for Rs 399 / 3 for Rs 599"
-:money(p.price)
+
+:
+
+p.category==="Bag Charms"
+
+?`${money(p.price)} • Any 2 for Rs 849 / Any 3 for Rs 1,199`
+
+:
+
+money(p.price)
+
 }
+
 </span>
 
 </div>
@@ -1011,12 +1520,16 @@ p.category==="Page Holders"
 class="remove"
 aria-label="Remove from wishlist"
 onclick="toggleWishlist(${p.id})"
->♥</button>
+>
+♥
+</button>
 
 <button
 class="add-btn"
 onclick="addToCart(${p.id})"
->ADD +</button>
+>
+ADD +
+</button>
 
 </div>
 
@@ -1030,31 +1543,50 @@ onclick="addToCart(${p.id})"
 function showPage(page){
 
 document.querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
+.forEach(p=>
+p.classList.remove("active")
+);
 
-const target=document.getElementById(page+"Page");
+const target=
+document.getElementById(
+page+"Page"
+);
 
-if(target)target.classList.add("active");
+if(target)
+target.classList.add("active");
 
 document.querySelectorAll(".nav")
-.forEach(n=>n.classList.remove("active"));
+.forEach(n=>
+n.classList.remove("active")
+);
 
 const ids={
+
 home:"navHome",
+
 wishlist:"navWishlist",
+
 cart:"navBag",
+
 profile:"navProfile"
+
 };
 
 if(ids[page])
-document.getElementById(ids[page]).classList.add("active");
+document
+.getElementById(ids[page])
+.classList.add("active");
 
-if(page==="cart")renderCart();
+if(page==="cart")
+renderCart();
 
-if(page==="wishlist")renderWishlist();
+if(page==="wishlist")
+renderWishlist();
 
 if(page==="profile")
-document.getElementById("orderCount").textContent=
+
+document.getElementById("orderCount")
+.textContent=
 localStorage.getItem("sts_orders")||"0";
 
 window.scrollTo({
@@ -1071,9 +1603,11 @@ showPage("home");
 
 setTimeout(()=>{
 
-document.getElementById("searchInput").focus();
+document.getElementById("searchInput")
+.focus();
 
-document.getElementById("searchInput").scrollIntoView({
+document.getElementById("searchInput")
+.scrollIntoView({
 behavior:"smooth",
 block:"center"
 });
@@ -1084,7 +1618,9 @@ block:"center"
 
 
 function focusSearch(){
+
 goShop();
+
 }
 
 
@@ -1095,26 +1631,34 @@ function openPolicy(title){
 const content={
 
 "About Us":
-"<p>Welcome to She Tiny Spark! We love little accessories and handmade details that add a little sparkle to everyday life.</p><p>Our collection includes hair accessories, keychains, spectacle holders, necklaces and page holders.</p>",
+
+"<p>Welcome to She Tiny Spark! We love little accessories and handmade details that add a little sparkle to everyday life.</p><p>Our collection includes hair accessories, bag charms, spectacle holders, necklaces and page holders.</p>",
 
 "Privacy Policy":
+
 "<p>We use the details you provide, such as your name, phone number and delivery address, only to help process and coordinate your order.</p><p>Please provide accurate contact and delivery details. Do not submit sensitive personal information through this website.</p>",
 
 "Terms & Conditions":
+
 "<p>Product availability, colours and appearance may vary slightly because items are handmade and screens display colours differently.</p><p>Prices are shown in Pakistani rupees. Delivery is currently Rs 200 per order and may be updated when announced.</p><p>An order is sent to WhatsApp for confirmation. Sending the message does not itself guarantee product availability.</p>",
 
 "Return & Exchange Policy":
+
 "<p>Please check your parcel carefully when it arrives.</p><p><strong>Damaged, defective or incorrect item:</strong> Contact us on WhatsApp within 48 hours of receiving your parcel and share your order details and clear photos.</p><p><strong>Unboxing video:</strong> A continuous, unedited video showing the sealed parcel being opened and the item received is required to help verify damage or an incorrect item. Claims without an unboxing video may be difficult to verify.</p><p>Please contact us before sending anything back. Return or exchange arrangements must be confirmed with us first.</p><p>As our products are handmade, please contact us if you have a concern so we can review it fairly.</p>",
 
 "Disclaimer":
+
 "<p>Product photos are for illustration. Actual colours, finishes and small details may vary slightly due to handmade production and screen settings.</p><p>Social media and contact links should be checked before placing an order.</p>"
 
 };
 
-document.getElementById("policyTitle").textContent=title;
+document.getElementById("policyTitle")
+.textContent=title;
 
-document.getElementById("policyText").innerHTML=
-content[title]||"<p>Information coming soon.</p>";
+document.getElementById("policyText")
+.innerHTML=
+content[title]||
+"<p>Information coming soon.</p>";
 
 showPage("policy");
 
@@ -1126,11 +1670,15 @@ function subscribeEmail(event){
 event.preventDefault();
 
 const email=
-document.getElementById("newsletterEmail").value.trim();
+document.getElementById("newsletterEmail")
+.value
+.trim();
 
 if(!email)return;
 
-toast("Thank you! Newsletter signup noted ♡");
+toast(
+"Thank you! Newsletter signup noted ♡"
+);
 
 event.target.reset();
 
@@ -1145,61 +1693,117 @@ if(!cart.length)
 return toast("Your bag is empty");
 
 const name=
-document.getElementById("customerName").value.trim();
+document.getElementById("customerName")
+.value
+.trim();
 
 const phone=
-document.getElementById("customerPhone").value.trim();
+document.getElementById("customerPhone")
+.value
+.trim();
 
 const email=
-document.getElementById("customerEmail").value.trim();
+document.getElementById("customerEmail")
+.value
+.trim();
 
 const address=
-document.getElementById("customerAddress").value.trim();
+document.getElementById("customerAddress")
+.value
+.trim();
 
 if(!name||!phone||!address)
-return toast("Please fill in the required details");
+
+return toast(
+"Please fill in the required details"
+);
 
 
-const pricing=getCartPricing();
+const pricing=
+getCartPricing();
 
-const subtotal=pricing.subtotal;
-const total=subtotal+200;
+const subtotal=
+pricing.subtotal;
+
+const total=
+subtotal+200;
 
 const orderNo=
-Number(localStorage.getItem("sts_order_no")||0)+1;
+Number(
+localStorage.getItem("sts_order_no")||0
+)+1;
 
 
 const normalItems=
-cart.filter(p=>p.category!=="Page Holders");
+cart.filter(
+p=>
+p.category!=="Page Holders" &&
+p.category!=="Bag Charms"
+);
 
 const pageHolderItems=
-cart.filter(p=>p.category==="Page Holders");
+cart.filter(
+p=>p.category==="Page Holders"
+);
+
+const bagCharmItems=
+cart.filter(
+p=>p.category==="Bag Charms"
+);
 
 let items="";
 
 
 if(normalItems.length){
 
-items+=normalItems.map(p=>
+items+=
+normalItems
+.map(p=>
 `• ${p.name} — ${money(p.price)}`
-).join("\n");
+)
+.join("\n");
 
 }
 
 
 if(pageHolderItems.length){
 
-if(items)items+="\n";
+if(items)
+items+="\n";
 
 items+=
 "\nPAGE HOLDER MIX & MATCH:\n";
 
-items+=pageHolderItems.map(p=>
+items+=
+pageHolderItems
+.map(p=>
 `• ${p.name}`
-).join("\n");
+)
+.join("\n");
 
 items+=
 `\nPage Holders (${pageHolderItems.length}) — ${money(pricing.pageHolderTotal)}`;
+
+}
+
+
+if(bagCharmItems.length){
+
+if(items)
+items+="\n";
+
+items+=
+"\nBAG CHARM MIX & MATCH:\n";
+
+items+=
+bagCharmItems
+.map(p=>
+`• ${p.name} — Clasp: Silver or Golden`
+)
+.join("\n");
+
+items+=
+`\nBag Charms (${bagCharmItems.length}) — ${money(pricing.bagCharmTotal)}`;
 
 }
 
@@ -1225,7 +1829,8 @@ TOTAL: ${money(total)}
 Thank you for shopping with She Tiny Spark ♡`;
 
 
-const whatsappNumber="923704751306";
+const whatsappNumber=
+"923704751306";
 
 const url=
 "https://wa.me/"+
@@ -1233,11 +1838,16 @@ whatsappNumber+
 "?text="+
 encodeURIComponent(message);
 
-const opened=window.open(url,"_blank");
+const opened=
+window.open(
+url,
+"_blank"
+);
 
 if(!opened){
 
 window.location.href=url;
+
 return;
 
 }
@@ -1251,7 +1861,9 @@ String(orderNo)
 localStorage.setItem(
 "sts_orders",
 String(
-Number(localStorage.getItem("sts_orders")||0)+1
+Number(
+localStorage.getItem("sts_orders")||0
+)+1
 )
 );
 
@@ -1265,7 +1877,30 @@ JSON.stringify(cart)
 updateBag();
 renderCart();
 
-toast("Order message prepared ♡");
+toast(
+"Order message prepared ♡"
+);
+
+}
+
+
+/* TOAST */
+
+function toast(message){
+
+const el=
+document.getElementById("toast");
+
+el.textContent=message;
+
+el.classList.add("show");
+
+clearTimeout(toastTimer);
+
+toastTimer=
+setTimeout(()=>{
+el.classList.remove("show");
+},2800);
 
 }
 
