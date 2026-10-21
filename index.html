@@ -141,6 +141,7 @@ stroke-linejoin:round
 .form-group input,.form-group textarea{width:100%;padding:14px;border:1px solid #eadfe2;border-radius:16px;background:white}
 .form-group textarea{min-height:85px;resize:vertical}
 .whatsapp-btn{width:100%;padding:16px;border-radius:27px;background:#1fae64;color:white;font-weight:800}
+.whatsapp-btn:disabled{opacity:.65;cursor:not-allowed}
 
 .footer{background:var(--navy);color:#d4dfe6;padding:30px 24px 24px;margin-top:10px}
 .footer h3{font-size:17px;letter-spacing:3px;color:#fff;margin:28px 0 20px}
@@ -377,7 +378,78 @@ stroke-linejoin:round
 <textarea id="customerAddress" autocomplete="street-address" placeholder="House, street, area, city"></textarea>
 </div>
 
-<button class="whatsapp-btn" onclick="placeOrder()">ORDER ON WHATSAPP ↗</button>
+<button class="whatsapp-btn" onclick="placeOrder()">PLACE ORDER ↗</button>
+
+</section>
+
+<!-- ORDER SUCCESS PAGE -->
+
+<section class="page" id="orderSuccessPage">
+
+<button class="back" onclick="showPage('home')">←</button>
+
+<div class="empty">
+
+<div class="empty-icon">♡</div>
+
+<h2>Order placed successfully!</h2>
+
+<p style="margin-top:10px">
+Thank you for shopping with She Tiny Spark.
+</p>
+
+<div style="
+margin-top:20px;
+padding:16px;
+border-radius:18px;
+background:white;
+border:1px solid #eadfe2;
+">
+
+<p style="
+font-size:11px;
+color:#80737a;
+">
+YOUR ORDER NUMBER
+</p>
+
+<strong
+id="successOrderNumber"
+style="
+display:block;
+font-size:20px;
+margin-top:6px;
+color:#d34983;
+">
+</strong>
+
+</div>
+
+<p
+id="successOrderMessage"
+style="
+margin-top:15px;
+font-size:13px;
+line-height:1.7;
+">
+</p>
+
+<p style="
+margin-top:12px;
+font-size:12px;
+color:#80737a;
+">
+Payment method: Cash on Delivery
+</p>
+
+<button
+class="primary-btn"
+style="width:100%;margin-top:20px"
+onclick="showPage('home')">
+CONTINUE SHOPPING ↗
+</button>
+
+</div>
 
 </section>
 
@@ -462,7 +534,31 @@ stroke-linejoin:round
 
 </div>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+/* =========================
+   SUPABASE CONNECTION
+========================= */
+
+const SUPABASE_URL =
+"https://bwozrigasrjkkhxiajkn.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_ZSUu-DSeI0ykWrQhsfayaQ_3Q1wzLIY";
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
+
+
+/* =========================
+   PRODUCTS
+========================= */
 
 const products=[
 
@@ -693,7 +789,9 @@ let cart=JSON.parse(localStorage.getItem("sts_cart")||"[]");
 let wishlist=JSON.parse(localStorage.getItem("sts_wishlist")||"[]");
 let toastTimer;
 
+
 /* REMOVE OLD PRODUCTS FROM OLD LOCAL STORAGE */
+
 cart=cart.filter(x=>
 x.category!=="Keychains" &&
 x.category!=="Barrette Hair Clips" &&
@@ -708,6 +806,7 @@ localStorage.setItem("sts_cart",JSON.stringify(cart));
 localStorage.setItem("sts_wishlist",JSON.stringify(wishlist));
 
 setTimeout(()=>document.getElementById("intro").classList.add("hide"),3600);
+
 
 function money(n){
 return "Rs "+Number(n).toLocaleString("en-PK");
@@ -752,14 +851,6 @@ const prices=items
 .sort((a,b)=>b-a);
 
 let total=0;
-
-/*
-Any 2 = Rs 849
-Any 3 = Rs 1,199
-
-The bundle is only applied when it actually gives
-a discount compared with the individual prices.
-*/
 
 while(prices.length>=3){
 
@@ -1715,7 +1806,7 @@ const content={
 
 "Terms & Conditions":
 
-"<p>Product availability, colours and appearance may vary slightly because items are handmade and screens display colours differently.</p><p>Prices are shown in Pakistani rupees. Delivery is currently Rs 200 per order and may be updated when announced.</p><p>An order is sent to WhatsApp for confirmation. Sending the message does not itself guarantee product availability.</p>",
+"<p>Product availability, colours and appearance may vary slightly because items are handmade and screens display colours differently.</p><p>Prices are shown in Pakistani rupees. Delivery is currently Rs 200 per order and may be updated when announced.</p><p>Orders are submitted through the She Tiny Spark website and are processed for confirmation.</p><p>Cash on Delivery is currently available as the payment method.</p>",
 
 "Return & Exchange Policy":
 
@@ -1760,12 +1851,46 @@ event.target.reset();
 }
 
 
-/* WHATSAPP ORDER */
+/* =========================
+   ORDER SUCCESS
+========================= */
 
-function placeOrder(){
+function showOrderSuccess(orderNo,name,total){
 
-if(!cart.length)
-return toast("Your bag is empty");
+document.getElementById(
+"successOrderNumber"
+).textContent=
+orderNo;
+
+document.getElementById(
+"successOrderMessage"
+).innerHTML=
+`Hi ${name} ♡<br>
+Your order has been received successfully.
+<br><br>
+Order total:
+<strong>${money(total)}</strong>
+<br>
+We will process your order and contact you for confirmation.`;
+
+showPage("orderSuccess");
+
+}
+
+
+/* =========================
+   WEBSITE ORDER SYSTEM
+========================= */
+
+async function placeOrder(){
+
+if(!cart.length){
+
+toast("Your bag is empty");
+
+return;
+
+}
 
 const name=
 document.getElementById("customerName")
@@ -1787,12 +1912,13 @@ document.getElementById("customerAddress")
 .value
 .trim();
 
-if(!name||!phone||!address)
+if(!name || !phone || !address){
 
-return toast(
-"Please fill in the required details"
-);
+toast("Please fill in the required details");
 
+return;
+
+}
 
 const pricing=
 getCartPricing();
@@ -1800,147 +1926,125 @@ getCartPricing();
 const subtotal=
 pricing.subtotal;
 
+const delivery=200;
+
 const total=
-subtotal+200;
+subtotal+delivery;
+
+
+/* UNIQUE ORDER NUMBER */
 
 const orderNo=
-Number(
-localStorage.getItem("sts_order_no")||0
-)+1;
+"STS-"+
+Date.now()
+.toString(36)
+.toUpperCase()+
+"-"+
+Math.random()
+.toString(36)
+.substring(2,6)
+.toUpperCase();
 
 
-const normalItems=
-cart.filter(
-p=>
-p.category!=="Page Holders" &&
-p.category!=="Bag Charms"
+/* ITEMS TO SAVE IN SUPABASE */
+
+const orderItems=
+cart.map(item=>({
+
+id:item.id,
+
+name:item.name,
+
+category:item.category,
+
+price:Number(item.price||0),
+
+image:item.image
+
+}));
+
+
+const button=
+document.querySelector(
+"#checkoutPage .whatsapp-btn"
 );
 
-const pageHolderItems=
-cart.filter(
-p=>p.category==="Page Holders"
-);
+if(button){
 
-const bagCharmItems=
-cart.filter(
-p=>p.category==="Bag Charms"
-);
+button.disabled=true;
 
-let items="";
-
-
-if(normalItems.length){
-
-items+=
-normalItems
-.map(p=>
-`• ${p.name} — ${money(p.price)}`
-)
-.join("\n");
+button.textContent=
+"PLACING ORDER...";
 
 }
 
 
-if(pageHolderItems.length){
+try{
 
-if(items)
-items+="\n";
+const {error}=
+await supabaseClient
+.from("orders")
+.insert([{
 
-items+=
-"\nPAGE HOLDER MIX & MATCH:\n";
+order_number:orderNo,
 
-items+=
-pageHolderItems
-.map(p=>
-`• ${p.name}`
-)
-.join("\n");
+customer_name:name,
 
-items+=
-`\nPage Holders (${pageHolderItems.length}) — ${money(pricing.pageHolderTotal)}`;
+customer_phone:phone,
 
-}
+customer_email:
+email||null,
 
+customer_address:address,
 
-if(bagCharmItems.length){
+items:orderItems,
 
-if(items)
-items+="\n";
+subtotal:subtotal,
 
-items+=
-"\nBAG CHARM MIX & MATCH:\n";
+delivery:delivery,
 
-items+=
-bagCharmItems
-.map(p=>
-`• ${p.name} — Clasp: Silver or Golden`
-)
-.join("\n");
+total:total,
 
-items+=
-`\nBag Charms (${bagCharmItems.length}) — ${money(pricing.bagCharmTotal)}`;
+payment_method:
+"Cash on Delivery",
 
-}
+status:
+"Pending"
+
+}]);
 
 
-const message=
+if(error){
 
-`✨ SHE TINY SPARK ✨
-
-Order: STS-${String(orderNo).padStart(3,"0")}
-
-Name: ${name}
-Phone: ${phone}
-Email: ${email||"Not provided"}
-Address: ${address}
-
-Items:
-${items}
-
-Subtotal: ${money(subtotal)}
-Delivery: Rs 200
-TOTAL: ${money(total)}
-
-Thank you for shopping with She Tiny Spark ♡`;
-
-
-const whatsappNumber=
-"923704751306";
-
-const url=
-"https://wa.me/"+
-whatsappNumber+
-"?text="+
-encodeURIComponent(message);
-
-const opened=
-window.open(
-url,
-"_blank"
+console.error(
+"Supabase order error:",
+error
 );
 
-if(!opened){
-
-window.location.href=url;
-
-return;
+throw error;
 
 }
 
 
-localStorage.setItem(
-"sts_order_no",
-String(orderNo)
-);
+/* LOCAL ORDER COUNT */
 
 localStorage.setItem(
 "sts_orders",
+
 String(
 Number(
 localStorage.getItem("sts_orders")||0
 )+1
 )
 );
+
+localStorage.setItem(
+"sts_order_no",
+orderNo
+);
+
+
+/* CLEAR CART */
 
 cart=[];
 
@@ -1950,11 +2054,37 @@ JSON.stringify(cart)
 );
 
 updateBag();
+
 renderCart();
 
-toast(
-"Order message prepared ♡"
+
+/* SHOW SUCCESS PAGE */
+
+showOrderSuccess(
+orderNo,
+name,
+total
 );
+
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"Order could not be placed. Please try again."
+);
+
+if(button){
+
+button.disabled=false;
+
+button.textContent=
+"PLACE ORDER ↗";
+
+}
+
+}
 
 }
 
