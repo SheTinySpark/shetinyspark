@@ -70,7 +70,6 @@ button{border:0;cursor:pointer}
 .category:nth-child(2){background:#ffe2c8}
 .category:nth-child(3){background:#f8c3d7}
 .category:nth-child(4){background:#d7eadb}
-.category:nth-child(5){background:#f7d7bd}
 
 .cat-icon{display:flex;align-items:center;justify-content:flex-start}
 .cat-icon svg{
@@ -258,18 +257,6 @@ stroke-linejoin:round
 <span class="cat-name">Bag Charms</span>
 </button>
 
-<button class="category" onclick="filterCategory('Barrette Hair Clips')">
-<span class="cat-icon">
-<svg viewBox="0 0 32 32">
-<path d="M7 12c3-4 6-4 9 0 3-4 6-4 9 0"/>
-<path d="M8 15c2 5 5 7 8 7s6-2 8-7"/>
-<path d="M11 13h10"/>
-<path d="M13 11l3 3 3-3"/>
-</svg>
-</span>
-<span class="cat-name">Barrette Hair Clips</span>
-</button>
-
 <button class="category" onclick="filterCategory('Spectacle Holders')">
 <span class="cat-icon">
 <svg viewBox="0 0 32 32">
@@ -306,7 +293,6 @@ stroke-linejoin:round
 <button class="filter active" onclick="filterCategory('All',this)">All</button>
 <button class="filter" onclick="filterCategory('Necklaces',this)">Necklaces</button>
 <button class="filter" onclick="filterCategory('Bag Charms',this)">Bag Charms</button>
-<button class="filter" onclick="filterCategory('Barrette Hair Clips',this)">Barrette Hair Clips</button>
 <button class="filter" onclick="filterCategory('Spectacle Holders',this)">Glasses Holders</button>
 <button class="filter" onclick="filterCategory('Page Holders',this)">Page Holders</button>
 </div>
@@ -480,15 +466,9 @@ stroke-linejoin:round
 
 const products=[
 
-{id:1,name:"Sweet Bow Clip",category:"Barrette Hair Clips",price:299,image:"https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=700&q=85",desc:"A cute accessory for everyday looks."},
-
-{id:2,name:"Pearl Barrette",category:"Barrette Hair Clips",price:399,image:"https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=700&q=85",desc:"A delicate finishing touch for your hair."},
+/* NECKLACES */
 
 {id:5,name:"Shell Pearl Necklace",category:"Necklaces",price:599,image:"IMG-20261017-WA8385.jpg",images:["IMG-20261017-WA8385.jpg","IMG-20261016-WA6081.jpg","IMG-20261016-WA2845.jpg"],desc:"A delicate shell pearl necklace made for soft everyday styling. Customers can also choose a silver chain instead of the gold chain according to their personal preference."},
-
-{id:6,name:"Little Flower Clip",category:"Barrette Hair Clips",price:299,image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=85",desc:"A playful detail for your everyday style."},
-
-{id:7,name:"Ribbon Barrette",category:"Barrette Hair Clips",price:349,image:"https://images.unsplash.com/photo-1635767798638-3665a7e4a3c2?auto=format&fit=crop&w=700&q=85",desc:"A sweet and simple hair accessory."},
 
 {id:10,name:"Swan Necklace",category:"Necklaces",price:699,image:"IMG-20261017-WA8759.jpg",images:["IMG-20261017-WA8759.jpg","IMG-20261016-WA8346.jpg","IMG-20261016-WA1985.jpg"],desc:"A delicate swan-inspired necklace made for soft and elegant everyday styling. Customers can also choose a silver chain according to their personal preference."},
 
@@ -497,6 +477,8 @@ const products=[
 {id:14,name:"Amore Heart Necklace",category:"Necklaces",price:499,image:"IMG-20261017-WA4763.jpg",images:["IMG-20261017-WA4763.jpg","IMG-20261017-WA0077.jpg","IMG-20261017-WA1383.jpg"],desc:"A delicate heart-inspired necklace made for soft and elegant everyday styling. Customers can also choose a silver chain according to their personal preference."},
 
 {id:15,name:"Rosy Bloom Necklace",category:"Necklaces",price:599,image:"IMG-20261017-WA9759.jpg",images:["IMG-20261017-WA9759.jpg","IMG-20261018-WA4121.jpg","IMG-20261017-WA2374.jpg"],desc:"A delicate rosy bloom-inspired necklace made for soft and elegant everyday styling. Customers can also choose a silver chain according to their personal preference."},
+
+/* PAGE HOLDERS */
 
 {id:16,name:"Red Beret Penguin",category:"Page Holders",price:299,image:"IMG-20261016-WA0509.jpg",images:["IMG-20261016-WA0509.jpg","IMG-20261016-WA3070.jpg"],desc:"A cute little page holder made to keep your place in style."},
 
@@ -528,6 +510,8 @@ const products=[
 
 {id:30,name:"Orange Slice",category:"Page Holders",price:299,image:"IMG-20261016-WA0369.jpg",images:["IMG-20261016-WA0369.jpg","IMG-20261016-WA8826.jpg"],desc:"A cute little page holder made to keep your place in style."},
 
+/* GLASSES HOLDERS */
+
 {id:31,name:"Milo The Grey Tabby",category:"Spectacle Holders",price:599,image:"IMG-20261015-WA2760.jpg",images:["IMG-20261015-WA2760.jpg","IMG-20261015-WA7859.jpg"],desc:"A cute cat-inspired glasses holder made to keep your spectacles close in style."},
 
 {id:32,name:"Mochi The Calico",category:"Spectacle Holders",price:599,image:"IMG-20261015-WA2227.jpg",images:["IMG-20261015-WA2227.jpg","IMG-20261015-WA4996.jpg"],desc:"A cute cat-inspired glasses holder made to keep your spectacles close in style."},
@@ -544,7 +528,7 @@ const products=[
 id:36,
 name:"Froggy Strawberry Cottage",
 category:"Bag Charms",
-price:549,
+price:499,
 image:"IMG-20261020-WA4116.jpg",
 images:["IMG-20261020-WA4116.jpg","IMG-20261020-WA6881.jpg"],
 desc:"A cute Froggy Strawberry Cottage bag charm. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
@@ -608,6 +592,96 @@ price:449,
 image:"IMG-20261020-WA5148.jpg",
 images:["IMG-20261020-WA5148.jpg","IMG-20261020-WA4447.jpg"],
 desc:"A Lucky Star Black Cat bag charm made for a cute everyday look. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:43,
+name:"Boo Stack",
+category:"Bag Charms",
+price:399,
+image:"IMG-20261021-WA6039.jpg",
+images:["IMG-20261021-WA6039.jpg","IMG-20261021-WA7453.jpg"],
+desc:"A cute Boo Stack bag charm made to add a little sparkle to your favourite bag. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:44,
+name:"Lucky Sweetheart",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261021-WA8361.jpg",
+images:["IMG-20261021-WA8361.jpg","IMG-20261021-WA3899.jpg"],
+desc:"A sweet Lucky Sweetheart bag charm made for a cute everyday detail. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:45,
+name:"Honey Bee Charm",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261021-WA1529.jpg",
+images:["IMG-20261021-WA1529.jpg","IMG-20261020-WA8201.jpg"],
+desc:"A cute Honey Bee Charm made to add a little sweetness to your favourite bag. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:46,
+name:"Midnight Black Cat",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261021-WA2203.jpg",
+images:["IMG-20261021-WA2203.jpg","IMG-20261021-WA8754.jpg","IMG-20261021-WA2664.jpg"],
+desc:"A cute Midnight Black Cat bag charm made for a little extra sparkle. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:47,
+name:"Marmalade Orange Calico",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261021-WA9147.jpg",
+images:["IMG-20261021-WA9147.jpg","IMG-20261021-WA8370.jpg","IMG-20261021-WA1796.jpg"],
+desc:"A sweet Marmalade Orange Calico bag charm made for cat lovers. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:48,
+name:"Chai Siamese",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261021-WA8559.jpg",
+images:["IMG-20261021-WA8559.jpg","IMG-20261021-WA2473.jpg","IMG-20261021-WA5447.jpg"],
+desc:"A cute Chai Siamese bag charm made to bring a little cozy charm to your favourite bag. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:49,
+name:"Toffee Tan Calico",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261021-WA2489.jpg",
+images:["IMG-20261021-WA2489.jpg","IMG-20261021-WA3726.jpg","IMG-20261021-WA6815.jpg"],
+desc:"A sweet Toffee Tan Calico bag charm made for a cute everyday look. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:50,
+name:"Pebble Grey Cat",
+category:"Bag Charms",
+price:449,
+image:"IMG-20261021-WA6939.jpg",
+images:["IMG-20261021-WA6939.jpg","IMG-20261021-WA5914.jpg","IMG-20261021-WA9574.jpg"],
+desc:"A cute Pebble Grey Cat bag charm made for a little extra sparkle. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
+},
+
+{
+id:51,
+name:"Berry Grumps",
+category:"Bag Charms",
+price:399,
+image:"IMG-20261021-WA6958.jpg",
+images:["IMG-20261021-WA6958.jpg","IMG-20261021-WA4326.jpg"],
+desc:"A playful Berry Grumps bag charm made to add a cute touch to your favourite bag. You can choose a silver or golden clasp according to your preference. Mix & match with other Bag Charms: any 2 for Rs 849 or any 3 for Rs 1,199."
 }
 
 ];
@@ -619,9 +693,10 @@ let cart=JSON.parse(localStorage.getItem("sts_cart")||"[]");
 let wishlist=JSON.parse(localStorage.getItem("sts_wishlist")||"[]");
 let toastTimer;
 
-/* REMOVE OLD KEYCHAIN PRODUCTS FROM OLD LOCAL STORAGE */
+/* REMOVE OLD PRODUCTS FROM OLD LOCAL STORAGE */
 cart=cart.filter(x=>
 x.category!=="Keychains" &&
+x.category!=="Barrette Hair Clips" &&
 products.some(p=>p.id===x.id)
 );
 
@@ -1632,7 +1707,7 @@ const content={
 
 "About Us":
 
-"<p>Welcome to She Tiny Spark! We love little accessories and handmade details that add a little sparkle to everyday life.</p><p>Our collection includes hair accessories, bag charms, spectacle holders, necklaces and page holders.</p>",
+"<p>Welcome to She Tiny Spark! We love little accessories and handmade details that add a little sparkle to everyday life.</p><p>Our collection includes bag charms, spectacle holders, necklaces and page holders.</p>",
 
 "Privacy Policy":
 
