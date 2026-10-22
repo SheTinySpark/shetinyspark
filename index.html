@@ -1929,18 +1929,31 @@ const total=
 subtotal+delivery;
 
 
-/* UNIQUE ORDER NUMBER */
+/* SEQUENTIAL ORDER NUMBER FROM SUPABASE */
 
-const orderNo=
-"STS-"+
-Date.now()
-.toString(36)
-.toUpperCase()+
-"-"+
-Math.random()
-.toString(36)
-.substring(2,6)
-.toUpperCase();
+const {
+  data: orderNo,
+  error: numberError
+} = await supabaseClient.rpc("get_next_order_number");
+
+if(numberError){
+
+  console.error(
+    "Order number error:",
+    numberError
+  );
+
+  throw numberError;
+
+}
+
+if(!orderNo){
+
+  throw new Error(
+    "Order number was not generated"
+  );
+
+}
 
 
 /* ITEMS TO SAVE IN SUPABASE */
