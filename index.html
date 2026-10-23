@@ -194,6 +194,94 @@ stroke-linejoin:round
 @media(prefers-reduced-motion:reduce){
 *,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important}
 }
+   /* =========================
+   REVIEWS STYLING
+========================= */
+
+.review-form{
+  background:#fff0e8;
+  border-radius:23px;
+  padding:18px;
+  margin-top:20px;
+}
+
+.rating-stars{
+  display:flex;
+  gap:8px;
+  margin-top:9px;
+}
+
+.star-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid #eadfe2;
+  background:white;
+  color:#d8c5ca;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.star-btn.selected{
+  background:#f8d5e1;
+  color:#d34983;
+  border-color:#f4a4b9;
+}
+
+.review-submit{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:27px;
+  background:#231d22;
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.review-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:18px;
+}
+
+.review-card{
+  background:white;
+  border:1px solid #f0e4e6;
+  border-radius:20px;
+  padding:16px;
+}
+
+.review-stars{
+  color:#d34983;
+  letter-spacing:2px;
+  font-size:15px;
+}
+
+.review-text{
+  margin-top:9px;
+  color:#67565e;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.review-name{
+  margin-top:10px;
+  font-size:12px;
+  font-weight:800;
+  color:#211b20;
+}
+
+.review-empty,
+.review-loading{
+  padding:18px;
+  border-radius:20px;
+  background:#fffaf7;
+  color:#80737a;
+  text-align:center;
+  font-size:13px;
+}
 </style>
 </head>
 
@@ -400,7 +488,91 @@ stroke-linejoin:round
 <div class="empty-icon">♡</div>
 
 <h2>Order placed successfully!</h2>
+<section class="page" id="reviewsPage">
 
+  <button class="back" onclick="showPage('home')">←</button>
+
+  <h1 class="page-title">Customer Reviews ♡</h1>
+
+  <div class="review-form">
+
+    <h2 style="font:500 25px 'Playfair Display',serif;">
+      Share your experience
+    </h2>
+
+    <p style="margin-top:7px;font-size:12px;color:#80737a;">
+      We’d love to hear what you think.
+    </p>
+
+    <div class="form-group" style="margin-top:16px;">
+      <label for="reviewName">Your name *</label>
+      <input
+        id="reviewName"
+        maxlength="50"
+        placeholder="Enter your name"
+      >
+    </div>
+
+    <div class="form-group">
+
+      <label>Your rating *</label>
+
+      <div class="rating-stars" id="ratingStars">
+
+        <button type="button" class="star-btn"
+          onclick="selectRating(1)">★</button>
+
+        <button type="button" class="star-btn"
+          onclick="selectRating(2)">★</button>
+
+        <button type="button" class="star-btn"
+          onclick="selectRating(3)">★</button>
+
+        <button type="button" class="star-btn"
+          onclick="selectRating(4)">★</button>
+
+        <button type="button" class="star-btn"
+          onclick="selectRating(5)">★</button>
+
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="reviewText">Your review *</label>
+
+      <textarea
+        id="reviewText"
+        maxlength="500"
+        placeholder="Tell us about your order..."
+      ></textarea>
+
+    </div>
+
+    <button
+      class="review-submit"
+      id="reviewSubmitBtn"
+      onclick="submitReview()"
+    >
+      SUBMIT REVIEW ↗
+    </button>
+
+  </div>
+
+
+  <div class="section-head" style="margin-top:28px;">
+
+    <h2>What customers say</h2>
+
+    <span>REAL LOVE ♡</span>
+
+  </div>
+
+
+  <div id="reviewsList" class="review-list"></div>
+
+</section>
 <p style="margin-top:10px">
 Thank you for shopping with She Tiny Spark.
 </p>
@@ -2212,7 +2384,143 @@ renderProducts();
 renderWishlist();
 renderCart();
 updateBag();
+/* =========================
+   REVIEWS SYSTEM
+========================= */
 
+let selectedRating = 0;
+
+function selectRating(rating){
+  selectedRating = rating;
+
+  document.querySelectorAll(".star-btn").forEach((btn, index)=>{
+    btn.classList.toggle("selected", index < rating);
+  });
+}
+
+async function submitReview(){
+
+  const name =
+    document.getElementById("reviewName")
+    .value
+    .trim();
+
+  const review =
+    document.getElementById("reviewText")
+    .value
+    .trim();
+
+  if(!name || !review || !selectedRating){
+    toast("Please add your name, review and star rating ♡");
+    return;
+  }
+
+  const { error } =
+    await supabaseClient
+    .from("reviews")
+    .insert([{
+      customer_name:name,
+      rating:selectedRating,
+      review:review
+    }]);
+
+  if(error){
+    console.error("Review error:", error);
+    toast("Could not submit review. Please try again.");
+    return;
+  }
+
+  document.getElementById("reviewName").value="";
+  document.getElementById("reviewText").value="";
+
+  selectedRating=0;
+
+  document.querySelectorAll(".star-btn")
+    .forEach(btn=>btn.classList.remove("selected"));
+
+  toast("Thank you! Your review was submitted ♡");
+
+  loadReviews();
+}
+
+
+async function loadReviews(){
+
+  const container =
+    document.getElementById("reviewsList");
+
+  if(!container) return;
+
+  container.innerHTML =
+    `<p class="review-loading">Loading reviews...</p>`;
+
+  const { data, error } =
+    await supabaseClient
+    .from("reviews")
+    .select("customer_name,rating,review,created_at")
+    .eq("approved",true)
+    .order("created_at",{ascending:false});
+
+  if(error){
+    console.error("Reviews loading error:",error);
+
+    container.innerHTML =
+      `<p class="review-empty">
+        Reviews could not be loaded.
+      </p>`;
+
+    return;
+  }
+
+  if(!data || !data.length){
+
+    container.innerHTML =
+      `<p class="review-empty">
+        No reviews yet. Be the first to leave one ♡
+      </p>`;
+
+    return;
+  }
+
+  container.innerHTML =
+    data.map(r=>{
+
+      const stars =
+        "★".repeat(r.rating) +
+        "☆".repeat(5-r.rating);
+
+      return `
+        <div class="review-card">
+
+          <div class="review-stars">
+            ${stars}
+          </div>
+
+          <div class="review-text">
+            “${escapeHtml(r.review)}”
+          </div>
+
+          <div class="review-name">
+            — ${escapeHtml(r.customer_name)}
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+}
+
+
+function escapeHtml(text){
+
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
 </script>
 
 </body>
