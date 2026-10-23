@@ -2041,6 +2041,11 @@ event.target.reset();
 
 function showOrderSuccess(orderNo, orderData){
 
+  window.lastOrderForWhatsApp = {
+    orderNumber: orderNo,
+    ...orderData
+  };
+
   document.getElementById("successOrderNumber").textContent =
     orderNo;
 
@@ -2596,6 +2601,45 @@ function escapeHtml(text){
     .replace(/'/g,"&#039;");
 
 }
+   
+function sendOrderWhatsApp(){
+
+  const order = window.lastOrderForWhatsApp;
+
+  if(!order){
+    toast("Order details not available. Please place the order again.");
+    return;
+  }
+
+  const lines = [
+    "New Order — She Tiny Spark",
+    "Order No: " + order.orderNumber,
+    "",
+    "CUSTOMER DETAILS",
+    "Name: " + order.name,
+    "Phone: " + order.phone,
+    "Email: " + (order.email || "Not provided"),
+    "Address: " + order.address,
+    "",
+    "ORDER ITEMS",
+    ...order.items.map((item, index) =>
+      (index + 1) + ". " + item.name +
+      " — " + money(item.price)
+    ),
+    "",
+    "Subtotal: " + money(order.subtotal),
+    "Delivery: " + money(order.delivery),
+    "Total: " + money(order.total),
+    "Payment: Cash on Delivery"
+  ];
+
+  const url =
+    "https://wa.me/923182479416?text=" +
+    encodeURIComponent(lines.join("\n"));
+
+  window.open(url, "_blank");
+}
+
 </script>
 
 </body>
