@@ -2620,7 +2620,6 @@ async function loadReviews(){
     await supabaseClient
     .from("reviews")
     .select("customer_name,rating,review,created_at")
-    .eq("approved",true)
      .eq("product_id",currentProduct.id)
     .order("created_at",{ascending:false});
 
