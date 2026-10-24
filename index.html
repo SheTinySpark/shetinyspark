@@ -2503,11 +2503,12 @@ async function submitReview(){
   const { error } =
     await supabaseClient
     .from("reviews")
-    .insert([{
-      customer_name:name,
-      rating:selectedRating,
-      review:review
-    }]);
+.insert([{
+  customer_name:name,
+  rating:selectedRating,
+  review:review,
+  product_id:currentProduct.id
+}]);
 
   if(error){
     console.error("Review error:", error);
