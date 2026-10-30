@@ -1336,7 +1336,8 @@ block:"start"
 function openProduct(id){
 
   const previousPage =
-  document.querySelector(".page.active")?.id || "home";
+  (document.querySelector(".page.active")?.id || "home")
+  .replace(/Page$/, "");
 history.replaceState(
   {
     type:"listing",
@@ -2712,7 +2713,19 @@ function escapeHtml(text){
     .replace(/'/g,"&#039;");
 
 }
-   
+   window.addEventListener("popstate", function(event){
+
+  if(event.state && event.state.type === "listing"){
+
+    showPage(event.state.pageId || "home");
+
+  }else{
+
+    showPage("home");
+
+  }
+
+});
 function sendOrderWhatsApp(){
 
   const order = window.lastOrderForWhatsApp;
