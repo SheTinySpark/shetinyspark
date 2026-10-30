@@ -1335,49 +1335,69 @@ block:"start"
 
 function openProduct(id){
 
-currentProduct=
-products.find(p=>p.id===id);
+  const previousCategory =
+    typeof category !== "undefined" ? category : "All";
 
-if(!currentProduct)return;
+  history.replaceState(
+    {
+      type:"listing",
+      category:previousCategory
+    },
+    "",
+    window.location.href.split("#")[0]
+  );
 
-detailImageIndex=0;
+  history.pushState(
+    {
+      type:"product",
+      productId:id
+    },
+    "",
+    "#product-" + id
+  );
 
-renderDetailGallery();
+  currentProduct =
+    products.find(p=>p.id===id);
 
-document.getElementById("detailName")
-.textContent=
-currentProduct.name;
+  if(!currentProduct)return;
 
-if(currentProduct.category==="Page Holders"){
+  detailImageIndex=0;
 
-document.getElementById("detailPrice")
-.textContent=
-money(currentProduct.price)+
-" • 2 for Rs 399 • 3 for Rs 599";
+  renderDetailGallery();
 
-}else if(currentProduct.category==="Bag Charms"){
+  document.getElementById("detailName")
+    .textContent=
+    currentProduct.name;
 
-document.getElementById("detailPrice")
-.textContent=
-money(currentProduct.price)+
-" • Any 2 for Rs 849 • Any 3 for Rs 1,199";
+  if(currentProduct.category==="Page Holders"){
 
-}else{
+    document.getElementById("detailPrice")
+      .textContent=
+      money(currentProduct.price)+
+      " • 2 for Rs 399 • 3 for Rs 599";
 
-document.getElementById("detailPrice")
-.textContent=
-money(currentProduct.price);
+  }else if(currentProduct.category==="Bag Charms"){
 
+    document.getElementById("detailPrice")
+      .textContent=
+      money(currentProduct.price)+
+      " • Any 2 for Rs 849 • Any 3 for Rs 1,199";
+
+  }else{
+
+    document.getElementById("detailPrice")
+      .textContent=
+      money(currentProduct.price);
+
+  }
+
+  document.getElementById("detailDesc")
+    .textContent=
+    currentProduct.desc;
+
+  showPage("detail");
+  loadReviews();
 }
-
-document.getElementById("detailDesc")
-.textContent=
-currentProduct.desc;
-
-showPage("detail");
-loadReviews();
-}
-
 
 function renderDetailGallery(){
 
