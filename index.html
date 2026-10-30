@@ -2751,6 +2751,183 @@ function sendOrderWhatsApp(){
   window.open(url, "_blank");
 }
 
+<script>
+
+window.addEventListener("popstate", function(event){
+
+  if(event.state && event.state.type === "product"){
+
+    const product =
+      products.find(p => p.id === event.state.productId);
+
+    if(product){
+      openProduct(product.id);
+    }
+
+  }else{
+
+    const savedCategory =
+      event.state && event.state.category
+        ? event.state.category
+        : "All";
+
+    if(typeof category !== "undefined"){
+      category = savedCategory;
+    }
+
+    showPage("shop");
+
+    if(typeof renderProducts === "function"){
+      renderProducts();
+    }
+
+  }
+
+});
+<script>
+
+window.addEventListener("popstate", function(event){
+
+  if(event.state && event.state.type === "product"){
+
+    const product =
+      products.find(p => p.id === event.state.productId);
+
+    if(product){
+      openProduct(product.id);
+    }
+
+  }else{
+
+    const savedCategory =
+      event.state && event.state.category
+        ? event.state.category
+        : "All";
+
+    if(typeof category !== "undefined"){
+      category = savedCategory;
+    }
+
+    showPage("shop");
+
+    if(typeof renderProducts === "function"){
+      renderProducts();
+    }
+
+  }
+
+});
+
+<script>
+
+window.addEventListener("popstate", function(event){
+
+  if(event.state && event.state.type === "product"){
+
+    const product =
+      products.find(p => p.id === event.state.productId);
+
+    if(product){
+      openProduct(product.id);
+    }
+
+  }else{
+
+    const savedCategory =
+      event.state && event.state.category
+        ? event.state.category
+        : "All";
+
+    if(typeof category !== "undefined"){
+      category = savedCategory;
+    }
+
+    showPage("shop");
+
+    if(typeof renderProducts === "function"){
+      renderProducts();
+    }
+
+  }
+
+});
+  window.open(url, "_blank");
+}
+
+</script>
+
+<script>
+
+window.addEventListener("popstate", function(event){
+
+  if(event.state && event.state.type === "product"){
+
+    const product =
+      products.find(p => p.id === event.state.productId);
+
+    if(product){
+      openProduct(product.id);
+    }
+
+  }else{
+
+    const savedCategory =
+      event.state && event.state.category
+        ? event.state.category
+        : "All";
+
+    if(typeof category !== "undefined"){
+      category = savedCategory;
+    }
+
+    showPage("shop");
+
+    if(typeof renderProducts === "function"){
+      renderProducts();
+    }
+
+  }
+
+});
+  window.open(url, "_blank");
+}
+
+</script>
+
+<script>
+
+window.addEventListener("popstate", function(event){
+
+  if(event.state && event.state.type === "product"){
+
+    const product =
+      products.find(p => p.id === event.state.productId);
+
+    if(product){
+      openProduct(product.id);
+    }
+
+  }else{
+
+    const savedCategory =
+      event.state && event.state.category
+        ? event.state.category
+        : "All";
+
+    if(typeof category !== "undefined"){
+      category = savedCategory;
+    }
+
+    showPage("shop");
+
+    if(typeof renderProducts === "function"){
+      renderProducts();
+    }
+
+  }
+
+});
+
 </script>
 
 </body>
