@@ -1335,13 +1335,15 @@ block:"start"
 
 function openProduct(id){
 
-  const previousCategory =
-    typeof category !== "undefined" ? category : "All";
+  const previousPage =
+  document.querySelector(".page.active")?.id || "home";
 
   history.replaceState(
     {
-      type:"listing",
-      category:previousCategory
+      {
+  type:"listing",
+  pageId:previousPage
+}
     },
     "",
     window.location.href.split("#")[0]
