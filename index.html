@@ -1337,17 +1337,14 @@ function openProduct(id){
 
   const previousPage =
   document.querySelector(".page.active")?.id || "home";
-
-  history.replaceState(
-    {
-      {
-  type:"listing",
-  pageId:previousPage
-}
-    },
-    "",
-    window.location.href.split("#")[0]
-  );
+history.replaceState(
+  {
+    type:"listing",
+    pageId:previousPage
+  },
+  "",
+  window.location.href.split("#")[0]
+);
 
   history.pushState(
     {
@@ -1399,6 +1396,7 @@ function openProduct(id){
 
   showPage("detail");
   loadReviews();
+   
 }
 
 function renderDetailGallery(){
@@ -2752,197 +2750,6 @@ function sendOrderWhatsApp(){
 
   window.open(url, "_blank");
 }
-
-<script>
-
-window.addEventListener("popstate", function(event){
-
-  if(event.state && event.state.type === "product"){
-
-    const product =
-      products.find(p => p.id === event.state.productId);
-
-    if(product){
-      openProduct(product.id);
-    }
-
-  }else{
-
-    const savedCategory =
-      event.state && event.state.category
-        ? event.state.category
-        : "All";
-
-    if(typeof category !== "undefined"){
-      category = savedCategory;
-    }
-
-    showPage("shop");
-
-    if(typeof renderProducts === "function"){
-      renderProducts();
-    }
-
-  }
-
-});
-<script>
-
-window.addEventListener("popstate", function(event){
-
-  if(event.state && event.state.type === "product"){
-
-    const product =
-      products.find(p => p.id === event.state.productId);
-
-    if(product){
-      openProduct(product.id);
-    }
-
-  }else{
-
-    const savedCategory =
-      event.state && event.state.category
-        ? event.state.category
-        : "All";
-
-    if(typeof category !== "undefined"){
-      category = savedCategory;
-    }
-
-    showPage("shop");
-
-    if(typeof renderProducts === "function"){
-      renderProducts();
-    }
-
-  }
-
-});
-
-<script>
-
-window.addEventListener("popstate", function(event){
-
-  if(event.state && event.state.type === "product"){
-
-    const product =
-      products.find(p => p.id === event.state.productId);
-
-    if(product){
-      openProduct(product.id);
-    }
-
-  }else{
-
-    const savedCategory =
-      event.state && event.state.category
-        ? event.state.category
-        : "All";
-
-    if(typeof category !== "undefined"){
-      category = savedCategory;
-    }
-
-    showPage("shop");
-
-    if(typeof renderProducts === "function"){
-      renderProducts();
-    }
-
-  }
-
-});
-  window.open(url, "_blank");
-}
-
 </script>
-
-<script>
-
-window.addEventListener("popstate", function(event){
-
-  if(event.state && event.state.type === "product"){
-
-    const product =
-      products.find(p => p.id === event.state.productId);
-
-    if(product){
-      openProduct(product.id);
-    }
-
-  }else{
-
-    const savedCategory =
-      event.state && event.state.category
-        ? event.state.category
-        : "All";
-
-    if(typeof category !== "undefined"){
-      category = savedCategory;
-    }
-
-    showPage("shop");
-
-    if(typeof renderProducts === "function"){
-      renderProducts();
-    }
-
-  }
-
-});
-  window.open(url, "_blank");
-}
-
-</script>
-
-<script>
-
-window.addEventListener("popstate", function(event){
-
-  if(event.state && event.state.type === "product"){
-
-    const product =
-      products.find(p => p.id === event.state.productId);
-
-    if(product){
-      openProduct(product.id);
-    }
-
-  }else{
-
-    const savedCategory =
-      event.state && event.state.category
-        ? event.state.category
-        : "All";
-
-    if(typeof category !== "undefined"){
-      category = savedCategory;
-    }
-
-    showPage("shop");
-
-    if(typeof renderProducts === "function"){
-      renderProducts();
-    }
-
-  }
-
-});
-window.addEventListener("popstate", function(event){
-
-  if(event.state && event.state.type === "listing"){
-
-    showPage(event.state.pageId || "home");
-
-  }else{
-
-    showPage("home");
-
-  }
-
-});
-</script>
-
 </body>
 </html>
