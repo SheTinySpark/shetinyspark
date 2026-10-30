@@ -2929,7 +2929,19 @@ window.addEventListener("popstate", function(event){
   }
 
 });
+window.addEventListener("popstate", function(event){
 
+  if(event.state && event.state.type === "listing"){
+
+    showPage(event.state.pageId || "home");
+
+  }else{
+
+    showPage("home");
+
+  }
+
+});
 </script>
 
 </body>
